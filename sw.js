@@ -1,5 +1,5 @@
 // Deixa o O Corre abrir sem internet. Sempre tenta a versão mais nova primeiro.
-const CACHE = 'o-corre-v13';
+const CACHE = 'o-corre-v15';
 const CORE = ['./', 'index.html', 'config.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

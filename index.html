@@ -1056,6 +1056,85 @@ g.x-coach{animation:xCoachG 1.3s ease-in-out infinite}
 }
 
 </style>
+<style>
+/* ===== v15: fazer música ===== */
+.x15-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start}
+.x15-wrap>.x15-sess{grid-column:1/-1}
+.x15-tagline{display:flex;gap:6px;flex-wrap:wrap}
+.x15-tagline span{font:800 11.5px var(--q-body);background:#2B2040;color:#D9C2FF;border:1px solid #5B3F7A;border-radius:999px;padding:4px 10px}
+.x15-row{display:flex;flex-direction:column;gap:8px;padding:12px 0;border-top:1px solid #2E2738}
+.x15-row:first-of-type{border-top:0;padding-top:4px}
+.x15-val{font:800 16px var(--q-body);color:#F2ECFA}
+.x15-chips{display:flex;gap:6px;flex-wrap:wrap}
+.x15-chips button{border:1px solid #3E3549;background:#221C2B;color:#BDB2CF;border-radius:999px;padding:7px 12px;font:800 13px var(--q-body);cursor:pointer}
+.x15-chips button i{font:700 10px var(--q-body);font-style:normal;color:#C04FD6;margin-left:4px}
+.x15-chips button:hover{border-color:#FFB547;color:#F2ECFA}
+.x15-chips button[aria-pressed="true"]{background:#FFB547;border-color:#FFB547;color:#21160A}
+.x15-chips button[aria-pressed="true"] i{color:#5A2A6A}
+.x15-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.x15-opts button{display:flex;flex-direction:column;gap:4px;text-align:left;padding:12px;border-radius:12px;border:1px solid #3E3549;background:linear-gradient(180deg,#2A2334,#221C2B);color:#F2ECFA;cursor:pointer;box-shadow:0 3px 0 #0E0B13}
+.x15-opts button:hover:not(:disabled){border-color:#FFB547}
+.x15-opts button:disabled{opacity:.45;cursor:not-allowed}
+.x15-opts b{font:800 14px var(--q-body)}
+.x15-opts span{font:600 12.5px/1.35 var(--q-body);color:#BDB2CF}
+.x15-opts em{font:800 11px var(--mono2,monospace);font-style:normal;color:#FFB547;text-transform:uppercase;letter-spacing:.06em;margin-top:auto}
+.x15-ficha{display:flex;flex-direction:column;padding:18px;border-radius:20px;background:#1D1825;border:1px solid #2E2738}
+.x15-ficha>h3{margin-bottom:6px}
+
+/* caderno */
+.x15-cad{display:flex;flex-direction:column;gap:10px}
+.x15-cad-h{display:flex;flex-direction:column;gap:4px}
+.x15-tabs{display:flex;gap:4px;flex-wrap:wrap}
+.x15-tabs button{display:flex;align-items:center;gap:6px;border:0;border-radius:10px 10px 0 0;padding:9px 13px;background:#2A2334;color:#BDB2CF;font:800 13.5px var(--q-body);cursor:pointer}
+.x15-tabs button[aria-selected="true"]{background:#F3E9D2;color:#2A1F12}
+.x15-tabs small{font:800 10px var(--q-body);background:#3A2E12;color:#FFB547;border-radius:6px;padding:2px 6px}
+.x15-tabs small.ok{background:#173527;color:#7CF0B0}
+.x15-tabs button[aria-selected="true"] small{background:#2A1F12;color:#F3E9D2}
+.x15-paper{position:relative;background:#F3E9D2;border-radius:0 14px 14px 14px;padding:10px 14px 12px 46px;box-shadow:0 10px 24px #0007;margin-top:-10px}
+.x15-paper::before{content:"";position:absolute;left:32px;top:0;bottom:0;width:2px;background:#E39A9A}
+.x15-paper textarea{display:block;width:100%;min-height:228px;resize:vertical;border:0;outline:0;background:transparent;color:#2A1F12;font:500 16.5px/28px var(--q-body);
+  background-image:repeating-linear-gradient(180deg,transparent 0 27px,#D3C2A0 27px 28px);background-attachment:local;padding:0;caret-color:#C0392B}
+.x15-paper textarea::placeholder{color:#A39274}
+.x15-an p{margin:6px 0 0;color:#BDB2CF;font-size:13.5px;line-height:1.45}
+.x15-an em{color:#FFB547;font-style:normal;font-weight:800}
+.x15-meters{display:flex;gap:6px;flex-wrap:wrap}
+.x15-meters span{font:700 12px var(--q-body);color:#BDB2CF;background:#221C2B;border:1px solid #2E2738;border-radius:8px;padding:5px 9px}
+.x15-meters b{font:800 13px var(--mono2,monospace);color:#F2ECFA;margin-right:3px}
+.x15-meters span.bad{border-color:#5A2E36;color:#FFA3A3}
+
+/* sessão */
+.x15-sess{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:20px;background:radial-gradient(ellipse at 10% 0%,#33204F 0%,#1D1825 60%);border:1px solid #5B3F7A}
+.x15-idea{margin:0;font:700 17px/1.4 var(--q-body);color:#F2ECFA;max-width:70ch}
+.x15-ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.x15-ideas button{display:flex;flex-direction:column;gap:5px;text-align:left;padding:13px;border-radius:14px;border:1px solid #3E3549;background:linear-gradient(180deg,#2A2334,#221C2B);color:#F2ECFA;cursor:pointer;box-shadow:0 3px 0 #0E0B13}
+.x15-ideas button:hover{border-color:#FFB547;transform:translateY(-1px)}
+.x15-ideas b{font:800 14.5px/1.3 var(--q-body)}
+.x15-ideas span{font:700 12px var(--q-body);color:#FFB547}
+.x15-sess .link{color:#BDB2CF;align-self:flex-start}
+
+/* música nova */
+.x15-new h3{font-size:24px;margin-top:6px}
+.x13-card.on{border-color:#FFB547;background:linear-gradient(180deg,#3A2E12,#221C2B)}
+
+/* capa enviada */
+.x15-up{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.x15-up .btn{display:inline-flex;align-items:center;gap:6px}
+.x15-up .btn svg{width:16px;height:16px}
+
+@media (max-width:900px){.x15-wrap{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  .x15-paper{padding:8px 10px 10px 34px}
+  .x15-paper::before{left:22px}
+  .x15-paper textarea{font-size:16px}
+  .x15-tabs button{padding:8px 10px;font-size:12.5px}
+  .x15-ideas,.x15-opts{grid-template-columns:minmax(0,1fr)}
+}
+
+.x13-dark .x15-up .btn{background:#2A2334;color:#F2ECFA;border:1px solid #453B52}
+.x13-dark .x15-up .link{color:#BDB2CF}
+.x13-dark .btn:hover:not(:disabled){background:#332B3F;color:#F2ECFA}
+
+</style>
 </head>
 <body>
 
@@ -1666,7 +1745,7 @@ function rapResolveSlot(i,p){
       if(!tr||tr.lancada){L('A faixa já tinha saído. A sessão virou rascunho solto.');break}
       if(o.beat&&!tr.beatBigode){tr.beatBigode=true;tr.identidade+=4}
       const bonus=(S.flags.inspirado?10:0);S.flags.inspirado=false;
-      tr.letra=Math.min(100,tr.letra+Math.round((34+bonus)*e));
+      tr.letra=Math.min(100,tr.letra+Math.max(1,Math.round((34+bonus)*e)-(S.trait==='perfeccionista'?6:0)));
       const map={i:'identidade',g:'gancho',p:'profundidade',v:'palco'};
       Object.entries(o.a||{}).forEach(([k,v])=>tr[map[k]]+=Math.round(v*e));
       Object.entries(o.ap||{}).forEach(([k,v])=>tr.apelo[k]+=v);
@@ -2553,7 +2632,7 @@ function sceneSlot(i,p){
  if(p.type==='gravar'){
   if(!t||t.cover||t.lancada||t.letra<60){L('A música não estava pronta para esta sessão. O período passou sem gravação.');S.disp=clamp(S.disp-6,0,100);return out}
   money(c.g);const cap=p.opt==='casa'?homeCap():p.opt==='local'?80:96,gain=p.opt==='casa'?24:p.opt==='local'?35:46;
-  t.producao=Math.min(cap,Math.max(t.producao,t.producao+gain*e));t.sess++;
+  t.producao=Math.max(t.producao,Math.min(cap,t.producao+gain*e));t.sess++;
   if(p.opt!=='casa'){rel(PACK.maker,4);t.identidade+=4;t.producer=GENTE[PACK.maker].nome}
   if(genreId()==='funk'){const version=p.version||'light';t.versions=t.versions||{};if(version==='both'){t.versions.light=true;t.versions.explicit=true}else t.versions[version]=true;L(`Gravou "${t.nome}" com ${version==='both'?'as duas versões':version==='light'?'a versão light':'a versão explícita'}. Produção ${Math.round(t.producao)}/100.`)}else L(`Gravou "${t.nome}" ${p.opt==='casa'?'em casa':'na sessão combinada'}. Produção ${Math.round(t.producao)}/100.`);
   fixT(t);
@@ -2580,7 +2659,7 @@ function sceneOptions(id){const cfg=SCENE_META[id];return {
  circular:()=>[{id:'cena',l:Object.values(VENUES)[0].nome,d:'Encontrar o pessoal da cena · −12 disposição'},{id:'club',l:Object.values(VENUES)[2].nome,cost:30,d:'Entrada R$ 30 · conhecer a produção · −12 disposição'},{id:'maker',l:`Conversar com ${GENTE[PACK.maker].nome}`,d:'Ouvir projetos e trocar ideias · −12 disposição'}],
  ensaiar:()=>[{id:'solo',l:'Ensaiar as músicas sozinho',d:'+27 preparo · −12 disposição'},{id:'grupo',l:genreId()==='pagode'?'Passar o repertório com o grupo':'Passar o set com os parceiros',cost:45,d:'+42 preparo · R$ 45 · −12 disposição'}],descansar:RAP_OPTS.descansar
  }}
-function sceneEpilogue(){const p=[S.grana<-1000?'As contas interromperam a temporada. Você precisou reorganizar o trabalho.':musicAvg()>=250?'A renda da música pagou as contas na média das últimas seis semanas. Ainda exige trabalho e escolhas.':`A música rendeu ${brl(musicAvg())} por semana na reta final. Ainda não foi suficiente para pagar tudo.`,`${S.name} terminou a temporada com ${fmt(S.fas)} fãs no Rio de Janeiro.`];if(S.residency?.active)p.push('A roda de domingo continua marcada e o grupo sabe quando recebe.');if(S.flags.editalScene)p.push('O projeto aprovado no edital chegou ao palco.');return{titulo:S.grana<-1000?'O corre pausou':musicAvg()>=250?'Deu para viver de música':'Ainda no corre',paras:p}}
+function sceneEpilogue(){const p=[S.grana<-1000?'As contas interromperam a temporada. Você precisou reorganizar o trabalho.':musicAvg()>=xCost()?'A renda da música pagou as contas na média das últimas seis semanas. Ainda exige trabalho e escolhas.':`A música rendeu ${brl(musicAvg())} por semana na reta final. Ainda não foi suficiente para pagar tudo.`,`${S.name} terminou a temporada com ${fmt(S.fas)} fãs no Rio de Janeiro.`];if(S.residency?.active)p.push('A roda de domingo continua marcada e o grupo sabe quando recebe.');if(S.flags.editalScene)p.push('O projeto aprovado no edital chegou ao palco.');return{titulo:S.grana<-1000?'O corre pausou':musicAvg()>=xCost()?'Deu para viver de música':'Ainda no corre',paras:p}}
 const COMPOSITION_SCENES={
  funk:[
  ['O Cadu mandou uma base: “Deixei esse espaço sem bateria. Vê se o refrão entra aí.”',['Entrar com uma frase curta antes da batida','Antes do Grave','gancho'],['Pedir espaço para desenvolver o verso','Sem Pressa','profundidade'],['Gravar três entradas para comparar','Mais Uma Vez','palco']],
@@ -2950,9 +3029,9 @@ Object.assign(GENRE_PACKS.funk.events,{
 });
 GENRE_PACKS.funk.eventOrder=[...Object.keys(SHARED_EVENTS),...Object.keys(GENRE_PACKS.funk.events)];
 const editorialSlot=modernSlot;
-modernSlot=function(i,p){if(p?.type!=='scene_contract_clip')return editorialSlot(i,p);const t=S.tracks.find(t=>t.lancada&&!t.cover&&!t.clipRights);if(!t)return{t:SLOTS[i].n,lines:['Não havia faixa disponível para o contrato.']};t.clipRights={streamShare:.4,channel:'Produtora',videoOwner:'Produtora',until:26};t.clip=true;S.disp=clamp(S.disp-14,0,100);addReach(14000,{feed:4,pista:2},t);return{t:SLOTS[i].n,lines:[`Gravou o clipe de “${t.nome}”. O vídeo saiu no canal da produtora. Eles ficam com os direitos do clipe e 40% do streaming desta faixa até o fim da temporada.`]}};
+modernSlot=function(i,p){if(p?.type!=='scene_contract_clip')return editorialSlot(i,p);const t=S.tracks.find(t=>t.lancada&&!t.cover&&!t.clipRights);if(!t)return{t:SLOTS[i].n,lines:['Não havia faixa disponível para o contrato.']};t.clipRights={streamShare:.4,channel:'Produtora',videoOwner:'Produtora',until:26,year:S.year||1};t.clip=true;S.disp=clamp(S.disp-14,0,100);addReach(14000,{feed:4,pista:2},t);return{t:SLOTS[i].n,lines:[`Gravou o clipe de “${t.nome}”. O vídeo saiu no canal da produtora. Eles ficam com os direitos do clipe e 40% do streaming desta faixa até o fim da temporada.`]}};
 const editorialTeam=settleTeam;
-settleTeam=function(){const notes=editorialTeam(),songs=S.tracks.filter(t=>t.lancada&&!t.cover),weight=songs.reduce((n,t)=>n+Math.max(t.ouvintes,1),0)||1;let fee=0;for(const t of songs)if(t.clipRights)fee+=recTot()*.035*Math.max(t.ouvintes,1)/weight*t.clipRights.streamShare;if(fee){money(-fee);S.wk.music-=fee;notes.push(`Contrato de clipe: ${brl(fee)} de participação da produtora.`)}return notes};
+settleTeam=function(){const notes=editorialTeam(),songs=S.tracks.filter(t=>t.lancada&&!t.cover),weight=songs.reduce((n,t)=>n+Math.max(t.ouvintes,1),0)||1;let fee=0;for(const t of songs)if(t.clipRights&&(S.year||1)===(t.clipRights.year||1)&&S.week<=t.clipRights.until)fee+=recTot()*.035*Math.max(t.ouvintes,1)/weight*t.clipRights.streamShare;if(fee){money(-fee);S.wk.music-=fee;notes.push(`Contrato de clipe: ${brl(fee)} de participação da produtora.`)}return notes};
 const editorialEnd=sceneEpilogue;
 sceneEpilogue=function(){const e=editorialEnd();if(e.titulo==='Deu para viver de música')e.titulo='Deu pra viver da música';return e};
 for(const id of ['funk','pagode','indie'])GENRE_PACKS[id].epilogue=sceneEpilogue;
@@ -4031,7 +4110,7 @@ modernSlot=function(i,p){
   // personalidade mexe no resultado das ações comuns
   const tr=S.trait;
   if(p.type==='compor'){const t=S.tracks.length>nTracks?S.tracks[S.tracks.length-1]:(before||null);
-    if(t&&!t.lancada){if(tr==='perfeccionista'){t.identidade=clamp(t.identidade+3,0,100);t.profundidade=clamp(t.profundidade+3,0,100);t.letra=clamp(t.letra-6,0,100);r.lines.push('Você reescreveu o mesmo verso quatro vezes. Ficou melhor, mas andou menos.')}
+    if(t&&!t.lancada){if(tr==='perfeccionista'){t.identidade=clamp(t.identidade+3,0,100);t.profundidade=clamp(t.profundidade+3,0,100);r.lines.push('Você reescreveu o mesmo verso quatro vezes. Ficou melhor, mas andou menos.')}
       if(tr==='timido'){t.letra=clamp(t.letra+6,0,100);t.profundidade=clamp(t.profundidade+2,0,100)}}
     if(S.flags.xFimInspira&&t){t.identidade=clamp(t.identidade+8,0,100);t.profundidade=clamp(t.profundidade+8,0,100);S.flags.xFimInspira=false;r.lines.push('O fim com Rê virou verso. Doeu escrever, mas ficou verdadeiro.')}}
   if(p.type==='gravar'&&tr==='perfeccionista'){const t=getT(p.tid);if(t){t.producao=clamp(t.producao+5,0,100)}}
@@ -4096,7 +4175,7 @@ const X_POD_Q={
 };
 Object.assign(WORLD_EVENTS,{
   x_ano_novo:{fromFn:()=>PACK.mentor,text:d=>`Um ano de corre. Lembra quando você tinha uma música pronta e R$ 350 no bolso? Agora o desafio é outro: se manter. O aluguel subiu, a cena cresceu e tem gente nova chegando. Bora pro ano ${d.y||S.year}?`,choices:()=>[{l:'Bora. Esse ano é meu',fx:()=>{xDiary('Começou o ano '+S.year+'.');return 'É isso. E não esquece de quem tava contigo no começo.'}}]},
-  x_dani_aniver:{from:'dani',weight:2,cooldown:14,cond:()=>S.week>=3&&S.week<=24,text:()=> 'Sábado é meu aniversário. Vai ser lá em casa, nada de mais: churrasco, caixa de som e a galera de sempre. Tu vem, né? Se não vier eu vou saber.',
+  x_dani_aniver:{from:'dani',weight:2,cooldown:26,cond:()=>S.week>=3&&S.week<=24,text:()=> 'Sábado é meu aniversário. Vai ser lá em casa, nada de mais: churrasco, caixa de som e a galera de sempre. Tu vem, né? Se não vier eu vou saber.',
     choices:()=>[{l:'Tô lá, levo o refri',hint:'Fim de semana · −R$ 40 · recupera energia',commit:{off:0,slot:2,type:'x_vida',label:'Aniversário do Dani',data:{kind:'festa',cost:40},pen:{rel:{dani:-10},txt:'O Dani guardou seu prato.'}},fx:()=>{rel('dani',3);return 'Aí sim. Traz aquela caixa de som que a minha tá chiando.'}},
       {l:'Passo rapidinho depois do trampo',fx:()=>{rel('dani',2);return 'Rapidinho de novo. Tá bom, tá bom.'}},
       {l:'Esse sábado não dá',ignore:true,fx:()=>{rel('dani',-8);return 'Beleza. Guardo um pedaço de bolo pra ninguém.'}}]},
@@ -4259,7 +4338,7 @@ settleTeam=function(){
   if(S.biz.dist!=='anual'&&streams>4){const cut=streams*.15;money(-cut);S.wk.music-=cut;if(S.week%4===0)notes.push(`Distribuidora no plano grátis: ${brl(cut)} do streaming ficaram com ela.`)}
   if(S.mode==='era2010'&&streams>2){money(-streams*.5);S.wk.music-=streams*.5}
   // direitos autorais de execução em show
-  const shows=S.plan.filter(p=>p&&(p.type==='tocar'||p.type==='x_show_fora')).length;const regN=xOwnReleased().filter(t=>S.biz.reg[t.id]).length;
+  const played=(S.v14Played||[]);const shows=played.length;const regN=shows?played.reduce((n,d)=>n+new Set(readSet(d).filter(id=>{const t=getT(id);return t&&!t.cover&&t.lancada&&S.biz.reg[id]})).size,0)/shows:0;
   if(shows&&regN){const v=Math.round(shows*Math.min(regN,6)*7*(S.biz.editora?.5:1));money(v);S.wk.music+=v;notes.push(`Direitos de execução das músicas registradas que você tocou: +${brl(v)}.`)}
   if(S.mode==='era2010')S.plan.forEach(p=>{if(p&&p.type==='tocar'&&p.data.cache){const b=Math.round(p.data.cache*.2);money(b);S.wk.music+=b}});
   return notes;
@@ -5147,7 +5226,7 @@ document.addEventListener('click',ev=>{
    - card de fim de temporada pra postar
    - ranking dos amigos (Supabase, configurado no config.js)
    ========================================================= */
-const X_VERSION='13';
+const X_VERSION='15';
 if(window.CanvasRenderingContext2D&&!CanvasRenderingContext2D.prototype.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(r,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath();return this};
 const XC=window.OCORRE_CONFIG||{};
 const XRANK=!!(XC.supabaseUrl&&XC.supabaseKey);
@@ -5191,7 +5270,7 @@ async function xBackupCode(){const raw=new TextEncoder().encode(JSON.stringify(x
 async function xReadCode(code){code=String(code||'').trim();if(code.startsWith('{'))return JSON.parse(code);const [h,body]=[code.slice(0,4),code.slice(4).replace(/\s+/g,'')];let bytes=xUnB64(body);if(h==='OC1.')bytes=await xGz(bytes,true);else if(h!=='OC0.')throw new Error('Esse código não é de uma carreira do O Corre.');return JSON.parse(new TextDecoder().decode(bytes))}
 function xApplyBackup(o){
   if(!o||o.app!=='o-corre'||!o.save||o.save.v!==1)throw new Error('Esse arquivo não é um backup do O Corre.');
-  const prev=xLS.get(SAVE_KEY);if(prev)xLS.set('ocorre-save-anterior',prev);
+  const t=o.save;if(!GENRE_PACKS[t.genre||'rap']||!Array.isArray(t.tracks)||!Array.isArray(t.plan)||!Array.isArray(t.history)||!t.rec||!t.rel||!t.flags||!Number.isFinite(t.grana)||!Number.isInteger(t.week)||t.week<1||t.week>26)throw new Error('Backup incompleto ou incompatível. Sua partida foi preservada.');const prev=xLS.get(SAVE_KEY);if(prev)xLS.set('ocorre-save-anterior',prev);
   xLS.set(SAVE_KEY,JSON.stringify(o.save));if(o.meta)xLS.set('ocorre-meta',o.meta);if(o.dicas)xLS.set('ocorre-dicas',o.dicas);if(o.tutorial)xLS.set('ocorre-tutorial',o.tutorial);
   location.reload();
 }
@@ -5462,7 +5541,7 @@ rankRows=function(){
   return rows.sort((a,b)=>b.monthly-a.monthly||String(a.id).localeCompare(String(b.id)));
 };
 function xTierCheck(notes){
-  const rank=S.plei&&S.plei.rank;if(rank===1)S.xTierStreak++;else S.xTierStreak=0;
+  const rank=S.plei&&S.plei.rank;if(rank&&rank<=3)S.xTierStreak++;else S.xTierStreak=0;
   if(S.xTierStreak>=3&&S.xTier<3){S.xTier++;S.xTierStreak=0;S.xTierUp=S.week;const nm=xTierName();
     notes.unshift(`Você subiu de patamar: agora disputa o ${nm}. Os números ali são outros.`);logChat('plei',false,`Seu perfil entrou no ${nm}. A concorrência agora é de gente que lota casa grande.`);xDiary(`Entrou no ${nm}.`);xImg(3);
     if(typeof qToast==='function')setTimeout(()=>qToast({gold:true,icon:'trophy',title:'Subiu de patamar',text:`Agora você disputa o ${nm}.`,ms:6500}),900);
@@ -5779,7 +5858,7 @@ const xShow12=modernShow;
 modernShow=function(d){
   const before=S.wk.fansDirect;const lines=xShow12(d);
   if(S.flags.xChuva===S.week){const g=S.wk.fansDirect-before;if(g>0)S.wk.fansDirect-=Math.round(g*.4);lines.push('A chuva segurou metade do público em casa.')}
-  const ch=d.xLive;if(!Array.isArray(ch)||ch.length<3)return lines;
+  if(lines.some(l=>l.includes('cancelado')))return lines;const ch=d.xLive;if(!Array.isArray(ch)||ch.length<3)return lines;
   const ts=xShowTracks(d);const avg=k=>ts.length?ts.reduce((s,t)=>s+t[k],0)/ts.length:40;const mx=k=>ts.length?Math.max(...ts.map(t=>t[k])):40;
   const rel=ts.filter(t=>t.lancada).sort((a,b)=>(b.plays||0)-(a.plays||0));const hit=rel[0];const nova=ts.find(t=>!t.lancada);
   let f=0;const L=[];let best=null,big=false;
@@ -5845,7 +5924,7 @@ xEstudioHTML=function(){
 const xCity12=qCityHTML;
 qCityHTML=function(){
   const h=xCity12().replace(/Top Plei Rio/g,`Top Plei, ${xTierName()}`);
-  const next=S.xTier<3?`Fica três semanas em primeiro e você sobe pro ${xTierName(S.xTier+1)}.`:'Você chegou no topo da escada.';
+  const next=S.xTier<3?`Fica três semanas entre os três primeiros e você sobe pro ${xTierName(S.xTier+1)}.`:'Você chegou no topo da escada.';
   return`<div class="x12-tier"><span>Seu patamar</span><b>${esc(xTierName())}</b><p>${esc(next)} ${S.xTierStreak?`Você tá há ${S.xTierStreak} semana${S.xTierStreak>1?'s':''} em primeiro.`:''}</p><div class="x12-steps">${[PACK.district||'Bairro','Zona','Rio','Brasil'].map((n,i)=>`<i class="${i<=S.xTier?'on':''}">${esc(n)}</i>`).join('')}</div></div>`+h;
 };
 if(typeof pleiHTML==='function'){const xPl12=pleiHTML;pleiHTML=function(){return xPl12().replace(/Top Plei Rio|Top Rio/g,()=>xTierName())}}
@@ -5942,7 +6021,7 @@ function xPN(p){
 }
 function xDiscs(){return(S.projects||[]).map(xPN)}
 function xActive(){return xDiscs().find(p=>!p.released)||null}
-function xAW(){return((S.year||1)-1)*100+S.week}
+function xAW(){return((S.year||1)-1)*26+S.week}
 function xTipo(p,cap){const a=p.tipo==='album'?'álbum':'EP';return cap?a.charAt(0).toUpperCase()+a.slice(1):a}
 function xDoTipo(p){return p.tipo==='album'?'do álbum':'do EP'}
 function xOTipo(p){return p.tipo==='album'?'o álbum':'o EP'}
@@ -6045,7 +6124,7 @@ function xReview(p,ts,coh,fl,nota){
 function xDiscRelease(p){
   const ts=xPTracks(p);const ready=ts.filter(t=>t.lancada||readyLive(t));const fora=ts.filter(t=>!ready.includes(t));const min=X_DMIN[p.tipo]||3;
   if(ready.length<min){p.week=null;p.hype=Math.round(p.hype*.7);xNote(`${xTipo(p,true)} "${p.nome}" não saiu: só ${ready.length} de ${min} faixas mínimas estavam prontas. A expectativa caiu um pouco. Remarca no Estúdio.`);logChat('cena',false,`O lançamento de "${p.nome}" foi adiado.`);return}
-  if(p.master)ready.forEach(t=>{if(!t.lancada){t.producao=Math.min(92,t.producao+8);fixT(t)}});
+  if(p.master)ready.forEach(t=>{if(!t.lancada){t.producao=Math.max(t.producao,Math.min(92,t.producao+8));fixT(t)}});
   p.tids=ready.map(t=>t.id);if(p.foco&&!p.tids.includes(p.foco))p.foco=null;
   const coh=xDiscCoh(p,ready),fl=xFlow(ready,p.foco).v,Q=xQ(ready);
   const H=clamp(xExpect(p)/xExpectGoal(),0,1.4);
@@ -6073,7 +6152,7 @@ settleBeforeWeek=function(){
   const due=xDiscs().filter(p=>!p.released&&p.week===S.week);due.forEach(p=>{p.week=null;p.xDue=true});
   xBefore13();
   due.forEach(p=>{p.week=S.week;delete p.xDue});
-  const shows=xShowsThisWeek();
+  const shows=0;
   xDiscs().forEach(p=>{
     if(!p.released){
       if(p.week&&p.week<S.week)p.week=null;
@@ -6094,10 +6173,6 @@ settleBeforeWeek=function(){
     // era do disco e venda física nos shows
     const era=p.eraUntil&&xAW()<=p.eraUntil&&p.relWeek!==S.week;
     if(era&&shows){const ts=xPTracks(p);for(let i=0;i<shows;i++){const t=pick(ts);if(t)addReach(150+S.fas*.4,null,t)}S.wk.fansDirect+=2*shows}
-    if(p.fis&&p.fis.n>p.fis.sold&&shows){
-      const F=X_FIS[p.fis.k];let n=0;for(let i=0;i<shows;i++)n+=RI(F.min,F.max)+Math.floor(S.fas/F.per);n=Math.round(n*(era?1:.5));n=Math.min(n,p.fis.n-p.fis.sold);
-      if(n>0){p.fis.sold+=n;const g=n*F.preco;money(g);S.wk.music+=g;xNote(`Vendeu ${n} ${F.un(n)} de "${p.nome}" na banca do show: +${brl(g)}.${p.fis.sold>=p.fis.n?' Acabou a tiragem.':''}`)}
-    }
     if(p.eraUntil&&xAW()===p.eraUntil+1)xNote(`A era de "${p.nome}" chegou ao fim. O disco continua tocando, mas o público já quer coisa nova.`);
   });
 };
@@ -6331,7 +6406,7 @@ function xDiscog(){
     const D=UI.x13Dlx&&UI.x13Dlx.pid===p.id?UI.x13Dlx:null;
     return`<div class="x13-dgi"><div class="x13-sleeve sm"><div class="vinyl"></div><div class="cv">${xPCovSVG(p,true)}</div></div><div class="x13-dgm">
       <b>${esc(p.nome)}</b><span>${esc(xTipo(p,true))} · semana ${p.relWeek}${(p.relYear||1)>1?', ano '+p.relYear:''} · ${xPTracks(p).length} faixas</span>
-      <div class="x13-tags">${O?`<span style="--c:${O.c}" class="o">${esc(O.n)}</span>`:''}${p.nota?`<span>nota ${String(p.nota).replace('.',',')}</span>`:''}${p.coh!=null?`<span>coesão ${p.coh}%</span>`:''}${era?`<span class="ok">era do disco até a semana ${p.eraUntil%100}</span>`:''}</div>
+      <div class="x13-tags">${O?`<span style="--c:${O.c}" class="o">${esc(O.n)}</span>`:''}${p.nota?`<span>nota ${String(p.nota).replace('.',',')}</span>`:''}${p.coh!=null?`<span>coesão ${p.coh}%</span>`:''}${era?`<span class="ok">era do disco até a ${x15WLabel(p.eraUntil)}</span>`:''}</div>
       ${p.review?`<p>"${esc(p.review)}"</p>`:''}${top?`<small>A mais ouvida: "${esc(top.nome)}"</small>`:''}
       ${p.fis?`<small>${X_FIS[p.fis.k].n}: ${p.fis.sold} de ${p.fis.n} vendidos na banca dos shows.</small>`:''}
       ${p.dlxWeek&&!p.dlxDone?'<small>Edição deluxe sai nesta sexta.</small>':''}
@@ -6422,6 +6497,424 @@ function xRenCommit(el){const p=xDiscs().find(x=>x.id===el.dataset.pid);const v=
 document.addEventListener('keydown',ev=>{if(ev.target.id==='x13Ren'&&ev.key==='Enter'){ev.preventDefault();xRenCommit(ev.target)}if(ev.target.id==='x13Name'&&ev.key==='Enter'){ev.preventDefault();const b=document.querySelector('[data-x13="newSave"]');if(b)b.click()}});
 document.addEventListener('focusout',ev=>{if(ev.target.id==='x13Ren'&&UI.x13Ren)xRenCommit(ev.target)});
 document.addEventListener('input',ev=>{if(ev.target.id==='x13Name'&&UI.x13N)UI.x13N.nome=ev.target.value});
+
+/* V14: histórias, convivência e consequências persistentes. */
+const V14_INTRO={
+ rap:['je','Kaká deixou duas músicas pra cada antes da final. Daqui a três semanas. Eu vou. Tu vem comigo?','farol',180],
+ funk:['cadu','Bia abriu um horário daqui a três semanas. Duas músicas, arquivo certo e entrada sem enrolar. Vamos preparar?','antena',220],
+ pagode:['duda','Sol separou uma entrada pra gente daqui a três semanas. Quero botar uma tua entre as conhecidas. Bora ensaiar isso direito?','quintal',300],
+ indie:['nina','Consegui dividir uma noite no Porão daqui a três semanas. Set curto. Quero ouvir tua música ali, sem pedir desculpa antes. Topa?','porao',220]
+};
+const v14Ens=ensureModernState;
+ensureModernState=function(st){v14Ens(st);if(!st.life14)st.life14={bonds:{},lastSurprise:-9,opening:null,focus:null,offerTier:0,legacy:st.week>1};if(!st.v14Played)st.v14Played=[]};
+function v14Bond(k){ensureModernState(S);return S.life14.bonds[k]||(S.life14.bonds[k]={trust:0,visits:0,last:0,memory:'Ainda falta tempo junto fora dos compromissos.'})}
+function v14Remember(k,text,trust=0){const b=v14Bond(k);b.trust=clamp(b.trust+trust,-30,30);b.memory=text;b.last=xAW();xDiary(text)}
+function v14People(){return [...new Set(['dani',PACK.mentor,'mae',...(S.romance.met?['re']:[])])].filter(k=>GENTE[k])}
+function v14Name(k){return GENTE[k]?.nome||k}
+N_KINDS.v14social={n:'Conviver',s:'uma noite com quem importa',ic:'people',c:'#5CC48A'};
+const v14NC=xNightCost;xNightCost=function(n){return n?.k==='v14social'?{g:n.kind==='ouvir'?0:20,d:-8}:v14NC(n)};
+const v14NL=xNightLabel;xNightLabel=function(n){return n?.k==='v14social'?`${n.kind==='ouvir'?'Conversar':'Sair'} com ${v14Name(n.tid)}`:v14NL(n)};
+function v14Meet(k,kind='sair'){const ok=xAssignNight({k:'v14social',tid:k,kind});if(ok){S.life14.promises=S.life14.promises||{};S.life14.promises[k]=xAW()}return ok}
+const v14NP=xNightPicker;xNightPicker=function(){if(UI.xN?.k==='v14social')return '<h4>Com quem passar a noite?</h4>'+v14People().map(k=>`<button class="opt" data-v14="meet" data-k="${k}"><b>${esc(v14Name(k))}</b><span>R$20 · uma noite · +8 de energia. Conversar sem pedir favor.</span></button>`).join('');return v14NP()};
+const v14Nights=xResolveNights;
+xResolveNights=function(){const social=S.noites.filter(n=>n?.k==='v14social');S.noites=S.noites.map(n=>n?.k==='v14social'?null:n);const L=v14Nights();for(const n of social){const b=v14Bond(n.tid);money(n.kind==='ouvir'?0:-20);S.disp=clamp(S.disp+8,0,100);rel(n.tid,5);b.visits++;if(S.life14.promises)delete S.life14.promises[n.tid];v14Remember(n.tid,n.kind==='ouvir'?`Você parou para ouvir ${v14Name(n.tid)} sem transformar a conversa em trabalho.`:`Você guardou uma noite para ${v14Name(n.tid)}.`,3);if(n.tid==='re')S.romance.last=S.week;const texts=n.tid==='dani'?['Dani queimou o primeiro pão de alho. Vocês comeram o segundo rindo do primeiro.','Dani contou que quer mudar de emprego. Dessa vez você deixou o celular no bolso.']:n.tid==='re'?['Vocês caminharam sem procurar lugar para postar foto. Rê contou uma coisa que ainda não tinha contado.','O filme era ruim. Vocês ficaram discutindo o final na volta, e a noite valeu assim mesmo.']:n.tid==='mae'?['Sua mãe abriu uma caixa de fotos antigas. Você ficou para ouvir as histórias repetidas.']:['Ouviram uma demo de cada um. Pela primeira vez, ninguém tinha horário para ir embora.','A conversa saiu da música e foi parar na escola, nos medos e numa piada que só vocês entenderam.'];L.push(texts[(b.visits-1)%texts.length]);}return L};
+const v14Gente=genteHTML;genteHTML=function(){return `<div class="card"><h2>Gente perto</h2><p>Encontros ocupam uma noite. Carinho e confiança guardam histórias diferentes.</p>${v14People().map(k=>{const b=v14Bond(k);return `<div class="setrow"><b>${esc(v14Name(k))} · ${b.trust>=12?'confiança construída':b.trust<0?'precisa de conversa':'se conhecendo melhor'}</b><span>${esc(b.memory)}</span><button class="btn" data-v14="meet" data-k="${k}">Combinar uma noite · R$20</button><button class="link" data-v14="listen" data-k="${k}">Ouvir com calma · sem gasto</button></div>`}).join('')}</div>`+v14Gente()};
+const V14_EVENTS={
+ v14_invite:{fromFn:()=>V14_INTRO[genreId()][0],text:()=>V14_INTRO[genreId()][1],choices:()=>[{l:'Bora. Vamos preparar essas duas.',commit:{off:2,slot:2,type:'tocar',label:'Primeira noite preparada juntos',data:{venue:V14_INTRO[genreId()][2],cache:V14_INTRO[genreId()][3]},pen:{txt:'A pessoa que dividia a noite precisou reorganizar o show.'}},fx:()=>{S.life14.accepted=true;return 'Fechou. Semana que vem a gente ouve a entrada.'}},{l:'Agora não consigo. Quero terminar minhas faixas.',ignore:true,fx:()=>{S.life14.accepted=false;return 'Tá certo. Me mostra quando tiver pronta.'}}]},
+ v14_prepare:{fromFn:()=>PACK.mentor,text:()=> 'Ouvi o começo. Tá bonito, mas ali vai ter gente conversando no bar. Como você quer chamar a atenção?',choices:()=>[{l:'Entro direto no refrão.',fx:()=>{S.life14.opening='hit';return 'Então ensaia essa entrada. Sem pedir silêncio antes.'}},{l:'Vou contar de onde veio a música.',fx:()=>{S.life14.opening='conversa';return 'Conta curto. Deixa a música terminar a história.'}}]},
+ v14_video:{fromFn:()=>PACK.mentor,text:()=>S.life14.accepted?'Chegou um vídeo da nossa noite. Meu trecho ficou melhor nesse corte; o teu tá em outro celular. Vamos juntar?':'Você não foi naquela noite, mas ouvi a faixa de novo. Quer separar um trecho pra mostrar?',choices:()=>[{l:'Vamos fazer espaço pros dois.',fx:()=>{v14Remember(PACK.mentor,'Vocês dividiram o crédito e a divulgação da primeira noite.',5);addReach(650,{rua:2,feed:1},bestOwn());return 'Fechou. Teu nome entra junto.'}},{l:'Quero trabalhar meu trecho separado.',fx:()=>{S.life14.focus='faixa';return 'Manda o teu depois. Quero ver também.'}}]},
+ v14_focus:{fromFn:()=>PACK.maker,text:()=> 'Agora tem uma escolha: lapidar essa faixa ou preparar mais música pra tocar. Fazer tudo correndo vai te cansar. Onde você quer pôr força?',choices:()=>[{l:'Quero trabalhar a faixa.',fx:()=>{S.life14.focus='faixa';const t=bestOwn();if(t)t.hype=(t.hype||0)+15;return 'Então separa uma sessão. Vamos ouvir sem a caixa estourada.'}},{l:'Quero montar um show maior.',fx:()=>{S.life14.focus='palco';S.preparo=clamp(S.preparo+8,0,100);return 'Repertório primeiro. Não fecha data maior só porque chamou.'}},{l:'Vou guardar grana antes.',ignore:true,fx:()=>{S.life14.focus='caixa';return 'Justo. Não precisa se endividar para provar nada.'}}]},
+ v14_return:{fromFn:()=>PACK.mentor,text:()=>S.life14.focus==='palco'?'A produção perguntou se você tem mais repertório. Posso te indicar uma data, mas dessa vez você precisa segurar a noite.':S.life14.focus==='caixa'?'Você segurou a grana. Quando quiser voltar ao palco, me chama. Dá pra preparar sem comprar tudo agora.':'Uma pessoa me perguntou o nome daquela tua música. Mandei o link. Qual vai ser a próxima?',choices:()=>[{l:'Vou preparar o próximo passo.',fx:()=>{S.life14.chapterDone=true;v14Remember(PACK.mentor,'A primeira preparação virou uma parceria que continua.',2);return null}}]},
+ v14_zone:{fromFn:()=>PACK.producer,text:()=> 'Teu nome saiu do bairro. Tenho uma noite maior: cachê de R$650, repertório de festival e arquivo entregue antes. Quer assumir ou preparar mais?',choices:()=>[{l:'Assumo e preparo o repertório.',commit:{off:2,slot:2,type:'tocar',label:'Estreia no novo circuito',data:{venue:'festival',cache:650}},fx:()=>{S.life14.offerTier=S.xTier;return 'Vou contar contigo. É outra responsabilidade agora.'}},{l:'Me dá duas semanas para preparar.',fx:()=>{S.life14.offerTier=S.xTier;sched('v14_zone',2);return 'Combinado. Prefiro isso a descobrir na passagem de som.'}},{l:'Vou investir no meu lançamento primeiro.',ignore:true,fx:()=>{S.life14.offerTier=S.xTier;const t=bestOwn();if(t)addReach(800,null,t);return 'Me manda o material. Vou ouvir antes de chamar de novo.'}}]},
+ v14_friend:{from:'dani',text:()=>v14Bond('dani').visits>=2?'Tô pensando sério em sair do restaurante. Não quero dinheiro teu, não. Só alguém pra ouvir o plano sem rir.':'Tu consegue passar aqui? Hoje foi pesado no restaurante. Não quero falar de trabalho por áudio.',choices:()=>[{l:'Passo aí. Deixo uma noite pra nós.',need:()=>!S.noites.some(n=>!n)?'As duas noites já têm plano':null,fx:()=>{v14Meet('dani','ouvir');return 'Valeu. Faço um café.'}},{l:'Hoje não cabe. Te ligo semana que vem.',fx:()=>{sched('v14_friend_return',1);return 'Liga mesmo, por favor.'}},{l:'Agora tô sem cabeça, Dani.',ignore:true,fx:()=>{v14Remember('dani','Dani tentou conversar num dia difícil e você não pôde ouvir.',-2);return 'Tá. Depois a gente se fala.'}}]},
+ v14_friend_return:{from:'dani',text:()=> 'Tu falou de ligar. Ainda quero te contar aquele plano. Hoje dá?',choices:()=>[{l:'Dá. Vou separar a noite.',need:()=>!S.noites.some(n=>!n)?'Noites ocupadas':null,fx:()=>{v14Meet('dani','ouvir');v14Remember('dani','Você lembrou de voltar à conversa prometida.',3);return 'Boa. Achei que tinha esquecido.'}},{l:'Falei sem olhar a agenda. Foi mal.',ignore:true,fx:()=>{v14Remember('dani','Você reconheceu uma promessa que não conseguiu cumprir.',-3);return 'Prefiro que fale quando não der.'}}]},
+ v14_romance:{from:'re',text:()=>S.romance.on?'Quero combinar uma coisa antes de virar briga. Quando aparece show em cima da hora, você consegue falar comigo antes de decidir por nós dois?':'Gosto de ficar contigo, mas não quero virar figurante do teu perfil. O que você espera da gente?',choices:()=>[{l:'Vamos combinar juntos. Minha agenda não decide por nós.',fx:()=>{S.life14.privacy=true;v14Remember('re','Vocês combinaram conversar antes de mudar planos e respeitar privacidade.',5);return 'Isso. Não quero que pare de tocar. Quero participar da conversa.'}},{l:'Prefiro ir devagar e ter espaço.',fx:()=>{S.life14.space=true;v14Remember('re','Vocês combinaram mais espaço, sem prometer presença toda hora.',2);return 'Tudo bem. Só não some sem falar.'}}]},
+ v14_good:{fromFn:()=>PACK.mentor,text:()=> 'Fui no teu show sem avisar. Fiquei lá atrás. Aquele verso ficou na cabeça até em casa.',choices:()=>[{l:'Pô, tinha me chamado depois!',fx:()=>{v14Remember(PACK.mentor,'A pessoa que te acompanha apareceu na plateia sem pedir nada em troca.',4);return 'Na próxima eu fico pra comer alguma coisa contigo.'}},{l:'Qual verso ficou?',fx:()=>{const t=bestOwn();if(t){t.identidade=clamp(t.identidade+2,0,100);t.life14='Alguém próximo guardou um verso depois do show.'}return 'Aquele em que tua voz para de tentar parecer outra pessoa.'}}]},
+ v14_opportunity:{fromFn:()=>PACK.producer,text:()=> 'Caiu uma atração desta semana. Posso te pagar R$420. Sei que é em cima: cabe mesmo ou você já combinou outra coisa?',choices:()=>[{l:'Só fecho depois de conferir meus planos.',need:()=>!freeSlots().length?'Sem período livre':null,commit:freeCommit('tocar','Convite de última hora',{venue:V14_INTRO[genreId()][2],cache:420}),fx:()=>{v14Remember(PACK.producer,'Você conferiu os compromissos antes de assumir uma oportunidade.',2);return 'É isso. Me manda o set.'}},{l:'Já combinei de estar com alguém. Hoje não.',ignore:true,fx:()=>{for(const n of S.noites)if(n?.k==='v14social')v14Remember(n.tid,'Você preservou uma noite combinada mesmo com uma proposta de show.',3);return 'Tá certo. Te chamo com mais antecedência na próxima.'}}]},
+ v14_gossip:{from:'dani',text:()=> 'Cortaram teu vídeo e tão inventando história sobre quem tava contigo. Tu viu? Antes de postar, fala com a pessoa, pô.',choices:()=>[{l:'Vou conversar em particular primeiro.',fx:()=>{if(S.romance.met)v14Remember('re','Você conversou antes de responder à exposição pública.',4);return 'Boa. A internet não precisa resolver isso por vocês.'}},{l:'Vou responder no perfil agora.',fx:()=>{xImg(-2);addReach(900,{feed:4},bestOwn());if(S.romance.met)v14Remember('re','Você respondeu publicamente antes de conversar.',-5);return 'Só cuidado pra não expor mais ainda.'}},{l:'Não vou alimentar. Aviso quem tava comigo.',ignore:true,fx:()=>{xImg(1);return 'Fechou. Se precisar, tô aqui.'}}]}
+};
+Object.assign(WORLD_EVENTS,V14_EVENTS);
+const v14Activate=activateGenre;activateGenre=function(id){const p=v14Activate(id);return p};activateGenre(PACK.id);
+const v14Inbox=worldInbox;worldInbox=function(){let list=v14Inbox();ensureModernState(S);if(S.week<=6&&!S.life14.legacy)list=list.filter(x=>!x.id.startsWith('campaign_')&&x.id!=='guide_welcome');if(!S.life14.legacy&&(S.year||1)===1){const id={1:'v14_invite',2:'v14_prepare',4:'v14_video',5:'v14_focus',6:'v14_return'}[S.week];if(id&&!S.seen[id])list.push({id,data:{}})}if(S.xTier>S.life14.offerTier&&!S.scheduled.some(x=>x.id==='v14_zone'))list.push({id:'v14_zone',data:{}});if(S.romance.met&&!S.seen.v14_romance&&S.week>=7)list.push({id:'v14_romance',data:{}});return list};
+xMaybeWild=function(){ensureModernState(S);if(S.week<7||xAW()-S.life14.lastSurprise<3||Math.random()>.3)return;const ids=['v14_friend','v14_good','v14_opportunity','v14_gossip'].filter(id=>!S.seen[id]||S.week-S.seen[id]>=9);if(!ids.length)return;S.life14.lastSurprise=xAW();xPushInbox(pick(ids));};
+const v14Build=buildInbox;buildInbox=function(){const changed=[];const forcedOld=FORCED[S.week];if(S.week<=6&&!S.life14.legacy&&forcedOld)FORCED[S.week]=forcedOld.filter(id=>id==='mae_vaga');if(S.week<=6&&!S.life14.legacy){for(const [id,e]of Object.entries(EV))if(e.weight){changed.push([e,e.weight]);e.weight=0}}try{return v14Build()}finally{if(forcedOld)FORCED[S.week]=forcedOld;for(const[e,w]of changed)e.weight=w}};
+const v14Before=settleBeforeWeek;settleBeforeWeek=function(){S.v14Played=[];if(genreId()==='funk'&&S.xCena.pick!=='a')S.xSet.streak=0;if(S.xBico===2&&S.noites.filter(Boolean).length===2){const n=S.noites[1];S.noites[1]=null;logChat('cena',false,`O bico intenso ocupou a segunda noite: ${xNightLabel(n)} precisou ficar para outra semana.`)}return v14Before()};
+const v14Show=modernShow;modernShow=function(d){if(S.week===3&&S.life14.opening){d.xLive=d.xLive||['hit','refrao','bis'];d.xLive[0]=S.life14.opening;}if(d.xLive?.[0]==='hit'){const ids=readSet(d);const ts=ids.map(getT).filter(t=>t?.lancada&&!t.cover).sort((a,b)=>(b.plays||0)-(a.plays||0));if(ts[0]){const i=ids.indexOf(ts[0].id);[ids[0],ids[i]]=[ids[i],ids[0]];d.set=ids}}if(d.xLive?.[0]==='nova'){const ids=readSet(d);const id=ids.find(id=>{const t=getT(id);return t&&!t.cover&&!t.lancada});if(id){const i=ids.indexOf(id);[ids[0],ids[i]]=[ids[i],ids[0]];d.set=ids}}const lines=v14Show(d);if(lines.some(l=>l.includes('cancelado')||l.includes('não está disponível')))return lines;S.v14Played.push(JSON.parse(JSON.stringify(d)));for(const id of readSet(d)){const t=getT(id);if(t&&!t.cover){t.live14=(t.live14||0)+1;if(t.live14===3){t.life14='O público já encontrou esta faixa em três apresentações.';lines.push(`“${t.nome}” já tem história no palco: terceira apresentação.`)}}}for(const p of xDiscs().filter(p=>p.released&&p.fis&&p.fis.n>p.fis.sold)){const f=X_FIS[p.fis.k];const n=Math.min(p.fis.n-p.fis.sold,RI(f.min,f.max)+Math.floor(S.fas/f.per));p.fis.sold+=n;money(n*f.preco);S.wk.music+=n*f.preco;lines.push(`Vendeu ${n} ${f.un(n)} de “${p.nome}” depois do show: ${brl(n*f.preco)}.`)}return lines};
+const v14Slot=modernSlot;modernSlot=function(i,p){const t=p?.tid?getT(p.tid):null,old=t?.producao;const r=v14Slot(i,p);if(t&&old!=null&&p.type==='gravar')t.producao=Math.max(old,t.producao);return r};
+const v14Team=settleTeam;settleTeam=function(){const L=v14Team();if(S.xGear.selo){const songs=S.tracks.filter(t=>t.lancada&&!t.cover),total=songs.reduce((n,t)=>n+Math.max(1,t.ouvintes),0)||1;const eligible=songs.filter(t=>!S.life14.labelOld?.includes(t.id));const cut=recTot()*.035*.3*eligible.reduce((n,t)=>n+Math.max(1,t.ouvintes),0)/total;money(-cut);S.wk.music-=cut;L.push(`Selo Farol Baixo: ${brl(cut)} de participação no streaming. Apoio semanal de imprensa.`);addReach(250,{sala:3},bestOwn())}return L};
+const v14Track=trackExtrasHTML;trackExtrasHTML=function(t){return v14Track(t)+(t.life14?`<div class="setrow"><b>História desta faixa</b><p>${esc(t.life14)}</p></div>`:'')};
+const v14Mural=xMuralHTML;xMuralHTML=function(){const l=S.life14;return `<div class="card"><h2>${S.week<=6&&!l.legacy?'Seu primeiro ciclo':'O próximo passo'}</h2><p>${S.week<=6&&!l.legacy?({1:'Preparar uma noite em parceria. O convite chegou pelo celular.',2:'Escolher sua entrada e preparar duas músicas.',3:'A noite chegou. Confira repertório, energia e ensaio.',4:'Ver o que ficou do show e dividir a divulgação.',5:'Escolher entre lapidar a faixa, ampliar o show e guardar caixa.',6:'Decidir de onde parte a próxima oportunidade.'}[S.week]):S.xTier?'Novo circuito: confira a proposta da produção no celular.':'Construa catálogo e público. Três semanas no Top 3 abrem outro circuito.'}</p><button class="btn" data-v14="repeat">Repetir ações livres da última semana</button><p class="lab">Bico intenso ocupa a segunda noite. Compromissos novos têm prioridade.</p></div>`+v14Mural()};
+const v14Confirm=confirmWeek;confirmWeek=function(){const go=S&&!S.ended&&!S.report;if(go)S.life14.lastPlan=JSON.parse(JSON.stringify(S.plan.map(p=>p&&!p.locked?p:null)));return v14Confirm()};
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-v14]');if(!b||!S)return;const k=b.dataset.k;if(['meet','listen'].includes(b.dataset.v14)){if(v14Meet(k,b.dataset.v14==='listen'?'ouvir':'sair'))UI.xN=null;}if(b.dataset.v14==='repeat'){const plan=S.life14.lastPlan||[];plan.forEach((p,i)=>{if(S.plan[i]?.locked||!p)return;const t=p.tid&&p.tid!=='new'?getT(p.tid):null;if(p.tid&&p.tid!=='new'&&(!t||t.lancada&&['compor','gravar'].includes(p.type)))return;S.plan[i]=JSON.parse(JSON.stringify(p));});}save();render()});
+// Older repetitive requests now require space between returns and acknowledge history.
+EV.x_dani_aniver.cond=()=>S.week>=3&&S.week<=24&&!(S.life14.birthdayYear===(S.year||1));const v14Birthday=EV.x_dani_aniver.onArrive;EV.x_dani_aniver.onArrive=d=>{S.life14.birthdayYear=S.year||1;if(v14Birthday)v14Birthday(d)};
+if(EV.scene_show){const old=EV.scene_show.text;EV.scene_show.text=d=>S.metrics.shows>1?`${v14Name(PACK.producer)}: abriu outra data. Lembro da tua última apresentação. Quer voltar com algo diferente no repertório? Cachê ${brl(sceneCfg().cash[0])}.`:old(d)}
+
+
+const v14LabelChoices=EV.w_selo_indie.choices;EV.w_selo_indie.choices=d=>v14LabelChoices(d).map((c,i)=>i?c:{...c,fx:()=>{S.life14.labelOld=S.tracks.filter(t=>t.lancada).map(t=>t.id);return c.fx()}});
+EV.w_selo_indie.text=()=> 'Queremos trabalhar seus próximos lançamentos: R$1.500 de adiantamento, apoio semanal de imprensa e 30% do streaming das faixas que saírem depois do acordo. Seu catálogo já lançado fica fora.';
+EV.x_re_cobra.text=()=>v14Bond('re').trust>=10?'Tô com saudade de ter uma noite contigo. Olha tua semana antes de prometer. Quando cabe?':'A gente precisa conversar sobre os planos que não aconteceram. Você consegue reservar tempo de verdade?';
+const v14Check=checkMilestones;checkMilestones=function(){const L=v14Check();if(S.commits.some(c=>c.type==='x_vida'&&c.data?.kind==='encontro')||S.noites.some(n=>n?.k==='v14social'&&n.tid==='re'))S.scheduled=S.scheduled.filter(x=>x.id!=='x_re_cobra');return L};
+const v14After=confirmWeek;confirmWeek=function(){const go=S&&!S.ended&&!S.report;v14After();if(!go)return;for(const[k,due]of Object.entries(S.life14.promises||{})){if(due<=xAW()){v14Remember(k,`Uma noite combinada com ${v14Name(k)} não aconteceu.`,-3);logChat(k,false,'A gente tinha combinado de se ver. Da próxima, confere antes de prometer.');delete S.life14.promises[k]}}save()};
+const v14Assign=xAssignNight;xAssignNight=function(n){if(S.xBico===2&&S.noites.filter(Boolean).length>=1){qToast({icon:'moon',title:'Bico intenso',text:'O trabalho ocupa a segunda noite. Reduza os turnos para liberar esse horário.',ms:4000});return false}return v14Assign(n)};
+const v14Semana=xSemanaHTML;xSemanaHTML=function(){return '<p class="lab">Bico intenso reserva a segunda noite. Encontros ficam em Contatos e ocupam uma noite.</p>'+v14Semana()};
+
+const v14Steps=xLiveSteps;xLiveSteps=function(d){const steps=v14Steps(d),g=genreId(),name=VENUES[d.venue]?.nome||'a casa';steps[0].t=g==='funk'?`O DJ abriu teu arquivo em ${name}. A pista já está quente. Como você entra?`:g==='pagode'?'Uma mesa pede uma conhecida antes da tua primeira música. Como você apresenta o grupo?':g==='indie'?'A passagem de som atrasou. Você precisa chamar a atenção sem uma introdução longa.':'O microfone chegou na tua mão. Parte da roda está esperando a batalha. Qual é tua entrada?';steps[1].t=S.preparo>=65?'O set encaixou. Você tem espaço para aproximar a plateia. O que faz?':'Uma transição ficou longa. Você precisa recuperar o ritmo sem perder o resto do set.';steps[2].t=S.metrics.bestShow>=65?'A frente do palco pede mais. Você precisa escolher como deixar essa noite na lembrança.':'O horário está acabando. Você tem espaço para uma última decisão.';return steps};
+</script>
+<script>
+/* =========================================================
+   O CORRE v15 · FAZER MÚSICA
+   - música nova com nome e estilo (6 por gênero, 2 misturando)
+   - base: beat ou arranjo, cada um com seu efeito
+   - participação: chamar alguém pra gravar junto
+   - caderno de letra: o jogador escreve a própria letra,
+     o jogo lê rima, refrão, imagens e coisas pessoais
+   - sessão de composição dentro do Estúdio
+   - capa com imagem enviada pelo jogador
+   - ajustes no código da v14
+   ========================================================= */
+
+/* ---------- estilos ---------- */
+const X15_EST={
+  rap:{
+    boombap:{n:'Boom bap',s:'Batida seca, sample e rima que conta história.',a:['identidade','profundidade'],seg:'rua'},
+    trap:{n:'Trap',s:'Grave longo, chimbal picado e refrão que gruda.',a:['gancho','palco'],seg:'feed'},
+    drill:{n:'Drill',s:'Sombrio e rápido, pra roda pular.',a:['palco','identidade'],seg:'pista'},
+    rnb:{n:'Rap com R&B',s:'Verso falado e refrão cantado.',a:['gancho','profundidade'],seg:'sala'},
+    samba:{n:'Rap com samba',s:'Pandeiro e cavaco por baixo da rima.',a:['identidade','palco'],seg:'rua',x:1},
+    trapfunk:{n:'Trap funk',s:'O 808 do trap com a batida do baile.',a:['gancho','palco'],seg:'pista',x:1}},
+  funk:{
+    mandelao:{n:'Mandelão',s:'Batida torta, timbre estranho, pista quente.',a:['identidade','palco'],seg:'pista'},
+    melody:{n:'Funk melody',s:'Romance e refrão pra cantar junto.',a:['gancho','profundidade'],seg:'feed'},
+    f150:{n:'Funk 150',s:'Acelerado, feito pro paredão.',a:['palco','gancho'],seg:'pista'},
+    consciente:{n:'Funk consciente',s:'A favela contando a própria história.',a:['profundidade','identidade'],seg:'rua'},
+    brega:{n:'Brega funk',s:'O suingue do Recife com o grave do Rio.',a:['gancho','palco'],seg:'feed',x:1},
+    rnb:{n:'Funk com R&B',s:'Voz macia por cima do tamborzão.',a:['gancho','profundidade'],seg:'sala',x:1}},
+  pagode:{
+    romantico:{n:'Pagode romântico',s:'Coração na mão e refrão pro bar inteiro.',a:['gancho','profundidade'],seg:'sala'},
+    partido:{n:'Partido-alto',s:'Verso de improviso e resposta da roda.',a:['identidade','palco'],seg:'rua'},
+    raiz:{n:'Samba de raiz',s:'Respeito aos mais velhos e letra com chão.',a:['profundidade','identidade'],seg:'sala'},
+    baiano:{n:'Pagodão baiano',s:'Percussão pesada e dança.',a:['palco','gancho'],seg:'pista'},
+    pagotrap:{n:'Pagotrap',s:'Cavaco com 808 e voz com efeito.',a:['gancho','identidade'],seg:'feed',x:1},
+    sambarock:{n:'Samba-rock',s:'Guitarra suingada pra dançar junto.',a:['palco','identidade'],seg:'pista',x:1}},
+  indie:{
+    garagem:{n:'Rock de garagem',s:'Três acordes, volume alto e suor.',a:['palco','identidade'],seg:'rua'},
+    shoegaze:{n:'Shoegaze',s:'Parede de guitarra e voz lá no fundo.',a:['profundidade','identidade'],seg:'sala'},
+    synth:{n:'Synthpop',s:'Teclado brilhante e refrão de pista.',a:['gancho','palco'],seg:'pista'},
+    mpb:{n:'MPB indie',s:'Violão, harmonia bonita e letra que pesa.',a:['profundidade','gancho'],seg:'sala'},
+    folk:{n:'Folk de quarto',s:'Voz e violão gravados de madrugada.',a:['profundidade','identidade'],seg:'sala'},
+    indiefunk:{n:'Indie com funk',s:'Guitarra limpa em cima de batida de baile.',a:['gancho','palco'],seg:'pista',x:1}},
+};
+function x15Ests(){return X15_EST[genreId()]||X15_EST.rap}
+function x15Est(t){return t&&t.x15E?x15Ests()[t.x15E]||null:null}
+function x15SetEst(t,k){
+  const e=x15Ests()[k];if(!e)return;const first=!t.x15E;t.x15E=k;
+  if(first){e.a.forEach(a=>t[a]+=3);t.apelo[e.seg]=(t.apelo[e.seg]||0)+2;fixT(t)}
+}
+
+/* ---------- base: beat ou arranjo ---------- */
+function x15Bases(){
+  const g=genreId(),mk=(GENTE[PACK.maker]||{}).nome||'produtor';
+  if(g==='rap'||g==='funk')return{
+    net:{n:'Beat da internet',s:'Grátis e rápido. O risco é alguém reconhecer o beat.',cost:0},
+    prod:{n:`Beat do ${mk}`,s:'Feito sob medida pra música. Mais identidade e produção.',cost:g==='funk'?160:200},
+    self:{n:'Fazer o beat você mesmo',s:'Leva uma noite. Sai com a sua cara, mesmo meio cru.',cost:0,night:true}};
+  return{
+    simples:{n:g==='pagode'?'Arranjo no cavaco':'Arranjo na guitarra',s:'Do jeito que a música nasceu. Sem custo.',cost:0},
+    grupo:{n:g==='pagode'?'Arranjo com o grupo':'Arranjo com a banda',s:'Uma noite de ensaio. A música ganha palco.',cost:0,night:true},
+    conv:{n:'Músico convidado',s:g==='pagode'?'Um sete cordas ou um sopro de estúdio.':'Teclado ou cordas de estúdio numa faixa.',cost:220}};
+}
+function x15ApplyBase(t,k,L){
+  const B=x15Bases()[k];if(!B)return;t.x15B=k;const mk=(GENTE[PACK.maker]||{}).nome||'o produtor';
+  if(k==='net'){t.typeBeat=true;t.gancho+=2;t.identidade-=2}
+  if(k==='prod'){t.identidade+=4;t.producao=Math.max(t.producao,Math.min(70,t.producao+8));if(PACK.maker&&S.rel)rel(PACK.maker,3);if(genreId()==='rap')t.beatBigode=true;L&&L.push(`${mk} mandou o beat de "${t.nome}". Tem um detalhe no grave que é a sua cara.`)}
+  if(k==='self'){t.identidade+=7;t.producao=Math.max(t.producao,Math.min(55,t.producao+3));L&&L.push(pick([`Madrugada montando o beat de "${t.nome}" com o fone esquentando a orelha. Ficou cru, mas é seu.`,`Cortou um sample de um disco da sua mãe pra "${t.nome}". Ninguém mais tem esse som.`]))}
+  if(k==='simples')t.identidade+=1;
+  if(k==='grupo'){t.palco+=6;S.preparo=clamp(S.preparo+4,0,100);L&&L.push(`Noite de ensaio pro arranjo de "${t.nome}". Cada um trouxe uma ideia e a música cresceu no meio da roda.`)}
+  if(k==='conv'){t.producao=Math.max(t.producao,Math.min(75,t.producao+6));t.profundidade+=4}
+  fixT(t);
+}
+
+/* ---------- participação ---------- */
+const X15_FT={rap:['je','kaka','bigode'],funk:['nalu','cadu','leo'],pagode:['duda','teo','mauro'],indie:['nina','tomas']};
+function x15FeatPool(){return(X15_FT[genreId()]||[]).filter(k=>GENTE[k])}
+function x15FeatChance(k){return clamp(.3+(S.rel[k]||0)/55,.15,.95)}
+
+/* ---------- noites novas: beat, arranjo, participação ---------- */
+N_KINDS.x15={n:'Arranjo e participação',s:'beat, ensaio, feat',ic:'mic',c:'#FF8FB1'};
+const x15NL=xNightLabel;
+xNightLabel=function(n){if(n&&n.k==='x15'){const t=getT(n.tid);const nm=t?`"${t.nome}"`:'';if(n.kind==='feat')return`Gravar com ${(GENTE[n.who]||{}).nome||'alguém'} em ${nm}`;if(n.kind==='beat')return`Fazer o beat de ${nm}`;return`Ensaiar o arranjo de ${nm}`}return x15NL(n)};
+const x15NC=xNightCost;
+xNightCost=function(n){return n&&n.k==='x15'?{g:0,d:N_COST}:x15NC(n)};
+const x15NP=xNightPicker;
+xNightPicker=function(){
+  if(UI.xN&&UI.xN.k==='v14social'){
+    return`<h4 class="pk-h">Noite ${UI.xN.i+1}: com quem?</h4><div class="opts">${v14People().map(k=>`<button class="opt" data-v14="meet" data-k="${k}"><b>Sair com ${esc(v14Name(k))}</b><span>R$ 20, recupera energia</span></button><button class="opt" data-v14="listen" data-k="${k}"><b>Só conversar com ${esc(v14Name(k))}</b><span>sem gasto, recupera energia</span></button>`).join('')}</div><button class="link" data-x9="nBack" style="align-self:flex-start">Voltar</button>`;
+  }
+  return x15NP().replace(/<button class="xw-act" data-x9="nKind" data-k="x15"[\s\S]*?<\/button>/,'');
+};
+const x15RN=xResolveNights;
+xResolveNights=function(){
+  const mine=[];(S.noites||[]).forEach((n,i)=>{if(n&&n.k==='x15'){mine.push(n);S.noites[i]=null}});
+  const L=x15RN();
+  mine.forEach(n=>{
+    const t=getT(n.tid);S.disp=clamp(S.disp-N_COST,0,100);
+    if(!t||t.lancada){L.push('A noite de estúdio ficou pra outra hora.');return}
+    if(n.kind==='beat')x15ApplyBase(t,'self',L);
+    if(n.kind==='grupo')x15ApplyBase(t,'grupo',L);
+    if(n.kind==='feat'){
+      const nm=(GENTE[n.who]||{}).nome||'A pessoa';
+      if(Math.random()<x15FeatChance(n.who)){t.feat=nm;t.palco+=3;t.gancho+=3;fixT(t);rel(n.who,4);L.push(pick([`${nm} chegou com a parte escrita no celular e gravou de primeira. "${t.nome}" agora tem participação.`,`${nm} pediu dois takes e o segundo arrepiou. A participação em "${t.nome}" tá gravada.`]))}
+      else{rel(n.who,-1);t.x15FeatTry=(t.x15FeatTry||0)+1;L.push(`${nm} desmarcou em cima da hora. Disse que essa semana não dava. Dá pra tentar de novo.`)}
+    }
+  });
+  return L;
+};
+
+/* ---------- caderno de letra ---------- */
+const X15_PARTS=[['v1','Verso 1'],['r','Refrão'],['v2','Verso 2'],['p','Ponte']];
+function x15N(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+const X15_IMG=new Set('onibus busao trem metro brt laje morro favela comunidade praia areia esquina beco viela rua asfalto calcada ponto central madureira mare copacabana lapa penha baixada caxias niteroi viaduto baile paredao quintal bar boteco cerveja chinelo varal janela portao escada sol chuva lua mar onda celular fone radio caderno mesa cavaco pandeiro surdo guitarra batida grave sirene padaria feira mercado cozinha fogao cafe marmita farda uniforme cracha plantao hospital escola igreja campo pipa bike moto carro van kombi barraca camelo bairro cidade avenida tunel ponte relogio poste fio gato cachorro varanda telhado arroz feijao'.split(' '));
+const X15_EU=new Set('eu me mim meu minha meus minhas comigo mae pai vo avo vovo irma irmao filho filha casa medo saudade coracao choro chorei chorar sozinho sozinha lembro lembranca falta perdi sonho sonhei fe deus familia amor dor cansado cansada'.split(' '));
+const X15_BAD=new Set('porra caralho foda fodase puta buceta piroca merda pica xota vagabunda'.split(' '));
+function x15An(txt){
+  const lines=String(txt||'').split('\n').map(l=>l.trim()).filter(Boolean);
+  const clean=l=>x15N(l).replace(/[^a-z0-9\s]/g,' ').trim();
+  const words=lines.map(clean).join(' ').split(/\s+/).filter(Boolean);
+  const end=l=>(clean(l).split(/\s+/).pop()||'');
+  const vw=w=>(w.match(/[aeiou]/g)||[]).slice(-2).join('');
+  const rh=(a,b)=>{if(a.length<2||b.length<2)return 0;if(a===b)return .5;if(a.slice(-3)===b.slice(-3)||a.slice(-2)===b.slice(-2))return 1;const x=vw(a),y=vw(b);return x.length===2&&x===y?.6:0};
+  let r=0,pairs=0;for(let i=0;i+1<lines.length;i++){pairs++;const a=end(lines[i]);let best=0;for(let j=i+1;j<=Math.min(lines.length-1,i+3);j++)best=Math.max(best,rh(a,end(lines[j])));r+=best}
+  const nl=lines.map(clean);const rep=nl.length-new Set(nl).size;
+  let img=0,eu=0,bad=0;words.forEach(w=>{if(X15_IMG.has(w))img++;if(X15_EU.has(w))eu++;if(X15_BAD.has(w))bad++});
+  return{lines:lines.length,words:words.length,rima:pairs?r/pairs:0,rep,img,eu,bad,uniq:words.length?new Set(words).size/words.length:0,avg:lines.length?words.length/lines.length:0};
+}
+function x15Bonus(part,a){
+  const B={identidade:0,gancho:0,profundidade:0,palco:0},ap={};
+  if(a.lines<2)return{B,ap,letra:0,ok:false};
+  const len=Math.min(1,a.lines/(part==='r'?4:8));
+  if(part==='r'){B.gancho+=Math.round((2+Math.min(5,a.rep*2)+a.rima*3+(a.avg&&a.avg<=7?1:0))*len);B.palco+=Math.min(3,a.rep);ap.feed=1;ap.pista=1}
+  else if(part==='p'){B.profundidade+=Math.round((2+a.rima*2+Math.min(2,a.eu))*len);B.palco+=2}
+  else{B.identidade+=Math.round((1+Math.min(4,a.img)+a.rima*3)*len);B.profundidade+=Math.round((1+Math.min(4,Math.floor(a.eu/2))+(a.uniq>.72?1:0))*len);if(a.rep>2)B.identidade-=2;if(a.img)ap.rua=Math.min(2,a.img);if(a.eu>=3)ap.sala=1}
+  return{B,ap,letra:Math.round(5+len*9),ok:true};
+}
+function x15Hash(s){let h=7;for(const c of x15N(s))h=(h*31+c.charCodeAt(0))>>>0;return h}
+function x15Verdict(part,a){
+  if(!a.lines)return part==='r'?'Escreve o refrão aqui. Refrão bom repete a frase principal.':'Escreve aqui do seu jeito. Uma linha por verso.';
+  const L=[];
+  if(part==='r')L.push(a.rep>=2?'Repete na medida, isso gruda.':a.rep?'Repetiu uma vez. Mais uma e gruda.':'Refrão costuma repetir a frase principal.');
+  else{L.push(a.img>=3?'Dá pra ver o lugar.':a.img?'Tem imagem, dá pra pôr mais.':'Bota uma coisa que dá pra ver: um ônibus, uma esquina, a cozinha.');if(a.eu>=4)L.push('Tem coisa sua aqui dentro.')}
+  L.push(a.rima>=.6?'Rima firme.':a.rima>=.3?'Rima aqui e ali.':'Quase sem rima.');
+  if(a.bad)L.push(genreId()==='funk'?'Tem palavrão: rádio e playlist vão pedir versão light.':'Tem palavrão: algumas rádios vão torcer o nariz.');
+  return L.join(' ');
+}
+function x15Pending(t){return X15_PARTS.map(([k])=>k).filter(k=>{const tx=(t.x15L||{})[k];if(!tx||x15An(tx).lines<2)return false;const ap=(t.x15A||{})[k];return!ap||ap.h!==x15Hash(tx)})}
+function x15ApplyPart(t,k,withLetra){
+  const tx=(t.x15L||{})[k];const a=x15An(tx);const b=x15Bonus(k,a);if(!b.ok)return null;
+  t.x15A=t.x15A||{};const prev=t.x15A[k];const got=[];
+  for(const [at,v] of Object.entries(b.B)){const d=v-(prev?prev.B[at]||0:0);if(d){t[at]+=d;got.push([at,d])}}
+  if(!prev)for(const [s,v] of Object.entries(b.ap))t.apelo[s]=(t.apelo[s]||0)+v;
+  let lt=0;if(withLetra&&!prev&&t.letra<100){lt=b.letra;t.letra=Math.min(100,t.letra+lt)}
+  t.x15A[k]={h:x15Hash(tx),B:{...b.B}};fixT(t);
+  return{got:got.filter(x=>x[1]>0),lt};
+}
+const X15_AN={identidade:'identidade',gancho:'gancho',profundidade:'profundidade',palco:'palco'};
+function x15Got(r){return r.got.map(([a,d])=>`${X15_AN[a]} +${d}`).join(', ')}
+
+/* sessão: o que a composição e a gravação fazem com a ficha e o caderno */
+const x15Conf=confirmWeek;
+confirmWeek=function(){
+  const go=S&&!S.ended&&!S.report;const snap=go?Object.fromEntries(S.tracks.map(t=>[t.id,[t.letra,t.sess]])):null;
+  const ses={};if(go){(S.plan||[]).forEach(p=>{if(p&&p.type==='compor'&&p.tid)ses[p.tid]=(ses[p.tid]||0)+1});(S.noites||[]).forEach(n=>{if(n&&n.k==='compor'&&n.tid)ses[n.tid]=(ses[n.tid]||0)+1})}
+  x15Conf();
+  if(!go||!S||!S.report)return;
+  const L=[];
+  S.tracks.forEach(t=>{
+    if(t.cover)return;const s=snap[t.id];
+    const wrote=s?t.letra>s[0]:t.letra>0,rec=s?t.sess>s[1]:false;if(!wrote&&!rec)return;
+    const e=x15Est(t);
+    if(wrote&&e){e.a.forEach(a=>t[a]+=1);t.apelo[e.seg]=(t.apelo[e.seg]||0)+1}
+    if(wrote&&t.x15F){const f=t.x15F;if(f==='r')t.gancho+=2;else if(f==='p'){t.profundidade+=1;t.palco+=1}else{t.identidade+=1;t.profundidade+=1}}
+    fixT(t);
+    const pend=x15Pending(t);
+    if(wrote&&pend.length){const n=Math.max(1,ses[t.id]||1);const order=pend.includes(t.x15F)?[t.x15F,...pend.filter(k=>k!==t.x15F)]:pend;
+      order.slice(0,n).forEach(k=>{const r=x15ApplyPart(t,k,true);const nm=X15_PARTS.find(p=>p[0]===k)[1].toLowerCase();
+        if(r)L.push(`"${t.nome}": ${k==='p'?'a ponte':'o '+nm} que você escreveu entrou na música${r.got.length?` (${x15Got(r)})`:''}.${r.lt?` A letra andou mais ${r.lt}%.`:''}`)})}
+    else if(rec&&pend.length){const got=[];pend.forEach(k=>{const r=x15ApplyPart(t,k,false);if(r)r.got.forEach(g=>got.push(g))});if(got.length)L.push(`Na gravação de "${t.nome}", você cantou a letra nova (${x15Got({got})}).`)}
+  });
+  if(L.length){S.report.blocks.push({t:'Caderno',lines:L});save();if(typeof Q==='object')Q.modalKey='';render()}
+};
+
+/* ---------- capa enviada pelo jogador ---------- */
+function x15ImgSVG(src,nome,small){return`<svg class="cover ${small?'small':''}" viewBox="0 0 120 120" role="img" aria-label="Capa de ${esc(nome||'faixa')}"><image href="${src}" x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid slice"/></svg>`}
+const x15Cov=coverSVG;
+coverSVG=function(t,small=false){const c=t&&t.xCover;if(c&&c.style==='foto'&&t.x15Img)return x15ImgSVG(t.x15Img,t.nome,small);return x15Cov(t,small)};
+const x15PC=xPCov;
+xPCov=function(p){const o=x15PC(p);o.x15Img=p.coverImg||null;return o};
+function x15UpBtn(target,has){return`<div class="x15-up"><button class="btn" data-x15="up" data-k="${target}">${qi('image')}${has?'Trocar imagem':'Enviar imagem'}</button>${has?`<button class="link" data-x15="upUse" data-k="${target}">usar minha imagem</button><button class="link" data-x15="upDel" data-k="${target}">apagar imagem</button>`:''}<span class="lab">JPG ou PNG. A imagem fica salva neste aparelho.</span></div>`}
+const x15CE=xCoverEditor;
+xCoverEditor=function(t){
+  const h=x15CE(t);const own=t.x15Img?`<button data-x15="upUse" data-k="t:${t.id}" aria-pressed="${t.xCover&&t.xCover.style==='foto'}"><span class="cv">${x15ImgSVG(t.x15Img,t.nome,true)}</span>Sua imagem</button>`:'';
+  return h.replace('<div class="xcov-sty">','<div class="xcov-sty">'+own).replace('<span class="lab">Estilo</span>',x15UpBtn('t:'+t.id,!!t.x15Img)+'<span class="lab">Ou um estilo pronto</span>');
+};
+function x15Target(k){const [kind,id]=String(k).split(':');if(kind==='t')return{kind,o:getT(id)};return{kind,o:(S.projects||[]).find(p=>p.id===id)}}
+function x15ReadImg(file,done){
+  if(!file||!/^image\//.test(file.type)){qToast({icon:'image',title:'Arquivo não é imagem',text:'Escolhe um JPG ou PNG.',ms:3000});return}
+  const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{
+    const N=360,c=document.createElement('canvas');c.width=N;c.height=N;const x=c.getContext('2d');const s=Math.min(im.width,im.height);
+    x.drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,N,N);let url='';try{url=c.toDataURL('image/jpeg',.82)}catch(e){}
+    if(url)done(url);else qToast({icon:'image',title:'Não deu pra ler',text:'Tenta outra imagem.',ms:3000});
+  };im.onerror=()=>qToast({icon:'image',title:'Não deu pra ler',text:'Tenta outra imagem.',ms:3000});im.src=fr.result};fr.readAsDataURL(file);
+}
+function x15FileInput(){let i=document.getElementById('x15File');if(!i){i=document.createElement('input');i.type='file';i.accept='image/*';i.id='x15File';i.hidden=true;document.body.appendChild(i);
+  i.addEventListener('change',()=>{const f=i.files&&i.files[0];const k=UI.x15Up;i.value='';if(!f||!k)return;x15ReadImg(f,url=>{const T=x15Target(k);if(!T.o)return;
+    if(T.kind==='t'){T.o.x15Img=url;T.o.xCover={...(T.o.xCover||{}),style:'foto'};if(!T.o.capa)T.o.capa=true}else{T.o.coverImg=url;T.o.cover={...(T.o.cover||{}),style:'foto'}}
+    try{save()}catch(e){qToast({icon:'image',title:'Sem espaço',text:'O navegador não deixou guardar a imagem. Apaga uma capa antiga e tenta de novo.',ms:4200})}
+    xDiary(`Botou uma capa própria em "${T.o.nome}".`);render()})})}return i}
+const x15DV=xDiscView;
+xDiscView=function(p){
+  let h=x15DV(p);
+  if(UI.x13Cov===p.id){
+    const own=p.coverImg?`<button data-x15="upUse" data-k="p:${p.id}" aria-pressed="${p.cover&&p.cover.style==='foto'}"><span class="cv">${x15ImgSVG(p.coverImg,p.nome,true)}</span>Sua imagem</button>`:'';
+    h=h.replace('<span class="lab">Estilo da capa</span><div class="xcov-sty">',x15UpBtn('p:'+p.id,!!p.coverImg)+'<span class="lab">Ou um estilo pronto</span><div class="xcov-sty">'+own);
+  }
+  return h;
+};
+
+/* ---------- Estúdio: música nova, ficha, sessão e caderno ---------- */
+X_TIPS.musica=['Fazendo música','Cada música tem um estilo, uma base e, se quiser, uma participação. No caderno você pode escrever a sua própria letra: ela entra na música quando você compõe ou grava essa faixa.'];
+function x15NewHTML(){
+  const N=UI.x15New;const E=x15Ests();
+  const names=[...new Set(IDEIAS.flatMap(i=>i.o.map(o=>o.nome)))].filter(n=>!S.tracks.some(t=>t.nome===n)).sort(()=>Math.random()-.5).slice(0,6);
+  if(!N.sug)N.sug=names;
+  return`<div class="x13-wiz x15-new"><div class="x13-wiz-h"><span class="x13-kick">Fita nova</span><button class="link" data-x15="newNo">cancelar</button></div>
+    <h3>Como chama a música?</h3><input class="x13-in" id="x15Name" maxlength="40" value="${esc(N.nome||'')}" placeholder="Nome da música" autocomplete="off">
+    <div class="x13-sug">${N.sug.map(s=>`<button data-x15="newSug" data-k="${esc(s)}">${esc(s)}</button>`).join('')}</div>
+    <h3>Que som ela vai ter?</h3><div class="x13-cards four">${Object.entries(E).map(([k,e])=>`<button class="x13-card ${N.est===k?'on':''}" data-x15="newEst" data-k="${k}" aria-pressed="${N.est===k}"><b>${esc(e.n)}</b><span>${esc(e.s)}</span><em>${e.x?'mistura · ':''}${e.a.map(a=>X15_AN[a]).join(' e ')} · ${esc(SEG[e.seg].n.toLowerCase())}</em></button>`).join('')}</div>
+    ${UI.x15Err?`<div class="warn">${esc(UI.x15Err)}</div>`:''}
+    <button class="x13-b amber big" data-x15="newGo">${qi('plus')}Criar a fita</button></div>`;
+}
+function x15FichaHTML(t){
+  const E=x15Ests(),e=x15Est(t),B=x15Bases(),canEst=!t.lancada&&t.letra<50;
+  const est=`<div class="x15-row"><span class="x13-lab">Estilo</span>${canEst||!e?`<div class="x15-chips">${Object.entries(E).map(([k,o])=>`<button data-x15="est" data-k="${k}" aria-pressed="${t.x15E===k}" title="${esc(o.s)}">${esc(o.n)}${o.x?' <i>mistura</i>':''}</button>`).join('')}</div>`:`<b class="x15-val">${esc(e.n)}</b>`}<span class="lab">${e?esc(e.s)+(canEst?' Dá pra trocar até a letra passar da metade.':''):'Escolhe o som. Cada sessão de composição puxa a música pro estilo.'}</span></div>`;
+  const bq=t.x15B?B[t.x15B]:null;const nights=(S.noites||[]).filter(n=>n&&n.k==='x15'&&n.tid===t.id);
+  const base=`<div class="x15-row"><span class="x13-lab">${genreId()==='rap'||genreId()==='funk'?'Beat':'Arranjo'}</span>${bq?`<b class="x15-val">${esc(bq.n)}</b>`:t.lancada?'<span class="lab">A música saiu sem escolher.</span>':`<div class="x15-opts">${Object.entries(B).map(([k,b])=>{const sch=nights.some(n=>n.kind===(k==='self'?'beat':'grupo'));return`<button data-x15="base" data-k="${k}" ${sch||(b.cost&&S.grana<b.cost)?'disabled':''}><b>${esc(b.n)}</b><span>${esc(b.s)}</span><em>${sch?'marcado numa noite':b.night?'uma noite':b.cost?brl(b.cost):'grátis'}</em></button>`}).join('')}</div>`}</div>`;
+  const pool=x15FeatPool();const fn=nights.find(n=>n.kind==='feat');
+  const feat=`<div class="x15-row"><span class="x13-lab">Participação</span>${t.feat?`<b class="x15-val">Feat. ${esc(t.feat)}</b>`:t.lancada?'<span class="lab">Saiu solo.</span>':fn?`<span class="lab">Gravação com ${esc(GENTE[fn.who].nome)} marcada numa noite desta semana.</span>`:t.letra<50?'<span class="lab">Com a letra pela metade dá pra chamar alguém pra gravar junto.</span>':`<div class="x15-opts">${pool.map(k=>`<button data-x15="feat" data-k="${k}"><b>${esc(GENTE[k].nome)}</b><span>${esc(GENTE[k].papel||'')}</span><em>chance ${Math.round(x15FeatChance(k)*100)}% · uma noite</em></button>`).join('')}</div><span class="lab">Participação faz a música chegar em mais gente no lançamento. Quanto mais perto a pessoa, mais fácil topar.</span>`}</div>`;
+  return`<div class="x15-ficha"><h3 class="x13-h">Ficha da música</h3>${est}${base}${feat}</div>`;
+}
+function x15SessHTML(t){
+  const S5=UI.x15S;if(!S5||S5.tid!==t.id)return'';const ide=IDEIAS[S5.pi]||IDEIAS[0];
+  return`<div class="x15-sess"><div class="x13-wiz-h"><span class="x13-kick">Sessão de composição · noite</span><button class="link" data-x15="sessNo">fechar</button></div>
+    <p class="x15-idea">${esc(ide.t)}</p><div class="x15-ideas">${ide.o.map((o,oi)=>`<button data-x15="idea" data-k="${oi}"><b>${esc(o.l)}</b><span>${typeof ideaHint==='function'?ideaHint(o):''}</span></button>`).join('')}</div>
+    <div class="x15-row"><span class="x13-lab">Trabalhar nessa noite</span><div class="x15-chips">${X15_PARTS.map(([k,n])=>`<button data-x15="foco" data-k="${k}" aria-pressed="${t.x15F===k}">${n}</button>`).join('')}</div><span class="lab">${t.x15F==='r'?'Refrão puxa gancho.':t.x15F==='p'?'Ponte puxa profundidade e palco.':t.x15F?'Verso puxa identidade e profundidade.':'Escolhe uma parte, ou deixa a noite decidir.'} Se você tiver escrito essa parte no caderno, ela entra na música.</span></div>
+    <button class="link" data-x15="sessOther">outra situação</button></div>`;
+}
+function x15CadHTML(t){
+  if(t.lancada&&!t.x15L)return'';const k=UI.x15P||'v1';const tx=(t.x15L||{})[k]||'';const a=x15An(tx);const b=x15Bonus(k,a);const pend=x15Pending(t);
+  const prev=(b.ok?Object.entries(b.B).filter(([,v])=>v>0).map(([at,v])=>`${X15_AN[at]} +${v}`).join(', '):'');
+  return`<div class="x15-cad"><div class="x15-cad-h"><h3 class="x13-h">Caderno de letra</h3><span class="lab">${t.lancada?'A letra que saiu.':'Escreve a sua letra. Ela entra na música quando você compõe ou grava essa faixa.'}</span></div>
+    <div class="x15-tabs" role="tablist">${X15_PARTS.map(([pk,n])=>{const has=!!((t.x15L||{})[pk]||'').trim();const st=!has?'':pend.includes(pk)?'rascunho':'na música';return`<button role="tab" data-x15="part" data-k="${pk}" aria-selected="${k===pk}">${n}${st?`<small class="${st==='na música'?'ok':''}">${st}</small>`:''}</button>`}).join('')}</div>
+    <div class="x15-paper"><textarea id="x15Txt" data-tid="${t.id}" data-k="${k}" rows="9" spellcheck="false" ${t.lancada?'readonly':''} placeholder="${k==='r'?'O refrão vai aqui.\nUma frase que dá pra cantar junto.\nRepete ela.':'Uma linha por verso.\nFala do que dá pra ver.\nE do que só você sabe.'}">${esc(tx)}</textarea></div>
+    <div class="x15-an" id="x15An">${x15AnHTML(k,a,prev)}</div></div>`;
+}
+function x15AnHTML(k,a,prev){
+  return`<div class="x15-meters"><span><b>${a.lines}</b> linhas</span><span><b>${Math.round(a.rima*100)}%</b> rima</span><span><b>${a.rep}</b> repetida${a.rep===1?'':'s'}</span><span><b>${a.img}</b> imagem${a.img===1?'':'s'}</span><span><b>${a.eu}</b> pessoal</span>${a.bad?`<span class="bad"><b>${a.bad}</b> palavrão</span>`:''}</div>
+    <p>${esc(x15Verdict(k,a))}${prev?` <em>Vale ${esc(prev)}.</em>`:''}</p>`;
+}
+const x15Est13=xEstudioHTML;
+xEstudioHTML=function(){
+  let h=x15Est13();
+  h=h.replace('<button class="x13-tape new" data-x9="newSong">','<button class="x13-tape new" data-x15="new">');
+  h=h.split('data-x9="nightTask" data-k="compor" data-tid="').join('data-x15="sess" data-tid="');
+  if((UI.xEst||'faixas')!=='faixas')return h;
+  if(UI.x15New){const i=h.indexOf('<div class="x13-sess">');const cut=i>=0?i:h.lastIndexOf('</div></div>');return h.slice(0,cut)+x15NewHTML()+'</div></div>'}
+  const t=getT(UI.track);if(!t)return h;
+  const chips=[x15Est(t)?x15Est(t).n:null,t.x15B?x15Bases()[t.x15B]&&x15Bases()[t.x15B].n:null].filter(Boolean);
+  if(chips.length)h=h.replace('<p class="x13-st">',`<div class="x15-tagline">${chips.map(c=>`<span>${esc(c)}</span>`).join('')}</div><p class="x13-st">`);
+  const add=x15SessHTML(t)+x15CadHTML(t)+(t.lancada?'':x15FichaHTML(t));
+  h=h.replace('<div class="x13-cols">',`<div class="x15-wrap">${add}</div><div class="x13-cols">`);
+  return(xTipsSeen().includes('estudio')?xTip('musica'):'')+h;
+};
+
+/* ---------- cliques e digitação ---------- */
+let x15SaveT=null;
+document.addEventListener('input',ev=>{
+  if(ev.target.id==='x15Name'&&UI.x15New){UI.x15New.nome=ev.target.value;return}
+  if(ev.target.id!=='x15Txt'||!S)return;const t=getT(ev.target.dataset.tid);if(!t||t.lancada)return;const k=ev.target.dataset.k;
+  t.x15L=t.x15L||{};t.x15L[k]=ev.target.value.slice(0,3000);
+  const a=x15An(t.x15L[k]),b=x15Bonus(k,a);const prev=b.ok?Object.entries(b.B).filter(([,v])=>v>0).map(([at,v])=>`${X15_AN[at]} +${v}`).join(', '):'';
+  const el=document.getElementById('x15An');if(el)el.innerHTML=x15AnHTML(k,a,prev);
+  clearTimeout(x15SaveT);x15SaveT=setTimeout(()=>{try{save()}catch(e){}},600);
+});
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-x15]');if(!b||!S)return;ev.stopPropagation();
+  const a=b.dataset.x15,k=b.dataset.k,t=getT(b.dataset.tid||UI.track);
+  switch(a){
+    case 'new':UI.x15New={};UI.x15Err=null;UI.xEst='faixas';break;
+    case 'newNo':UI.x15New=null;break;
+    case 'newSug':UI.x15New.nome=k;break;
+    case 'newEst':UI.x15New.est=k;break;
+    case 'newGo':{const N=UI.x15New;const nm=(N.nome||'').trim();if(!nm){UI.x15Err='Dá um nome pra música.';break}if(!N.est){UI.x15Err='Escolhe o som dela.';break}
+      const nt=newTrack(nm.slice(0,40));x15SetEst(nt,N.est);UI.track=nt.id;UI.x15New=null;UI.x15Err=null;UI.x15P='v1';xDiary(`Começou "${nt.nome}", ${x15Ests()[N.est].n.toLowerCase()}.`);
+      qToast({icon:'pen',title:`"${nt.nome}"`,text:'Fita nova. Escreve no caderno ou marca uma sessão de composição.',ms:3800});break}
+    case 'est':if(t&&!t.lancada&&(t.letra<50||!t.x15E))x15SetEst(t,k);break;
+    case 'base':{if(!t||t.x15B||t.lancada)break;const B=x15Bases()[k];if(!B)break;
+      if(B.night){xAssignNight({k:'x15',kind:k==='self'?'beat':'grupo',tid:t.id});break}
+      if(B.cost){if(S.grana<B.cost)break;money(-B.cost);S.wk.music-=B.cost}
+      x15ApplyBase(t,k,null);qToast({icon:'sliders',title:B.n,text:`Agora "${t.nome}" tem ${genreId()==='rap'||genreId()==='funk'?'beat':'arranjo'}.`,ms:3000});break}
+    case 'feat':if(t&&!t.feat)xAssignNight({k:'x15',kind:'feat',who:k,tid:t.id});break;
+    case 'part':UI.x15P=k;break;
+    case 'sess':{if(!t)break;UI.x15S={tid:t.id,pi:pick(xIdeaPool())};UI.xEst='faixas';break}
+    case 'sessNo':UI.x15S=null;break;
+    case 'sessOther':if(UI.x15S)UI.x15S.pi=pick(xIdeaPool());break;
+    case 'foco':if(t)t.x15F=t.x15F===k?null:k;break;
+    case 'idea':{const s5=UI.x15S;const tr=s5&&getT(s5.tid);if(!tr)break;
+      const used=S.noites.filter(Boolean).length;if(S.xBico===2&&used>=1){qToast({icon:'moon',title:'Bico intenso',text:'O trabalho ocupa a segunda noite. Reduza os turnos pra liberar.',ms:3800});break}
+      const ni=S.noites.findIndex(x=>!x);if(ni<0){qToast({icon:'moon',title:'Noites ocupadas',text:'As duas noites já têm plano. Libera uma na aba Semana, ou compõe num período.',ms:4000});break}
+      S.noites[ni]={k:'compor',tid:tr.id,pi:s5.pi,oi:+k};UI.x15S=null;qToast({icon:'moon',title:`Noite ${ni+1} marcada`,text:`Escrever "${tr.nome}".`,ms:3000});break}
+    case 'up':UI.x15Up=k;x15FileInput().click();return;
+    case 'upUse':{const T=x15Target(k);if(T.o){if(T.kind==='t'&&T.o.x15Img)T.o.xCover={...(T.o.xCover||{}),style:'foto'};if(T.kind==='p'&&T.o.coverImg)T.o.cover={...(T.o.cover||{}),style:'foto'}}break}
+    case 'upDel':{const T=x15Target(k);if(T.o){if(T.kind==='t'){delete T.o.x15Img;if(T.o.xCover&&T.o.xCover.style==='foto')T.o.xCover={style:'auto',pal:'noite'}}else{delete T.o.coverImg;if(T.o.cover&&T.o.cover.style==='foto')T.o.cover=null}}break}
+  }
+  save();render();
+},true);
+document.addEventListener('keydown',ev=>{if(ev.target.id==='x15Name'&&ev.key==='Enter'){ev.preventDefault();const b=document.querySelector('[data-x15="newGo"]');if(b)b.click()}});
+// abrir uma faixa fecha a sessão de outra
+document.addEventListener('click',ev=>{const o=ev.target.closest('[data-act="openTrack"]');if(o){UI.x15New=null;if(UI.x15S&&UI.x15S.tid!==o.dataset.tid)UI.x15S=null}},true);
+// covSty da v10 troca o estilo: guarda a imagem enviada pra poder voltar
+// (o handler da v10 sobrescreve xCover; x15Img continua na faixa)
+
+/* =========================================================
+   AJUSTES NO CÓDIGO DA v14
+   ========================================================= */
+// 1. surpresas: a v14 trocou o sorteio inteiro e as 16 surpresas da v12 sumiram. Volta todas, junto com as novas.
+xMaybeWild=function(){
+  ensureModernState(S);const L=S.life14;
+  if((S.year||1)===1&&!L.legacy&&S.week<=6)return;
+  if(S.week<3||xAW()-L.lastSurprise<2||Math.random()>.28)return;
+  const old=X_WILD.filter(id=>EV[id]&&(!EV[id].cond||EV[id].cond())&&!(S.seen[id]&&S.week-S.seen[id]<12));
+  const nw=['v14_friend','v14_good','v14_opportunity','v14_gossip'].filter(id=>EV[id]&&(!S.seen[id]||S.week-S.seen[id]>=9));
+  const pool=[...old,...nw,...nw];if(!pool.length)return;
+  const id=pick(pool);L.lastSurprise=xAW();S.xWildLast=S.week;xPushInbox(id);S.xWildHead=EV[id].head||null;
+};
+// 2. era do disco: a v14 zerou o bônus dos shows. Volta, contando só show que aconteceu de verdade.
+const x15Show=modernShow;
+modernShow=function(d){
+  const n0=(S.v14Played||[]).length;const lines=x15Show(d);
+  if((S.v14Played||[]).length>n0){
+    xDiscs().filter(p=>p.released&&p.eraUntil&&xAW()<=p.eraUntil&&p.relWeek!==S.week).forEach(p=>{const t=pick(xPTracks(p));if(t){addReach(150+S.fas*.4,null,t);S.wk.fansDirect+=2;lines.push(`Gente pediu música d${p.tipo==='album'?'o álbum':'o EP'} "${p.nome}" no show.`)}});
+  }
+  return lines;
+};
+// 3. a abertura de seis semanas é só do primeiro ano. Sem isso, do ano 2 em diante as semanas 1 a 6 ficavam sem nenhum evento.
+const x15Before=settleBeforeWeek;
+settleBeforeWeek=function(){ensureModernState(S);if((S.year||1)>1)S.life14.legacy=true;if(S.week>3&&S.life14.opening)S.life14.opening=null;return x15Before()};
+// 4. o aviso do bico intenso só aparece quando o bico tá no intenso
+const x15Sem=xSemanaHTML;
+xSemanaHTML=function(){const h=x15Sem();return S.xBico===2?h:h.replace('<p class="lab">Bico intenso reserva a segunda noite. Encontros ficam em Contatos e ocupam uma noite.</p>','')};
+// 5. semana da era do disco com o novo calendário contínuo (26 semanas por ano)
+function x15WLabel(abs){const y=Math.floor((abs-1)/26)+1,w=(abs-1)%26+1;return y===(S.year||1)?`semana ${w}`:`semana ${w} do ano ${y}`}
 
 try{window.claude?.hot?.snapshot?.(()=>({S,UI}))}catch(e){}
 window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.hot?.data??{});
