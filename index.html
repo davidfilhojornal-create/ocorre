@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="O Corre">
 <meta property="og:description" content="Simulador de carreira musical no Rio de Janeiro. Você consegue viver da sua música?">
-<meta property="og:image" content="og.png">
+<meta property="og:image" content="https://ocorre-blond.vercel.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="config.js"></script>
 
@@ -659,6 +659,401 @@ g.x-coach{animation:xCoachG 1.3s ease-in-out infinite}
   body.x-panel .x-coachbox b,body.q-phone-on .x-coachbox b{font-size:18px}
   body.x-panel .x-coachbox p,body.q-phone-on .x-coachbox p{font-size:13.5px;margin-bottom:2px}
   body.x-panel .x-coachbox .n,body.q-phone-on .x-coachbox .n{display:none}}
+
+/* ===== semana: bico, segundo plano e cena ===== */
+.x12-cards{display:flex;flex-direction:column;gap:10px}
+.x12-card{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#fff;border-radius:20px;padding:14px 16px;box-shadow:0 3px 0 var(--line2)}
+.x12-card>div:first-child{flex:1 1 220px;min-width:0}
+.x12-card b{font:800 17px/1.15 var(--q-display);display:block}
+.x12-card p{margin:3px 0 0;font-size:13.5px;color:var(--ink2)}
+.x12-card.cena{background:#2A2046;color:#EDE6FF;box-shadow:none}
+.x12-card.cena p{color:#C9BCE6}
+.x12-seg{display:flex;gap:6px;flex-wrap:wrap;flex:2 1 320px}
+.x12-seg button{flex:1 1 120px;text-align:left;border:2px solid var(--line2);border-radius:14px;background:var(--bg);padding:8px 10px;cursor:pointer;font:inherit;color:var(--ink)}
+.x12-seg button b{font:800 14px var(--q-body)}
+.x12-seg button span{display:block;font-size:12px;color:var(--ink3);font-weight:700;margin-top:2px}
+.x12-seg button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+.x12-seg button[aria-pressed="true"] span{color:#D8CCF2}
+.x12-card.cena .x12-seg button{background:#ffffff12;border-color:#ffffff26;color:#EDE6FF}
+.x12-card.cena .x12-seg button span{color:#BDB2D3}
+.x12-card.cena .x12-seg button[aria-pressed="true"]{background:#FFCF4A;border-color:#FFCF4A;color:#2A1540}
+.x12-card.cena .x12-seg button[aria-pressed="true"] span{color:#5A4300}
+/* ===== estúdio: equipamento ===== */
+.x12-gears{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.x12-gear{display:flex;gap:12px;align-items:center;justify-content:space-between;background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 2px 0 var(--line2)}
+.x12-gear b{display:block;font-weight:800;font-size:14.5px}
+.x12-gear span{display:block;font-size:12.5px;color:var(--ink2);font-weight:600}
+.x12-gear.own{background:var(--bg);box-shadow:none;border:2px dashed var(--line2)}
+.x12-gear .st{font-weight:800;color:var(--good);white-space:nowrap}
+.x12-gear .btn{white-space:nowrap}
+/* ===== cidade: patamar ===== */
+.x12-tier{background:#2A2046;color:#EDE6FF;border-radius:22px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.x12-tier span{font-size:13px;font-weight:800;color:#BDB2D3}
+.x12-tier b{font:800 28px/1 var(--q-display);color:#FFCF4A}
+.x12-tier p{margin:0;font-size:14px;color:#D8CCF2}
+.x12-steps{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.x12-steps i{font-style:normal;font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:10px;background:#ffffff14;color:#9F94BD}
+.x12-steps i.on{background:#FFCF4A;color:#2A1540}
+/* ===== estreia: resultado ===== */
+.xp-out{display:inline-block;margin-top:-6px;padding:6px 14px;border-radius:12px;background:var(--c);color:#1D1533;font:800 16px var(--q-display);animation:qStampIn .6s 1.25s cubic-bezier(.3,1.6,.5,1) both}
+/* ===== show jogável ===== */
+.xl-ov{background:radial-gradient(ellipse at 50% 20%,#4A2A6E 0%,#120C22 70%)}
+.xl{width:min(560px,100%);margin:auto;padding:34px 0;display:flex;flex-direction:column;gap:18px;color:#F4EEFF}
+.xl-top{display:flex;justify-content:space-between;font-weight:800;font-size:13.5px;color:#C9BCE6}
+.xl-stage{position:relative;height:130px;border-radius:22px;background:linear-gradient(180deg,#1A1230,#2A1A44);overflow:hidden}
+.xl-stage i{position:absolute;top:-20px;width:120px;height:190px;background:linear-gradient(180deg,#FFCF4A55,transparent);transform-origin:top center;animation:xBeam 3s ease-in-out infinite alternate}
+.xl-stage i:nth-child(1){left:12%;--r:-18deg}.xl-stage i:nth-child(2){left:42%;--r:6deg;background:linear-gradient(180deg,#FF5C8A55,transparent);animation-delay:.6s}.xl-stage i:nth-child(3){left:70%;--r:18deg;background:linear-gradient(180deg,#36D2BF55,transparent);animation-delay:1.2s}
+@keyframes xBeam{from{transform:rotate(var(--r))}to{transform:rotate(calc(var(--r)*-1))}}
+.xl-stage b{position:absolute;left:0;right:0;bottom:0;height:34px;background:repeating-radial-gradient(circle at 10px 34px,#0D0A18 0 12px,transparent 13px) 0 0/26px 34px repeat-x}
+.xl-sit{font:800 24px/1.25 var(--q-display);margin:0}
+.xl-opts{display:flex;flex-direction:column;gap:8px}
+.xl-opts button{text-align:left;border:2px solid #ffffff26;background:#ffffff10;color:#F4EEFF;border-radius:18px;padding:13px 16px;cursor:pointer;font:inherit}
+.xl-opts button:hover{border-color:#FFCF4A;background:#ffffff18}
+.xl-opts b{display:block;font-weight:800;font-size:16px}
+.xl-opts span{font-size:13px;color:#C9BCE6;font-weight:600}
+.xl-skip{align-self:flex-start;border:0;background:none;color:#BDB2D3;text-decoration:underline;font:700 13px var(--q-body);cursor:pointer}
+@media (prefers-reduced-motion:reduce){.xl-stage i{animation:none}}
+
+/* ===== v13: estúdio com cara de estúdio ===== */
+.q-card.xs.x13-dark{
+  --bg:#17131D;--panel:#221C2B;--soft:#2A2334;--ink:#F2ECFA;--ink2:#BDB2CF;--ink3:#8A7F9E;--line:#2E2738;--line2:#3E3549;
+  --accent:#FF5C8A;--accent-soft:#3A1F2C;--good:#3DDC84;--bad:#FF6B6B;--warn:#FFB547;
+  --rua:#FF7A3D;--pista:#9B7BFF;--feed:#FF4F8E;--sala:#2CC6D6;
+  --amb:#FFB547;--recred:#FF4D4D;
+  background:#17131D;color:var(--ink);transition:background .3s}
+.x13-dark .xs-tabs{border-bottom-color:#2E2738}
+.x13-dark .xs-tab{color:#7D7290}
+.x13-dark .xs-tab:hover{color:#F2ECFA}
+.x13-dark .xs-tab[aria-selected="true"]{background:#2A2334;color:#FFB547;box-shadow:inset 0 -2px 0 #FFB547}
+.x13-dark .xs-close{background:#2A2334;color:#F2ECFA;box-shadow:none}
+.x13-dark .xtip{background:#2A2334}
+.x13-dark .xe-task>i{background:#2A2334;color:#BDB2CF}
+.x13-dark .xe-task.done>i{background:#3DDC84;color:#0E2418}
+.x13-dark .xe-task.sched>i{background:#3A2E12;color:#FFB547}
+.x13-dark .xe-hype{background:#221C2B;border:1px solid #3E3549}
+.x13-dark .xcov{background:#221C2B;box-shadow:none;border:1px solid #3E3549}
+.x13-dark .xcov-sty .cv{box-shadow:none}
+.x13-dark .xcov-sty button{color:#F2ECFA}
+.x13-dark .xcov-sty button[aria-pressed="true"] .cv{outline-color:#FFB547}
+.x13-dark .xcov-pal button{border-color:#221C2B}
+.x13-dark .xcov-pal button[aria-pressed="true"]{box-shadow:0 0 0 3px #FFB547}
+.x13-dark .btn{background:#2A2334;border:1px solid #453B52;color:#F2ECFA;border-radius:10px;font-weight:700}
+.x13-dark .btn:hover:not(:disabled){border-color:#FFB547}
+.x13-dark .btn.primary{background:#FFB547;color:#21160A;border-color:#FFB547}
+.x13-dark select{background:#2A2334;color:#F2ECFA;border:1px solid #453B52;border-radius:10px;padding:7px 10px;font:700 14px var(--q-body)}
+.x13-dark .bar{background:#2E2738}
+.x13-dark .bar i{background:#FFB547}
+.x13-dark .warn{background:#3A2E12;color:#FFD48A;border-color:#5A4518}
+.x13-dark .line{border-color:#2E2738}
+.x13-dark details summary{color:#BDB2CF}
+.x13-dark .chart text{fill:#8A7F9E}
+.x13-dark .opt{background:#221C2B;border-color:#3E3549;color:#F2ECFA}
+
+.x13{display:flex;flex-direction:column;gap:22px;--mono2:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.x13 h3,.x13-h{font:800 22px/1.1 var(--q-display);margin:0;color:#F2ECFA}
+.x13 h3 small{font:700 13px var(--q-body);color:#8A7F9E;margin-left:8px}
+.x13-kick{font:800 11.5px/1 var(--mono2);letter-spacing:.14em;text-transform:uppercase;color:#FFB547}
+.x13-p{margin:0;color:#BDB2CF;font-size:14.5px;max-width:60ch;line-height:1.45}
+.x13-lab{font:800 11px/1 var(--mono2);letter-spacing:.12em;text-transform:uppercase;color:#8A7F9E}
+.x13-body{display:flex;flex-direction:column;gap:26px}
+.x13-body>*,.x13>*{flex:none}
+.x13-col{display:flex;flex-direction:column;gap:26px;min-width:0}
+
+/* barra do estúdio: placa, nome, VU e navegação */
+.x13-bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"sign room vu" "nav nav nav";gap:14px 16px;align-items:center;padding:16px 18px;border-radius:20px;
+  background:radial-gradient(circle at 50% 50%,#ffffff0a 0 34%,transparent 36%) 0 0/18px 18px,radial-gradient(circle at 50% 50%,#00000040 0 34%,transparent 36%) 9px 9px/18px 18px,linear-gradient(180deg,#241E2E,#1B1623);border:1px solid #2E2738}
+.x13-sign{grid-area:sign;font:900 13px/1 var(--mono2);letter-spacing:.2em;padding:9px 12px;border-radius:8px;border:2px solid #4A2A2E;color:#6E3C42;background:#1A1013}
+.x13-sign.on{color:#fff;background:#D3242E;border-color:#FF6B6B;box-shadow:0 0 18px #FF3B3B88,inset 0 0 8px #ffffff40;animation:x13Rec 2.4s ease-in-out infinite}
+@keyframes x13Rec{50%{box-shadow:0 0 6px #FF3B3B44,inset 0 0 4px #ffffff20}}
+.x13-room{grid-area:room;display:flex;flex-direction:column;gap:3px;min-width:0}
+.x13-room b{font:800 20px/1.1 var(--q-display);color:#F2ECFA}
+.x13-room span{font:700 12px var(--mono2);color:#8A7F9E}
+.x13-vu{grid-area:vu;display:flex;gap:3px;align-items:flex-end;height:30px}
+.x13-vu i{width:5px;border-radius:2px;background:#3DDC84;height:30%;animation:x13Vu 1.1s ease-in-out infinite alternate;animation-delay:calc(var(--i)*-.13s)}
+.x13-vu i:nth-child(n+10){background:#FFB547}.x13-vu i:nth-child(n+13){background:#FF4D4D}
+@keyframes x13Vu{0%{height:15%}40%{height:70%}70%{height:35%}100%{height:90%}}
+.x13-nav{grid-area:nav;display:flex;gap:8px;flex-wrap:wrap}
+.x13-nav button{display:flex;align-items:center;gap:8px;border:1px solid #3E3549;background:linear-gradient(180deg,#2D2638,#221C2B);color:#BDB2CF;font:800 14px var(--q-body);padding:9px 14px 9px 12px;border-radius:10px;cursor:pointer;box-shadow:0 3px 0 #0E0B13}
+.x13-nav button .led{width:8px;height:8px;border-radius:50%;background:#3A3244;box-shadow:inset 0 1px 1px #0008}
+.x13-nav button[aria-selected="true"]{color:#F2ECFA;border-color:#FFB547;transform:translateY(2px);box-shadow:0 1px 0 #0E0B13}
+.x13-nav button[aria-selected="true"] .led{background:#FFB547;box-shadow:0 0 8px #FFB547}
+.x13-nav .n{font:800 11px/1 var(--q-body);background:#FF5C8A;color:#fff;border-radius:8px;padding:3px 6px}
+
+/* fitas */
+.x13-rack{display:flex;align-items:flex-start;flex:none;gap:14px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin;scrollbar-color:#3E3549 transparent}
+.x13-tape{flex:none;width:186px;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;gap:6px;text-align:left;color:inherit}
+.x13-tape .cass{position:relative;flex:none;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;height:116px;padding:10px 10px 12px;border-radius:12px;background:linear-gradient(180deg,#3A3247,#2A2334);border:1px solid #4A4058;box-shadow:0 6px 0 #0E0B13,inset 0 1px 0 #ffffff14;transition:transform .2s,box-shadow .2s}
+.x13-tape .cass::before,.x13-tape .cass::after{content:"";position:absolute;bottom:6px;width:6px;height:6px;border-radius:50%;background:#17131D}
+.x13-tape .cass::before{left:12px}.x13-tape .cass::after{right:12px}
+.x13-tape .lbl{display:flex;flex-direction:column;gap:2px;background:#F3E9D2;color:#2A1F12;border-radius:5px;padding:6px 8px 5px 34px;position:relative;min-height:40px;
+  background-image:repeating-linear-gradient(180deg,transparent 0 13px,#D9C9A6 13px 14px)}
+.x13-tape .lbl b{font:800 13.5px/1.15 var(--q-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x13-tape .lbl small{font:700 10.5px/1.2 var(--mono2);color:#7A6A4C;text-transform:uppercase;letter-spacing:.04em}
+.x13-tape.hot .lbl small{color:#C0392B}
+.x13-tape .cv{position:absolute;left:14px;top:14px;width:24px;height:24px;border-radius:4px;overflow:hidden}
+.x13-tape .cv svg{width:100%;height:100%;display:block}
+.x13-tape .win{flex:1;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#120F17;border-radius:20px;padding:0 10px;position:relative;margin:0 14px}
+.x13-tape .reel{width:30px;height:30px;border-radius:50%;flex:none;position:relative;z-index:1;
+  background:radial-gradient(circle,#17131D 0 4px,#E9E0F5 4.5px 7px,transparent 7.5px),repeating-conic-gradient(#E9E0F5 0 14deg,#3A3247 14deg 60deg)}
+.x13-tape .tp{position:absolute;left:24px;right:24px;top:50%;height:16px;transform:translateY(-50%);background:linear-gradient(90deg,#5A3B24 var(--p),#2A2334 var(--p));border-radius:8px}
+.x13-tape[aria-current="true"] .cass{transform:translateY(-4px);box-shadow:0 10px 0 #0E0B13,0 0 0 2px #FFB547}
+.x13-tape[aria-current="true"] .reel{animation:x13Spin 2.2s linear infinite}
+@keyframes x13Spin{to{transform:rotate(360deg)}}
+.x13-tape.out .cass{background:linear-gradient(180deg,#2B3A35,#1E2925);border-color:#3C5148}
+.x13-tape .tag{font:700 11px var(--q-body);color:#C9A4F0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:2px}
+.x13-tape.new .cass{background:transparent;border:2px dashed #4A4058;box-shadow:none}
+.x13-tape.new .lbl{background:transparent;color:#BDB2CF;padding-left:8px;background-image:none}
+.x13-tape.new .lbl small{color:#8A7F9E}
+.x13-tape.new .win{background:transparent;justify-content:center;color:#8A7F9E}
+.x13-tape.new .win svg{width:28px;height:28px}
+
+/* sessão */
+.x13-sess{display:flex;flex-direction:column;gap:18px;padding:20px;border-radius:22px;background:#1D1825;border:1px solid #2E2738}
+.x13-sh{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:start}
+.x13-cov{display:flex;flex-direction:column;gap:8px;align-items:center}
+.x13-cov>svg{width:150px;height:150px;border-radius:12px;display:block;box-shadow:0 12px 30px #0008}
+.x13-covbtn{border:0;background:none;color:#BDB2CF;font:800 12.5px var(--q-body);text-decoration:underline;cursor:pointer}
+.x13-meta{display:flex;flex-direction:column;gap:8px;min-width:0}
+.x13-name{border:0;background:none;padding:0;text-align:left;cursor:text;font:800 36px/1 var(--q-display);color:#F2ECFA;overflow-wrap:anywhere}
+.x13 .tname-in,.x13-in{font:800 28px var(--q-display);border:0;border-bottom:3px solid #FFB547;background:none;color:#F2ECFA;width:100%;padding:4px 0;outline:0}
+.x13-st{margin:0;color:#BDB2CF;font-weight:700;font-size:14.5px}
+.x13-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;border:1px solid #5B3F7A;background:#2B2040;color:#D9C2FF;font:800 12.5px var(--q-body);border-radius:999px;padding:6px 12px 6px 9px;cursor:pointer}
+.x13-chip svg{width:15px;height:15px}
+.x13-do{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.x13-do .btn{min-height:40px}
+.x13-b{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border-radius:10px;border:1px solid #453B52;background:linear-gradient(180deg,#2F2839,#252030);color:#F2ECFA;font:800 14px var(--q-body);cursor:pointer;box-shadow:0 3px 0 #0E0B13}
+.x13-b:hover:not(:disabled){border-color:#FFB547}
+.x13-b:active{transform:translateY(2px);box-shadow:0 1px 0 #0E0B13}
+.x13-b:disabled{opacity:.4;cursor:not-allowed}
+.x13-b svg{width:17px;height:17px}
+.x13-b.amber{background:linear-gradient(180deg,#FFC66B,#FFAA2E);border-color:#FFB547;color:#2A1A05}
+.x13-b.rec{background:linear-gradient(180deg,#3A1E24,#2B171B);border-color:#7A2E36}
+.x13-b.rec .dot{width:12px;height:12px;border-radius:50%;background:#FF4D4D;box-shadow:0 0 8px #FF4D4D}
+.x13-b.big{min-height:50px;font-size:16px;padding:10px 20px;align-self:flex-start}
+
+/* linha do tempo estilo programa de gravação */
+.x13-lanes{display:flex;flex-direction:column;gap:6px;background:#141019;border-radius:14px;padding:10px;border:1px solid #2A2333}
+.x13-lane{display:grid;grid-template-columns:118px minmax(0,1fr) 128px;gap:10px;align-items:center;min-height:40px}
+.x13-lane .hd{display:flex;align-items:center;gap:8px;background:#221C2B;border-radius:8px;padding:0 10px;height:40px;border-left:4px solid var(--c)}
+.x13-lane .hd i{width:8px;height:8px;border-radius:50%;background:#3A3244}
+.x13-lane.now .hd i{background:var(--c);box-shadow:0 0 8px var(--c)}
+.x13-lane .hd b{font:800 13px var(--q-body);color:#F2ECFA}
+.x13-lane .trk{position:relative;height:40px;border-radius:8px;overflow:hidden;background:repeating-linear-gradient(90deg,#1C1723 0 calc(12.5% - 1px),#2A2333 calc(12.5% - 1px) 12.5%)}
+.x13-lane .clip{position:absolute;left:0;top:3px;bottom:3px;border-radius:6px;background:color-mix(in srgb,var(--c) 30%,#1C1723);border:1px solid var(--c);overflow:hidden;animation:x13Clip .7s cubic-bezier(.2,.9,.2,1) both}
+.x13-lane .clip svg{width:100%;height:100%;display:block;fill:var(--c);opacity:.85}
+@keyframes x13Clip{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.x13-lane .ph{position:absolute;top:0;bottom:0;left:0;width:2px;background:#fff;box-shadow:0 0 8px #fff;animation:x13Play 3.2s linear infinite}
+@keyframes x13Play{from{left:0}to{left:100%}}
+.x13-lane .vl{font:700 12.5px var(--mono2);color:#BDB2CF;text-align:right}
+.x13-lane.now .vl{color:#FFB547}
+
+/* colunas */
+.x13-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
+.x13 .xe-sec>h3{color:#F2ECFA}
+.x13 .lede{color:#BDB2CF}
+.x13-note{background:#2B2040;border-radius:12px;padding:10px 12px;margin:0!important;color:#E3D3FF!important}
+
+/* mesa */
+.x13-desk{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:20px;background:linear-gradient(180deg,#2A2433,#1E1926);border:1px solid #3A3245;box-shadow:inset 0 1px 0 #ffffff12}
+.x13-strips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;background:#16121C;border-radius:14px;padding:14px 8px 12px}
+.x13-ch{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.x13-ch .dig{font:700 15px/1 var(--mono2);color:#FFB547;background:#0E0B12;border-radius:5px;padding:5px 6px;text-shadow:0 0 6px #FFB54788;letter-spacing:.06em}
+.x13-ch .fd{display:flex;gap:6px;height:132px}
+.x13-ch .meter{display:flex;flex-direction:column-reverse;gap:2px;width:6px}
+.x13-ch .meter i{flex:1;border-radius:1px;background:#2A2333}
+.x13-ch .meter i.on{background:#3DDC84}
+.x13-ch .meter i.on:nth-child(n+7){background:#FFB547}
+.x13-ch .meter i.on:nth-child(n+9){background:#FF4D4D}
+.x13-ch .slot{position:relative;width:8px;border-radius:4px;background:#07050A;box-shadow:inset 0 1px 2px #000}
+.x13-ch .knob{position:absolute;left:50%;width:30px;height:18px;margin-left:-15px;border-radius:4px;background:linear-gradient(180deg,#E9E2F2 0,#A99FB6 48%,#E9E2F2 52%,#C5BBD2 100%);box-shadow:0 3px 6px #000a;transition:bottom .6s cubic-bezier(.2,.9,.2,1)}
+.x13-ch .knob::after{content:"";position:absolute;left:4px;right:4px;top:8px;height:2px;background:#24183D}
+.x13-ch b{font:800 10.5px/1 var(--mono2);letter-spacing:.08em;color:#F2ECFA}
+.x13-ch small{font:600 10.5px/1.25 var(--q-body);color:#8A7F9E;text-align:center}
+.x13-segs{display:flex;flex-direction:column;gap:7px}
+.x13-segs>div{display:grid;grid-template-columns:96px minmax(0,1fr) 40px;gap:10px;align-items:center;font:700 13px var(--q-body);color:#BDB2CF}
+.x13-segs em{font:700 12px var(--mono2);color:#F2ECFA;text-align:right;font-style:normal}
+.x13-segs .vu{height:12px;border-radius:3px;background:#0E0B12;overflow:hidden;position:relative}
+.x13-segs .vu i{display:block;height:100%;background:var(--c);-webkit-mask:repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 8px);mask:repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 8px)}
+.x13-more summary{cursor:pointer;font-weight:800}
+
+/* rack */
+.x13-racks{display:flex;flex-direction:column;gap:6px;background:#0F0C13;border-radius:14px;padding:8px;border:1px solid #2A2333}
+.x13-unit{position:relative;display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 34px;border-radius:6px;background:linear-gradient(180deg,#2C2636,#211C29);border:1px solid #3A3245;box-shadow:inset 0 1px 0 #ffffff10}
+.x13-unit .scr{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,#8A7F9E 0 1px,#3E3549 1.5px);top:8px}
+.x13-unit .scr:nth-of-type(1){left:10px}.x13-unit .scr:nth-of-type(2){left:10px;top:auto;bottom:8px}
+.x13-unit .scr:nth-of-type(3){right:10px}.x13-unit .scr:nth-of-type(4){right:10px;top:auto;bottom:8px}
+.x13-unit .led{width:10px;height:10px;border-radius:50%;background:#3A3244}
+.x13-unit.own .led{background:#3DDC84;box-shadow:0 0 10px #3DDC84}
+.x13-unit b{display:block;font:800 15px var(--q-body);color:#F2ECFA}
+.x13-unit div span{font-size:13px;color:#BDB2CF;font-weight:600}
+.x13-unit .st{font:800 12px var(--mono2);letter-spacing:.08em;text-transform:uppercase;color:#3DDC84}
+
+/* disco */
+.x13-hero{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;align-items:center;padding:24px;border-radius:22px;background:radial-gradient(ellipse at 20% 30%,#3A2266 0%,#1D1825 70%);border:1px solid #2E2738}
+.x13-hero h3{font-size:32px;margin:8px 0 10px}
+.x13-hero .x13-p{margin-bottom:16px}
+.x13-sleeve{position:relative;width:170px;height:170px;flex:none;margin-right:46px}
+.x13-sleeve.big{width:180px;height:180px}
+.x13-sleeve.sm{width:96px;height:96px;margin-right:26px}
+.x13-sleeve .vinyl{position:absolute;inset:4px -42px 4px 42px;border-radius:50%;background:repeating-radial-gradient(circle,#141019 0 2px,#221A30 2px 4px);box-shadow:0 8px 20px #0008}
+.x13-sleeve.sm .vinyl{inset:3px -24px 3px 24px}
+.x13-sleeve .vinyl::after{content:"";position:absolute;inset:36%;border-radius:50%;background:#FFB547;box-shadow:inset 0 0 0 5px #E89A2A}
+.x13-sleeve .cv{position:absolute;inset:0;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px #000a}
+.x13-sleeve .cv svg{width:100%;height:100%;display:block}
+.x13-sleeve .cv.blank{display:grid;place-items:center;background:repeating-linear-gradient(45deg,#2A2334 0 10px,#241E2D 10px 20px);color:#5B5170}
+.x13-sleeve .cv.blank svg{width:60px;height:60px}
+.x13-hero .x13-sleeve .vinyl,.x13-ph .x13-sleeve .vinyl{animation:x13Peek 1s .2s cubic-bezier(.2,.9,.2,1) both}
+@keyframes x13Peek{from{transform:translateX(-42px)}}
+.x13-wiz{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:22px;background:#1D1825;border:1px solid #2E2738}
+.x13-wiz-h{display:flex;justify-content:space-between;align-items:center}
+.x13-wiz-h .link{color:#BDB2CF}
+.x13-wiz h3{font-size:28px}
+.x13-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.x13-cards.four{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.x13-card{display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px;border-radius:16px;border:1px solid #3E3549;background:linear-gradient(180deg,#2A2334,#221C2B);color:#F2ECFA;cursor:pointer;box-shadow:0 4px 0 #0E0B13;transition:transform .15s,border-color .15s}
+.x13-card:hover{transform:translateY(-2px);border-color:#FFB547}
+.x13-card b{font:800 22px/1.1 var(--q-display)}
+.x13-card span{font-size:14px;color:#BDB2CF;font-weight:600;line-height:1.4}
+.x13-card em{font:700 11px var(--mono2);text-transform:uppercase;letter-spacing:.08em;color:#FFB547;font-style:normal;margin-top:auto}
+.x13-card.ghost{background:transparent;border-style:dashed;box-shadow:none}
+.x13-sug{display:flex;gap:8px;flex-wrap:wrap}
+.x13-sug button{border:1px solid #3E3549;background:#221C2B;color:#BDB2CF;border-radius:999px;padding:6px 12px;font:700 13px var(--q-body);cursor:pointer}
+.x13-sug button:hover{color:#F2ECFA;border-color:#FFB547}
+
+.x13-proj{display:flex;flex-direction:column;gap:22px}
+.x13-ph{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;padding:22px;border-radius:22px;background:radial-gradient(ellipse at 10% 20%,#33204F 0%,#1D1825 65%);border:1px solid #2E2738}
+.x13-gauges{display:grid;grid-template-columns:repeat(3,112px);gap:10px}
+.x13-gauge{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.x13-gauge svg{width:112px;height:69px;display:block}
+.x13-gauge .face{fill:#F3E6C4;stroke:#2A1F12;stroke-width:2}
+.x13-gauge .arc{fill:none;stroke:#2A1F12;stroke-width:1.5}
+.x13-gauge .red{fill:none;stroke:#D3242E;stroke-width:4}
+.x13-gauge .tk{stroke:#2A1F12;stroke-width:1.5}
+.x13-gauge .vu{font:800 11px var(--mono2);fill:#7A6A4C;text-anchor:middle}
+.x13-gauge .ndl{stroke:#1A1208;stroke-width:2;stroke-linecap:round;transform-origin:60px 64px;transition:transform 1s cubic-bezier(.3,1.5,.5,1)}
+.x13-gauge .hub{fill:#1A1208}
+.x13-gauge b{font:800 13px var(--q-body);color:#F2ECFA}
+.x13-gauge span{font:700 11.5px var(--mono2);color:#FFB547}
+.x13-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;counter-reset:s}
+.x13-steps li{display:flex;align-items:center;gap:8px;padding:10px;border-radius:12px;background:#1D1825;border:1px solid #2E2738;font:800 13px var(--q-body);color:#8A7F9E}
+.x13-steps li i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#2A2334;font:800 12px var(--mono2);font-style:normal;flex:none}
+.x13-steps li i svg{width:14px;height:14px}
+.x13-steps li.done{color:#BDB2CF}
+.x13-steps li.done i{background:#3DDC84;color:#0E2418}
+.x13-steps li.now{color:#F2ECFA;border-color:#FFB547}
+.x13-steps li.now i{background:#FFB547;color:#2A1A05}
+.x13-tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.x13-tr{display:grid;grid-template-columns:28px 40px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 8px 8px 10px;border-radius:12px;background:#1D1825;border:1px solid #2E2738}
+.x13-tr .n{font:700 13px var(--mono2);color:#8A7F9E}
+.x13-tr .cv{width:40px;height:40px;border-radius:6px;overflow:hidden}
+.x13-tr .cv svg{width:100%;height:100%;display:block}
+.x13-tr .nm{min-width:0;display:flex;flex-direction:column;gap:2px}
+.x13-tr .nm b{font:800 14.5px var(--q-body);color:#F2ECFA;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x13-tr .nm small{font:700 12px var(--q-body);color:#8A7F9E}
+.x13-tr.ok .nm small{color:#3DDC84}
+.x13-tr.foco{border-color:#FFB547;background:linear-gradient(90deg,#33270F,#1D1825 60%)}
+.x13-tr .ac{display:flex;gap:2px}
+.x13-tr .ac button{width:32px;height:32px;border-radius:8px;border:0;background:transparent;color:#8A7F9E;display:grid;place-items:center;cursor:pointer}
+.x13-tr .ac button:hover:not(:disabled){background:#2A2334;color:#F2ECFA}
+.x13-tr .ac button:disabled{opacity:.25;cursor:default}
+.x13-tr .ac button svg{width:16px;height:16px}
+.x13-tr .ac button[aria-pressed="true"]{color:#FFB547}
+.x13-dots{display:flex;gap:3px}
+.x13-dots i{width:7px;height:7px;border-radius:50%;background:#3A3244}
+.x13-dots i.on{background:#C04FD6;box-shadow:0 0 6px #C04FD688}
+.x13-tags{display:flex;gap:6px;flex-wrap:wrap}
+.x13-tags span{font:800 12px var(--q-body);border-radius:999px;padding:5px 10px;background:#2A2334;color:#BDB2CF}
+.x13-tags span.ok{background:#173527;color:#7CF0B0}
+.x13-tags span.bad{background:#3A2125;color:#FFA3A3}
+.x13-tags span.o{background:var(--c);color:#17131D}
+.x13-pool{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.x13-pool button{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;padding:8px;border-radius:12px;border:1px dashed #4A4058;background:transparent;color:#F2ECFA;cursor:pointer}
+.x13-pool button:hover,.x13-pool button[aria-pressed="true"]{border-style:solid;border-color:#FFB547;background:#221C2B}
+.x13-pool .cv{width:36px;height:36px;border-radius:6px;overflow:hidden}.x13-pool .cv svg{width:100%;height:100%;display:block}
+.x13-pool b{display:block;font:800 13.5px var(--q-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x13-pool small{font:700 11.5px var(--q-body);color:#8A7F9E}
+.x13-pcov{margin-top:-8px}
+.x13-dg{display:flex;flex-direction:column;gap:12px}
+.x13-dgi{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;padding:16px;border-radius:18px;background:#1D1825;border:1px solid #2E2738}
+.x13-dgm{display:flex;flex-direction:column;gap:6px;min-width:0}
+.x13-dgm>b{font:800 22px/1.1 var(--q-display);color:#F2ECFA}
+.x13-dgm>span{font:700 12.5px var(--mono2);color:#8A7F9E}
+.x13-dgm p{margin:2px 0;color:#D9CFE8;font-size:14px;font-style:italic;line-height:1.45}
+.x13-dgm small{font-size:12.5px;color:#BDB2CF;font-weight:700}
+.x13-dgm .x13-b{align-self:flex-start;margin-top:4px}
+
+/* estreia do disco */
+.x13p{gap:16px}
+.x13p-sleeve{position:relative;width:220px;height:220px;margin-right:60px}
+.x13p-sleeve .vinyl{position:absolute;inset:6px -60px 6px 60px;border-radius:50%;background:repeating-radial-gradient(circle,#1B1430 0 3px,#241A3E 3px 5px);animation:xSlide 1s .9s cubic-bezier(.2,.9,.2,1) both,xSpin 6s 1.9s linear infinite}
+.x13p-sleeve .vinyl::after{content:"";position:absolute;inset:37%;border-radius:50%;background:#FFB547}
+.x13p-sleeve .cv{position:absolute;inset:0;border-radius:10px;overflow:hidden;box-shadow:0 20px 50px #0009;animation:xDrop .8s .2s cubic-bezier(.2,1.3,.4,1) both}
+.x13p-sleeve .cv svg{width:100%;height:100%;display:block}
+.x13p-k{font:800 12px var(--mono2,monospace);letter-spacing:.14em;text-transform:uppercase;color:#FFB547;animation:qRise .6s 1s both}
+.x13p .xp-out{animation:qRise .6s 1.2s both}
+.x13p-crit{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;width:100%;text-align:left;background:#F3E6C4;color:#2A1F12;border-radius:18px;padding:16px 18px;animation:qRise .6s 1.25s both;box-shadow:0 10px 30px #0006}
+.x13p-crit .nt{display:flex;flex-direction:column;align-items:center;background:#2A1F12;color:#FFB547;border-radius:14px;padding:10px 14px;min-width:84px}
+.x13p-crit .nt b{font:800 38px/1 var(--q-display);font-variant-numeric:tabular-nums}
+.x13p-crit .nt span{font:700 11px var(--q-body);opacity:.8}
+.x13p-crit p{margin:0 0 6px;font-size:14.5px;line-height:1.45;font-style:italic}
+.x13p-crit small{font:800 12px var(--q-body);color:#7A6A4C}
+.x13p-tl{list-style:none;margin:0;padding:0;width:100%;display:flex;flex-direction:column;gap:5px;text-align:left}
+.x13p-tl li{display:grid;grid-template-columns:24px minmax(0,1fr) 34%;gap:10px;align-items:center;font-size:14px;animation:qRise .45s calc(1.5s + var(--i)*.09s) both}
+.x13p-tl .n{font:700 12px monospace;opacity:.6}
+.x13p-tl b{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x13p-tl em{font:800 10.5px var(--q-body);font-style:normal;background:#FFB547;color:#2A1A05;border-radius:6px;padding:2px 6px;margin-left:8px;vertical-align:2px}
+.x13p-tl em.top{background:#FF5C8A;color:#fff}
+.x13p-tl .br{height:8px;border-radius:4px;background:#ffffff14;overflow:hidden}
+.x13p-tl .br i{display:block;height:100%;background:linear-gradient(90deg,#FF8FB1,#FFB547);animation:x13Clip 1s calc(1.8s + var(--i)*.09s) both}
+
+@media (max-width:900px){
+  .x13-cols{grid-template-columns:minmax(0,1fr)}
+  .x13-ph{grid-template-columns:auto minmax(0,1fr)}
+  .x13-gauges{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .x13-gauge svg{width:100%;max-width:112px;height:auto}
+}
+@media (max-width:640px){
+  .x13-bar{grid-template-areas:"sign vu" "room room" "nav nav";grid-template-columns:auto 1fr;padding:14px}
+  .x13-vu{justify-self:end}
+  .x13-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .x13-nav button{justify-content:center;padding:9px 6px;font-size:13px}
+  .x13-sess{padding:14px}
+  .x13-sh{grid-template-columns:96px minmax(0,1fr);gap:14px}
+  .x13-cov>svg{width:96px;height:96px}
+  .x13-name{font-size:28px}
+  .x13-lane{grid-template-columns:86px minmax(0,1fr);row-gap:2px}
+  .x13-lane .hd{height:34px;padding:0 8px}.x13-lane .hd b{font-size:12px}
+  .x13-lane .trk{height:34px}
+  .x13-lane .vl{grid-column:2;text-align:left;font-size:11.5px}
+  .x13-strips{gap:2px;padding:12px 4px}
+  .x13-ch .fd{height:110px}
+  .x13-ch .knob{width:24px;margin-left:-12px}
+  .x13-ch small{display:none}
+  .x13-segs>div{grid-template-columns:78px minmax(0,1fr) 36px}
+  .x13-unit{grid-template-columns:12px minmax(0,1fr);padding:14px 26px}
+  .x13-unit>.btn,.x13-unit>.st{grid-column:2;justify-self:start}
+  .x13-hero{grid-template-columns:minmax(0,1fr);padding:18px}
+  .x13-sleeve.big{width:140px;height:140px}
+  .x13-hero h3{font-size:26px}
+  .x13-cards{grid-template-columns:minmax(0,1fr)}
+  .x13-ph{grid-template-columns:minmax(0,1fr);padding:18px}
+  .x13-ph .x13-sleeve{width:130px;height:130px}
+  .x13-gauges{grid-column:auto}
+  .x13-steps{grid-template-columns:repeat(5,minmax(0,1fr));gap:3px}
+  .x13-steps li{flex-direction:column;gap:4px;padding:8px 2px;font-size:10.5px;text-align:center}
+  .x13-tr{grid-template-columns:22px 34px minmax(0,1fr) auto;padding:6px}
+  .x13-tr .cv{width:34px;height:34px}
+  .x13-tr .x13-dots{display:none}
+  .x13-tr .ac button{width:28px;height:30px}
+  .x13-dgi{grid-template-columns:minmax(0,1fr)}
+  .x13p-sleeve{width:170px;height:170px;margin-right:46px}
+  .x13p-sleeve .vinyl{inset:5px -46px 5px 46px}
+  .x13p-crit{grid-template-columns:minmax(0,1fr)}
+  .x13p-crit .nt{flex-direction:row;gap:8px;justify-self:start;align-items:baseline}
+}
+@media (prefers-reduced-motion:reduce){
+  .x13-vu i,.x13-sign.on,.x13-tape[aria-current="true"] .reel,.x13-lane .ph,.x13-lane .clip,.x13-sleeve .vinyl{animation:none!important}
+}
 
 </style>
 </head>
@@ -3776,7 +4171,7 @@ Object.assign(WORLD_EVENTS,{
       {l:'Não vou fechar',ignore:true,fx:()=>null}]},
 
   x_dist:{from:'dist',once:true,weight:3,cond:()=>S.week>=2,text:()=> 'Você está no plano grátis: a distribuidora fica com 15% do que suas músicas rendem no streaming. O plano anual custa R$ 120 e você recebe 100%. Quer mudar?',
-    choices:()=>[{l:'Pagar o plano anual',hint:'−R$ 120 agora · streaming inteiro pra você o ano todo',need:()=>S.grana<120?'Falta grana':null,fx:()=>{money(-120);S.wk.music-=120;S.biz.dist='anual';return null}},
+    choices:()=>[{l:'Pagar o plano anual',hint:'−R$ 120 agora · streaming inteiro pra você o ano todo',need:()=>S.grana<120?'Falta grana':null,fx:()=>{money(-120);S.biz.dist='anual';return null}},
       {l:'Fico no grátis',ignore:true,fx:()=>{S.biz.dist='gratis';return null}}]},
   x_registro:{fromFn:()=>PACK.maker||PACK.mentor,once:true,weight:2.5,cond:()=>S.week>=3&&S.tracks.some(t=>!t.cover&&t.letra>=100&&!S.biz.reg[t.id]),text:()=> 'Já registrou tuas músicas na associação de autores? Se tocar em rádio ou show grande e não tiver registro, o direito autoral fica parado e ninguém te paga. Leva dez minutos e é de graça.',
     choices:()=>[{l:'Vou registrar todas agora',fx:()=>{S.tracks.filter(t=>!t.cover&&t.letra>=100).forEach(t=>S.biz.reg[t.id]=true);xDiary('Registrou as músicas na associação de autores.');return 'Isso. Artista que não registra trabalha de graça pros outros.'}},
@@ -4752,7 +5147,7 @@ document.addEventListener('click',ev=>{
    - card de fim de temporada pra postar
    - ranking dos amigos (Supabase, configurado no config.js)
    ========================================================= */
-const X_VERSION='11';
+const X_VERSION='13';
 if(window.CanvasRenderingContext2D&&!CanvasRenderingContext2D.prototype.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(r,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath();return this};
 const XC=window.OCORRE_CONFIG||{};
 const XRANK=!!(XC.supabaseUrl&&XC.supabaseKey);
@@ -4938,6 +5333,1095 @@ document.addEventListener('click',ev=>{if(ev.target.closest('[data-act="menuClos
 
 /* dicas ficam quietas enquanto o tutorial roda */
 const xTip11=xTip;xTip=function(k){return xTutActive()?'':xTip11(k)};
+
+</script>
+<script>
+/* =========================================================
+   O CORRE · VERSÃO 12: MAIS JOGO, MENOS PLANILHA
+   1. agenda livre: bico como chave, emprego e compromissos extras em segundo plano, descanso no domingo
+   2. escada da cidade: bairro, zona, Rio, Brasil
+   3. coringas, lançamento com sorte, imagem pública que morde
+   4. equipamento e investimentos
+   5. show jogável
+   6. texto mais variado e relatório mais limpo
+   7. pronome e correções
+   8. rotina da cena de cada gênero
+   ========================================================= */
+const X12={};
+function xR(a,b){return a+Math.random()*(b-a)}
+
+/* ---------- estado ---------- */
+const xEns12=ensureModernState;
+ensureModernState=function(st){
+  xEns12(st);
+  if(!Number.isFinite(st.xBico))st.xBico=0;
+  st.xBg=Array.isArray(st.xBg)?st.xBg:[];
+  if(!Number.isFinite(st.xTier))st.xTier=0;if(!Number.isFinite(st.xTierStreak))st.xTierStreak=0;
+  st.xGear=st.xGear||{};st.xUsed=st.xUsed||{};st.xNoteMem=st.xNoteMem||{};
+  st.xCena=st.xCena||{pick:null};st.xBat=st.xBat||{fase:0,titulos:0};st.xSet=st.xSet||{streak:0,hits:0};
+  if(!Number.isFinite(st.xGrupo))st.xGrupo=60;if(!Number.isFinite(st.xCrit))st.xCrit=0;
+  if(!Number.isFinite(st.xWildLast))st.xWildLast=-9;
+  st.xPron=st.xPron||'ele';
+};
+
+/* =========================================================
+   7. PRONOME (vem antes porque os textos passam por aqui)
+   ========================================================= */
+const X_PRON={ela:'Ela',ele:'Ele',neutro:'Neutro'};
+function xPronNow(){return (S&&S.xPron)||UI.startPron||'neutro'}
+function xGender(s){
+  if(typeof s!=='string')return s;const p=xPronNow();if(p==='ele')return s;const f=p==='ela';
+  return s.replace(/\bmeu filho\b/g,f?'minha filha':'meu bem').replace(/\bMeu filho\b/g,f?'Minha filha':'Meu bem')
+    .replace(/\bFilho,/g,f?'Filha,':'Meu bem,').replace(/\bfilho\b/g,f?'filha':'meu bem').replace(/\bFilho\b/g,f?'Filha':'Meu bem')
+    .replace(/Tu é irmão/g,f?'Tu é irmã':'Tu é família').replace(/, irmão\b/g,f?', irmã':', parça')
+    .replace(/meu parceiro/g,f?'minha parceira':'do meu time').replace(/Bem-vindo/g,f?'Bem-vinda':'Boas-vindas')
+    .replace(/\bTímido\b/g,f?'Tímida':'Tímido').replace(/\bMarrento\b/g,f?'Marrenta':'Marrento').replace(/\bImpulsivo\b/g,f?'Impulsiva':'Impulsivo')
+    .replace(/\bsozinho\b(?! neste navegador| com seus fãs| pra 40| no canto)/g,f?'sozinha':'sem ninguém');
+}
+function xWrapGender(){
+  for(const e of Object.values(EV)){if(e.__xg)continue;const tx=e.text;e.text=d=>xVaryChat(xGender(tx(d)));const ch=e.choices;e.choices=d=>ch(d).map(c=>{if(!c||c.__xg)return c;const fx=c.fx;return{...c,__xg:true,l:xGender(c.l),hint:c.hint?xGender(c.hint):c.hint,fx:fx?(...a)=>{const r=fx(...a);return typeof r==='string'?xGender(r):r&&r.txt?{...r,txt:xGender(r.txt)}:r}:fx}});e.__xg=true}
+  for(const k of Object.keys(OPTS||{})){const f=OPTS[k];if(typeof f!=='function'||f.__xg)continue;const g=()=>f().map(o=>({...o,l:xGender(o.l),d:o.d?xGender(o.d):o.d}));g.__xg=true;OPTS[k]=g}
+}
+const xLog12=logChat;logChat=function(k,me,txt,ghost){return xLog12(k,me,me?txt:xVaryChat(xGender(txt)),ghost)};
+if(typeof N_KINDS==='object'&&N_KINDS.ensaiar)N_KINDS.ensaiar.n='Ensaiar em casa';
+
+/* =========================================================
+   6. VARIAÇÃO DE TEXTO
+   ========================================================= */
+const X_VAR={
+  'Você chegou no bagaço. Rendeu metade.':['Chegou no limite. Tudo rendeu pela metade.','O corpo tava em outra. Rendeu menos do que devia.','Cansaço acumulado: fez o que deu, e deu pouco.','Bocejou a tarde inteira. Rendeu metade.'],
+  'Dormiu sem despertador. Acordou outra pessoa.':['Dormiu até o meio-dia e não se arrependeu.','Celular no silencioso, cortina fechada. Voltou inteiro.','Passou o dia de bermuda vendo série. Precisava.','Cochilou três vezes. Acordou com ideia de refrão.','Domingo de verdade: almoço tarde e nada de música.'],
+  'Foi difícil manter a atenção da casa até o fim.':['A casa conversou mais do que ouviu.','Metade do público estava no bar.','Teve gente indo embora antes do fim.'],
+  'Começou com alguma distância, mas teve gente que ficou pra trocar ideia.':['A casa demorou a esquentar, mas no fim teve gente querendo foto.','Público frio no começo. Três pessoas vieram falar com você depois.','Começou devagar e terminou com uma roda de conversa na porta.','Não foi uma noite de explodir, mas saiu com contato novo no celular.'],
+  'Você reescreveu o mesmo verso quatro vezes. Ficou melhor, mas andou menos.':['Trocou uma palavra, destrocou, trocou de novo. A letra andou pouco, mas ficou certa.','Passou a tarde num verso só. Valeu, mas a música andou menos.','Apagou mais do que escreveu. O que ficou é bom.'],
+  'Ensaiou o repertório e marcou onde precisa respirar.':['Passou o set inteiro duas vezes e anotou onde perde o fôlego.','Ensaiou com o celular gravando. Ouvir depois doeu, mas ajudou.','Decorou as viradas que sempre erra.'],
+};
+const X_VAR_RE=[
+  [/^Separei um trecho de "(.+)" e deixei a publicação pronta\. Pode usar seu tempo em outra coisa\.$/,m=>[`Separei um trecho de "${m[1]}" e deixei a publicação pronta. Pode usar seu tempo em outra coisa.`,`Postei um corte de "${m[1]}" no horário bom. Depois te mando os números.`,`"${m[1]}" ganhou um vídeo novo no perfil. Tá agendado pra noite.`,`Fiz um carrossel com a letra de "${m[1]}". Já subiu.`]],
+  [/^Tenho um espaço em (.+?) na próxima semana\. (.*)$/,m=>[`Tenho um espaço em ${m[1]} na próxima semana. ${m[2]}`,`Abriu uma data em ${m[1]} semana que vem. ${m[2]}`,`Pintou um horário em ${m[1]} na próxima semana. ${m[2]}`,`Caiu uma atração em ${m[1]}, sobrou a vaga semana que vem. ${m[2]}`]],
+  [/^Uma redação respondeu\. (.*)$/,m=>[`Uma redação respondeu. ${m[1]}`,`Um site da cena respondeu o e-mail. ${m[1]}`,`Retorno de uma redação: ${m[1].charAt(0).toLowerCase()+m[1].slice(1)}`]],
+];
+function xPickVar(key,opts){
+  const U=S?S.xUsed:{};let best=opts[0],bw=Infinity;
+  opts.slice().sort(()=>Math.random()-.5).forEach(o=>{const w=U[o]??-99;if(w<bw){bw=w;best=o}});
+  if(S)U[best]=S.week+(S.year||1)*30;return best;
+}
+function xVary(s){if(!S||typeof s!=='string')return s;if(X_VAR[s])return xPickVar(s,[s,...X_VAR[s]]);return s}
+function xHash(s){let h=7;for(const c of String(s))h=(h*31+c.charCodeAt(0))>>>0;return h}
+function xVaryChat(s){if(!S||typeof s!=='string')return s;for(const [re,f] of X_VAR_RE){const m=s.match(re);if(m){const o=f(m);return o[(xHash(s)+S.week*7+(S.year||1)*3)%o.length]}}return s}
+
+/* =========================================================
+   1. AGENDA LIVRE
+   ========================================================= */
+const X_BICO={rap:'Depósito do Seu Wanderley',funk:'Barraca de bebida no baile',pagode:'Garçom no Bar do Trilho',indie:'Balcão da loja de discos'};
+const X_BICO_LV=[{n:'Nada',g:0,d:0},{n:'Pouco',g:140,d:10},{n:'Muito',g:260,d:20}];
+function xIsCommit(p){return p&&p.locked&&!p.forced&&p.type!=='clt'}
+function xToBg(p){S.xBg.push(JSON.parse(JSON.stringify(p)))}
+const xPlace12=placeCommit;
+placeCommit=function(c){
+  if(!S)return xPlace12(c);
+  if(c.type==='clt'){xToBg({type:'clt',label:c.label||'Emprego no hospital',data:{},locked:true,pen:c.pen||null});return true}
+  if(c.forced)return xPlace12(c);
+  const cur=S.plan.map((p,i)=>xIsCommit(p)?i:null).filter(i=>i!==null);
+  if(cur.length>=1){
+    if(c.type==='tocar'){const o=cur.find(i=>S.plan[i].type!=='tocar');if(o!==undefined){xToBg(S.plan[o]);S.plan[o]=null}else{xToBg({...c,locked:true});return true}}
+    else{xToBg({type:c.type,opt:c.opt||null,label:c.label,data:c.data||{},locked:true,pen:c.pen||null,tid:null});return true}
+  }
+  return xPlace12(c);
+};
+const xStart12=startWeek;
+startWeek=function(){
+  if(S){S.xBg=[];S.xWildHead=null;S.xCenaHead=null}
+  xStart12();
+  if(!S)return;
+  // emprego que já estava na agenda vai pro fundo
+  S.plan.forEach((p,i)=>{if(p&&p.type==='clt'){xToBg(p);S.plan[i]=null}});
+  xMaybeWild();
+  save();
+};
+function xBgCost(){let g=0,d=0;(S.xBg||[]).forEach(p=>{const c=costOf(p);g+=c.g||0;d+=c.d||0});return{g,d}}
+function xBicoNow(){if(S.clt)return X_BICO_LV[0];return X_BICO_LV[clamp(S.xBico|0,0,2)]}
+function xRest(){return 10+5*(S.noites||[]).filter(x=>!x).length+(S.xGear.ape?8:0)}
+const xFore12=forecast;
+forecast=function(){const f=xFore12();if(!S)return f;const b=xBicoNow(),bg=xBgCost();f.g+=b.g+bg.g;f.d=clamp(f.d-b.d+bg.d+xRest()-(S.xGear.band?0:0),0,100);if(S.xGear.band)f.g-=140;
+  if(bg.g||bg.d)f.notes.push(`Em segundo plano: ${(S.xBg||[]).map(p=>slotTitle(p).t).join(', ')}.`);return f};
+
+/* =========================================================
+   2. ESCADA DA CIDADE
+   ========================================================= */
+const X_TIERS=[{n:'bairro',mult:1},{n:'zona',mult:7},{n:'Rio',mult:30},{n:'Brasil',mult:120}];
+const X_TIER_NAMES=[null,
+  ['Kayla Prado','Nego Raiz','Banda Maré Cheia','MC Tainara','DJ Fumaça','Trio Ferro Velho','Lua Cadente','Grupo Pé no Chão','Rafa Sideral','Os Inquilinos','Bruna Vigília','Coletivo Laje'],
+  ['Marina Fogo','Jotapê do Morro','Orquestra de Garagem','MC Sereia','DJ Turbina','Samba de Sexta','Alice Neon','Pagode do Viaduto','Caio Marfim','Ruído Branco','Iza Coral','Bonde da Orla'],
+  ['Lia Monção','Kaio Prata','Banda Atlântico','MC Rainha','DJ Aurora','Roda Nacional','Duda Satélite','Grupo Raiz Forte','Theo Vento','Os Paralelos','Nanda Brisa','Trem Bala']];
+function xTierName(t){const g=PACK.district||'bairro';t=t??S.xTier;return t===0?`Top ${g}`:t===1?'Top da Zona':t===2?'Top Rio':'Top Brasil'}
+const xRank12=rankRows;
+rankRows=function(){
+  const rows=xRank12();if(!S||!S.xTier)return rows;const m=X_TIERS[S.xTier].mult,names=X_TIER_NAMES[S.xTier];
+  rows.forEach((r,i)=>{if(r.player)return;const k=(S.city||[]).findIndex(a=>a.id===r.id);r.monthly=Math.round(r.monthly*m*(0.85+((k*37)%30)/100));r.delta=Math.round(r.delta*m);if(names&&k>=0)r.name=names[k%names.length]});
+  return rows.sort((a,b)=>b.monthly-a.monthly||String(a.id).localeCompare(String(b.id)));
+};
+function xTierCheck(notes){
+  const rank=S.plei&&S.plei.rank;if(rank===1)S.xTierStreak++;else S.xTierStreak=0;
+  if(S.xTierStreak>=3&&S.xTier<3){S.xTier++;S.xTierStreak=0;S.xTierUp=S.week;const nm=xTierName();
+    notes.unshift(`Você subiu de patamar: agora disputa o ${nm}. Os números ali são outros.`);logChat('plei',false,`Seu perfil entrou no ${nm}. A concorrência agora é de gente que lota casa grande.`);xDiary(`Entrou no ${nm}.`);xImg(3);
+    if(typeof qToast==='function')setTimeout(()=>qToast({gold:true,icon:'trophy',title:'Subiu de patamar',text:`Agora você disputa o ${nm}.`,ms:6500}),900);
+    if(typeof updatePlei==='function'){const r=rankRows();S.plei.rank=r.findIndex(x=>x.player)+1}}
+}
+
+/* =========================================================
+   3. SORTE: LANÇAMENTO, CORINGAS, IMAGEM
+   ========================================================= */
+const xImg12=xImg;xImg=function(n){return xImg12(n*2)};
+const X_OUT={flop:{n:'Saiu sem barulho',c:'#8E84A8'},ok:{n:'Foi bem',c:'#36D2BF'},pegou:{n:'Pegou',c:'#FFCF4A'},estourou:{n:'Estourou',c:'#FF5C8A'}};
+function xRollRelease(t){
+  const q=(t.gancho*.32+t.identidade*.22+t.producao*.22+t.profundidade*.1+t.palco*.04)/100+(t.capa?.05:0)+Math.min(.12,(t.xPre||0)/600)+Math.min(.08,(t.hype||0)/1200)+(S.imagem-50)/500+(t.xBigClip?.1:0);
+  const r=q+(Math.random()-.5)*.5;return r<.28?'flop':r<.5?'ok':r<.68?'pegou':'estourou';
+}
+function xApplyRelease(t,L){
+  const o=t.xOutcome=xRollRelease(t);
+  if(o==='pegou'){addReach(1500+S.fas*6,{feed:2,pista:1,rua:1,sala:1},t);S.wk.fansDirect+=8;L.push(`"${t.nome}" pegou: os primeiros dias foram bem acima do normal.`)}
+  if(o==='estourou'){addReach(6000+S.fas*20,{feed:3,pista:2,rua:1,sala:1},t);S.wk.fansDirect+=25;xImg(3);sched('w_estouro2',1,{tid:t.id});L.push(`"${t.nome}" estourou. Tem gente que nunca ouviu falar de você cantando o refrão.`);xDiary(`"${t.nome}" estourou.`)}
+  if(o==='flop'){L.push(`"${t.nome}" saiu sem barulho. Acontece: nem toda música acha o público na primeira semana.`);t.xFlop=true}
+  if(t.xBigClip&&!t.xBigClipDone){t.xBigClipDone=true;addReach(8000+t.gancho*60,{feed:3,pista:1,sala:1},t);S.wk.fansDirect+=15;xImg(2);L.push(`O clipe de "${t.nome}" estreou junto com a música.`)}
+}
+// coringas: uma chance por semana
+const X_WILD=['w_repost','w_celular','w_chuva','w_vazou','w_novela','w_dm','w_luz','w_hater','w_curso','w_mic','w_festival','w_meme','w_royalties','w_gripe','w_vizinho','w_convite_feat'];
+function xPushInbox(id,data){const e=EV[id];if(!e)return;data=data||(e.mkData?e.mkData():{});S.seen[id]=S.week;if(e.onArrive)e.onArrive(data);const m={uid:'m'+(S.nextId++),id,data,ans:null,reply:null,myText:null};S.inbox.push(m);logChat(senderOf(m),false,e.text(data))}
+function xMaybeWild(){
+  if(S.week<3||S.week-S.xWildLast<2)return;if(Math.random()>.2)return;
+  const pool=X_WILD.filter(id=>EV[id]&&(!EV[id].cond||EV[id].cond())&&!(S.seen[id]&&S.week-S.seen[id]<12));if(!pool.length)return;
+  const id=pick(pool);S.xWildLast=S.week;xPushInbox(id);S.xWildHead=EV[id].head||null;
+}
+
+/* =========================================================
+   4. EQUIPAMENTO E INVESTIMENTOS
+   ========================================================= */
+const X_GEAR={
+  mic:{n:'Microfone condensador',p:450,s:'Gravação em casa sai bem melhor: +12 de produção e limite mais alto.'},
+  interface:{n:'Interface de áudio',p:650,s:'Grava e mixa em casa com menos ruído: +8 de produção.'},
+  ring:{n:'Celular bom e ring light',p:900,s:'Conteúdo e teaser alcançam 30% mais gente.'},
+  home:{n:'Tratamento acústico do quarto',p:1800,s:'Gravação em casa chega perto de estúdio.'},
+  note:{n:'Notebook novo',p:2200,s:'Mix à noite rende mais e a produção pode ir mais longe.'},
+  band:{n:'DJ ou banda fixa',p:140,semanal:true,s:'R$ 140 por semana: +8 de preparo de palco toda semana.'},
+  carro:{n:'Carro usado',p:4500,s:'Turnê sem custo de viagem e menos cansaço na estrada.'},
+  ape:{n:'Apê só seu',p:800,s:'Mudança R$ 800 e aluguel R$ 150 mais caro. Dorme melhor: +8 de energia por semana.'},
+};
+function xHomeCap(){return S.xGear.home?78:S.xGear.mic?67:55}
+function xHomeBonus(){return (S.xGear.mic?12:0)+(S.xGear.interface?8:0)+(S.xGear.home?6:0)}
+const xNights12=xResolveNights;
+xResolveNights=function(){
+  const before={};(S.noites||[]).forEach(n=>{if(n&&n.tid&&getT(n.tid))before[n.tid]=getT(n.tid).producao});
+  const L=xNights12();
+  (S.noites||[]).forEach(n=>{if(!n||!n.tid)return;const t=getT(n.tid);if(!t)return;
+    if(n.k==='gravar'&&xHomeBonus())t.producao=Math.max(t.producao,Math.min(xHomeCap(),(before[n.tid]??t.producao)+10+xHomeBonus()));
+    if(n.k==='mix'&&(S.xGear.note||S.xGear.interface))t.producao=Math.min(S.xGear.note?88:82,t.producao+(S.xGear.note?5:0)+(S.xGear.interface?4:0));
+    if(n.k==='teaser'&&S.xGear.ring)addReach(150+t.gancho*2,{feed:3},null);});
+  return L;
+};
+const xSlot12=modernSlot;
+modernSlot=function(i,p){
+  if(p&&p.type==='x_show_fora'&&S.xGear.carro){p.data={...p.data,custo:0}}
+  const r=xSlot12(i,p);if(!p)return r;
+  if(p.type==='gravar'&&p.opt==='casa'&&xHomeBonus()){const t=getT(p.tid)||S.tracks.filter(x=>!x.lancada&&x.letra>=60).sort((a,b)=>b.letra-a.letra)[0];if(t){t.producao=Math.min(xHomeCap()+5,t.producao+xHomeBonus());r.lines.push('O equipamento novo fez diferença na gravação.')}}
+  if(p.type==='conteudo'&&(S.xGear.ring||S.xGear.note)){addReach((S.xGear.ring?500:0)+(S.xGear.note?200:0),{feed:3,pista:1},p.tid?getT(p.tid):bestOwn())}
+  if(p.type==='x_show_fora'&&S.xGear.carro){S.disp=clamp(S.disp+10,0,100)}
+  return r;
+};
+
+/* =========================================================
+   8. ROTINA DA CENA DE CADA GÊNERO
+   ========================================================= */
+const X_BAT_OPP=['MC Faísca','Lord Vírgula','Dama Rima','Tiziu','MC Pressão','Nega Flow','Guto Navalha','Jaque Sete'];
+const X_CENA={
+  rap:{t:'Batalha do Farol',s:()=>`Chaveamento da quinta: ${['oitavas','quartas','semifinal','final'][S.xBat.fase]}. ${S.xBat.titulos?`Você já ganhou ${S.xBat.titulos} vez${S.xBat.titulos>1?'es':''}.`:''}`,
+    a:{n:'Entrar na roda',h:'−8 de energia · chance cresce com preparo e moral no Farol'},b:{n:'Assistir e gravar os destaques',h:'−3 de energia · conteúdo e moral'},
+    run(c,L){if(c==='b'){S.disp=clamp(S.disp-3,0,100);rep('farol',2);addReach(400,{rua:2,feed:2},null);L.push('Gravou as melhores rimas da roda e postou. A galera do Farol compartilhou.');return}
+      S.disp=clamp(S.disp-8,0,100);const opp=pick(X_BAT_OPP);const ph=['oitavas','quartas','semifinal','final'][S.xBat.fase];
+      const p=clamp(.42+S.preparo/400+(S.rep.farol||0)/300+(S.milestones.battle?.08:0)-S.xBat.fase*.07,.12,.85);
+      if(Math.random()<p){S.xBat.fase++;rep('farol',3);addReach(500+S.xBat.fase*300,{rua:3,feed:1},null);
+        if(S.xBat.fase>=4){S.xBat.fase=0;S.xBat.titulos++;money(150);S.wk.music+=150;S.wk.fansDirect+=14;xImg(2);S.flags.venceuBatalha=true;addReach(2500,{rua:3,feed:2},bestOwn());L.push(`Ganhou a final contra ${opp}. O Farol inteiro gritou seu nome. Prêmio: R$ 150.`);xDiary('Venceu a Batalha do Farol.');S.xCenaHead='Campeão do Farol'}
+        else L.push(`Passou da ${ph} contra ${opp}. Semana que vem tem a próxima fase.`)}
+      else{L.push(`Caiu na ${ph} contra ${opp}. ${S.xBat.fase?'O chaveamento recomeça.':'Faz parte, a roda é dura.'}`);S.xBat.fase=0;rep('farol',1)}}},
+  funk:{t:'Set do baile',s:()=>`O DJ Cadu monta o set de sábado. ${S.xSet.streak?`Sua música tocou ${S.xSet.streak} semana${S.xSet.streak>1?'s':''} seguida${S.xSet.streak>1?'s':''}.`:'Sua música ainda não entrou.'}`,
+    a:{n:'Mandar versão pro DJ',h:'precisa de música lançada · chance cresce com gancho e relação com o Cadu'},b:{n:'Colar no baile com a galera',h:'−6 de energia · relação e moral'},
+    run(c,L){if(c==='b'){S.disp=clamp(S.disp-6,0,100);rel('cadu',4);rep(Object.keys(SCENES)[0],2);L.push('Colou no baile, dançou, trocou ideia com o Cadu na cabine.');return}
+      const t=S.tracks.filter(x=>!x.cover&&x.lancada).sort((a,b)=>b.gancho-a.gancho)[0];if(!t){L.push('Não tinha música lançada pra mandar pro DJ.');return}
+      const p=clamp(.28+t.gancho/220+(S.rel.cadu||0)/300,.1,.85);
+      if(Math.random()<p){S.xSet.streak++;addReach(600+t.gancho*10,{pista:4,feed:1},t);
+        if(S.xSet.streak>=3){S.xSet.streak=0;S.xSet.hits++;S.wk.fansDirect+=15;addReach(4000,{pista:4,feed:2},t);xImg(2);L.push(`"${t.nome}" virou hit do baile: três semanas seguidas no set e a pista cantando sem precisar do microfone.`);xDiary(`"${t.nome}" virou hit do baile.`);S.xCenaHead=`"${t.nome}" é hit do baile`}
+        else{L.push(xPickVar('set',[`"${t.nome}" tocou no set do Cadu. A pista respondeu no refrão.`,`O Cadu soltou "${t.nome}" às duas da manhã e a pista explodiu.`,`"${t.nome}" entrou no set entre dois hits. Segurou bem.`]));S.xCenaHead=S.xSet.streak>=2?`"${t.nome}" tá no set do baile`:null}}
+      else{S.xSet.streak=0;L.push(`O Cadu ouviu "${t.nome}", mas deixou fora do set dessa semana.`)}}},
+  pagode:{t:'Roda de domingo',s:()=>`Humor do grupo: ${Math.round(S.xGrupo)} de 100. ${S.xGrupo>=75?'Tá todo mundo junto.':S.xGrupo<35?'O clima tá pesado.':'Clima normal.'}`,
+    a:{n:'Puxar autoral na roda',h:'mais fãs pro seu catálogo · o grupo às vezes torce o nariz'},b:{n:'Tocar o que a mesa pede',h:'+R$ 60 de caixinha · o grupo gosta'},
+    run(c,L){const t=bestOwn();
+      if(c==='b'){money(60);S.wk.music+=60;S.xGrupo=clamp(S.xGrupo+6,0,100);S.wk.fansDirect+=1;L.push('A roda tocou o que a mesa pediu. Caixinha cheia, grupo feliz.');}
+      else{const f=Math.round(1+(t?t.identidade:40)/25);S.wk.fansDirect+=f;S.xGrupo=clamp(S.xGrupo+(Math.random()<.5?-7:2),0,100);if(t)addReach(500+t.identidade*6,{rua:2,sala:2},t);L.push(xPickVar('roda'+(f>=3),f>=3?[`Puxou ${t?`"${t.nome}"`:'uma autoral'} no meio da roda. A mesa cantou junto.`,`${t?`"${t.nome}"`:'A autoral'} entrou na roda e ninguém pediu pra trocar.`,`Arriscou ${t?`"${t.nome}"`:'uma autoral'} e o Téo segurou no pandeiro. Funcionou.`]:[`Puxou ${t?`"${t.nome}"`:'uma autoral'} e teve gente pedindo samba conhecido.`,`A autoral não pegou na roda dessa vez.`,`${t?`"${t.nome}"`:'A autoral'} passou meio batida no meio da conversa.`]))}
+      if(S.xGrupo>=75)S.preparo=clamp(S.preparo+5,0,100);
+      if(S.xGrupo<30&&!S.flags.xRacha){S.flags.xRacha=true;L.push('A Duda chamou você num canto: o grupo tá cansado de ser banda de apoio. Vale cuidar disso.');rel('duda',-6)}}},
+  indie:{t:'Circuito',s:()=>`Atenção da crítica: ${Math.round(S.xCrit)} de 100. ${S.xCrit>=100?'Os selos pequenos já sabem quem você é.':''}`,
+    a:{n:'Mandar material pra blogs e rádios',h:'atenção da crítica sobe com a identidade das músicas'},b:{n:'Abrir show de banda amiga',h:'−10 de energia · público novo que escuta de fone'},
+    run(c,L){const t=bestOwn();
+      if(c==='b'){S.disp=clamp(S.disp-10,0,100);addReach(700,{sala:3,rua:1},t);S.wk.fansDirect+=2;S.xCrit=clamp(S.xCrit+4,0,120);L.push('Abriu o show da Nina. Meia hora, sala escura, gente prestando atenção de verdade.');}
+      else{const g=Math.round(5+(t?t.identidade:40)/9);S.xCrit=clamp(S.xCrit+g,0,120);addReach(300,{sala:2},t);L.push(xPickVar('crit'+(g>=11),g>=11?[`Mandou ${t?`"${t.nome}"`:'o material'} pra blogs e rádios pequenas. Dois responderam no mesmo dia.`,`Uma rádio universitária pediu ${t?`"${t.nome}"`:'sua música'} pro programa de sexta.`,`Um blog que você lê há anos escreveu dois parágrafos sobre ${t?`"${t.nome}"`:'você'}.`]:[`Mandou o material pra uma lista de blogs. Um respondeu com educação.`,`E-mails enviados. Silêncio por enquanto.`,`Um blog respondeu: "Ouvimos, guardamos pra pauta."`]))}
+      if(S.xCrit>=100&&!S.flags.xSeloIndie){S.flags.xSeloIndie=true;sched('w_selo_indie',1)}}},
+};
+
+/* =========================================================
+   ACERTO DA SEMANA
+   ========================================================= */
+const xBefore12=settleBeforeWeek;
+settleBeforeWeek=function(){
+  xBefore12();
+  const L=[],C=[];
+  // descanso de domingo e casa
+  S.disp=clamp(S.disp+xRest(),0,100);
+  // bico
+  const b=xBicoNow();if(b.g){money(b.g);S.disp=clamp(S.disp-b.d,0,100);const nm=X_BICO[genreId()]||'Bico';if(S.xBicoLast!==b.n)L.push(xPickVar('bico'+b.n,b.n==='Muito'?[`${nm}: pegou todos os turnos e levou ${brl(b.g)}.`,`Semana puxada no bico (${nm.toLowerCase()}): ${brl(b.g)} no bolso e as costas reclamando.`,`Dobrou turno no bico. ${brl(b.g)}, e a cabeça na música o tempo todo.`]:[`${nm}: fez uns turnos e levou ${brl(b.g)}.`,`Bico leve essa semana: ${brl(b.g)}.`,`Pegou só os turnos que dava. ${brl(b.g)} pra ajudar nas contas.`]))}
+  S.xBicoLast=b.n;
+  // compromissos em segundo plano
+  (S.xBg||[]).forEach(p=>{try{const r=resolveSlot(1,p);(r.lines||[]).forEach(x=>L.push(x))}catch(e){}});
+  // equipamento semanal
+  if(S.xGear.band){money(-140);S.wk.music-=140;S.preparo=clamp(S.preparo+8,0,100)}
+  // cena do gênero
+  const cfg=X_CENA[genreId()];if(cfg&&S.xCena&&S.xCena.pick){try{cfg.run(S.xCena.pick,C)}catch(e){}}
+  // lançamentos com sorte
+  S.tracks.filter(t=>!t.cover&&t.lancar&&!t.lancada&&!t.xOutcome).forEach(t=>xApplyRelease(t,L));
+  // repertório automático
+  S.plan.forEach(p=>{if(p&&p.type==='tocar'&&!p.data.set&&typeof autoSet==='function')autoSet(p.data)});
+  S.xBgLines=L;S.xCenaLines=C;
+};
+const X_KF=.45,X_KR=.55;
+const xAud12=modernAudience;
+modernAudience=function(){const f0=S.fas,r0={...S.rec};const out=xAud12();const df=S.fas-f0;if(df>0)S.fas=f0+df*X_KF;SEGS.forEach(k=>{const d=S.rec[k]-r0[k];if(d>0)S.rec[k]=r0[k]+d*X_KR});return out};
+
+/* ---------- relatório mais limpo ---------- */
+function xCleanReport(r){
+  let tired=0;
+  r.blocks.forEach(b=>{b.lines=b.lines.filter(l=>{if(l==='Você chegou no bagaço. Rendeu metade.'){tired++;return false}return true}).map(xVary)});
+  if(tired&&r.blocks[0])r.blocks[0].lines.unshift(xPickVar('cansaco',['Você passou a semana no bagaço: tudo rendeu menos.','Cansaço acumulado. O que você fez rendeu pela metade.','A energia tava no chão e isso apareceu em tudo.']));
+  r.blocks=r.blocks.filter(b=>b.lines.length);
+  const M=S.xNoteMem;
+  r.notes=r.notes.filter(n=>{
+    let m=n.match(/^Participação de produção nas faixas combinadas: R\$ ?([\d.,]+)/);if(m)return parseFloat(m[1].replace('.','').replace(',','.'))>=10;
+    m=n.match(/^Equipe: (R\$ ?[\d.,]+) de custos fixos/);if(m){if(M.equipe===m[1])return false;M.equipe=m[1];return true}
+    m=n.match(/^Direitos de execução das músicas registradas que você tocou: \+R\$ ?([\d.,]+)/);if(m){M.dir=(M.dir||0)+parseFloat(m[1].replace('.','').replace(',','.'));if(S.week%4===0){const v=M.dir;M.dir=0;return v>0}return false}
+    m=n.match(/^Custo de vida extra/);if(m){if(M.cv===n)return false;M.cv=n;return true}
+    return true}).map(n=>n.startsWith('Direitos de execução')&&M.dir===0?n:n);
+  if(S.week%4===0){const i=r.notes.findIndex(n=>n.startsWith('Direitos de execução'));if(i>=0)r.notes[i]=`Direitos de execução do último mês: entrou o que suas músicas registradas renderam nos shows.`}
+}
+const xConfirm12=confirmWeek;
+confirmWeek=function(){
+  const go=S&&!S.ended&&!S.report;xConfirm12();
+  if(!go||!S.report)return;const r=S.report;
+  if(S.xBgLines&&S.xBgLines.length)r.blocks.push({t:'Também nesta semana',lines:S.xBgLines});
+  if(S.xCenaLines&&S.xCenaLines.length)r.blocks.push({t:X_CENA[genreId()]?X_CENA[genreId()].t:'Na cena',lines:S.xCenaLines,cena:true});
+  xCleanReport(r);xTierCheck(r.notes);
+  S.xBgLines=[];S.xCenaLines=[];save();Q.modalKey='';render();
+};
+
+/* ---------- manchete com o fato da semana ---------- */
+const xHead12=weekHeadline;
+weekHeadline=function(r){
+  try{
+    if(S.xTierUp===r.week)return `Você entrou no ${xTierName()}`;
+    const rel=S.tracks.filter(t=>!t.cover&&t.lancada&&t.semanaLanc===r.week);
+    if(rel.length){const t=rel[0];return t.xOutcome==='estourou'?`"${t.nome}" estourou`:t.xOutcome==='pegou'?`"${t.nome}" pegou`:t.xOutcome==='flop'?`"${t.nome}" saiu sem barulho`:`"${t.nome}" tá na rua`}
+    if(S.xWildHead)return S.xWildHead;
+    const nota=Math.max(0,...r.blocks.flatMap(b=>b.lines).map(l=>{const m=l.match(/Nota do show: (\d+)/);return m?+m[1]:0}));
+    if(nota>=75)return xPickVar('h_show',['A casa cantou junto','Noite de palco daquelas','Saiu do palco suado e feliz']);
+    if(nota&&nota<45)return xPickVar('h_showruim',['Show pra esquecer','Nem todo show é bom','O palco cobrou']);
+    if(r.d.fas>=25)return xPickVar('h_fas',['Gente nova chegando pra ficar','Semana de crescer','Seu nome tá rodando']);
+    if(S.grana<0)return xPickVar('h_red',['Semana no vermelho','A conta não fechou','Mês apertado']);
+    if(S.xCenaHead)return S.xCenaHead;
+  }catch(e){}
+  return xHead12(r);
+};
+
+</script>
+<script>
+/* =========================================================
+   O CORRE · VERSÃO 12 (parte 2): conteúdo, show jogável e telas
+   ========================================================= */
+
+/* ---------- contatos novos ---------- */
+const X12_OUTROS={
+  estrela:{nome:'Lia Monção',sub:'cantora, 2 milhões de seguidores',cor:'#C2457A',ini:'LM'},
+  produtor:{nome:'Zé Kalunga',sub:'produtor musical',cor:'#2E6B5E',ini:'ZK'},
+  novela:{nome:'Produtora Lumen',sub:'trilha sonora',cor:'#3D3D6B',ini:'PL'},
+  quebramar:{nome:'Festival Quebra-Mar',sub:'produção',cor:'#B5562B',ini:'QM'},
+  vizinha:{nome:'Dona Célia',sub:'vizinha do lado',cor:'#7A6A55',ini:'DC'},
+  react:{nome:'Canal Ouvido Crítico',sub:'reacts de música',cor:'#555',ini:'OC'},
+  selo:{nome:'Selo Farol Baixo',sub:'selo independente',cor:'#2F4F6F',ini:'FB'},
+};
+const xAttach12=attachWorldContent;attachWorldContent=function(){xAttach12();OUTROS={...OUTROS,...X12_OUTROS}};
+
+/* ---------- coringas e desdobramentos ---------- */
+function xRelTrack(){const ts=S.tracks.filter(t=>!t.cover&&t.lancada);return ts.length?ts.slice().sort((a,b)=>(b.plays||0)-(a.plays||0))[0]:null}
+function xUnrel(min=0){return S.tracks.filter(t=>!t.cover&&!t.lancada&&t.letra>=min).sort((a,b)=>b.letra-a.letra)[0]||null}
+Object.assign(WORLD_EVENTS,{
+  w_repost:{from:'estrela',head:'Uma famosa repostou você',cond:()=>!!xRelTrack(),mkData:()=>({tid:xRelTrack().id}),
+    text:d=>`Oi! Ouvi "${getT(d.tid)?.nome}" num vídeo e postei nos meus stories. Tá rodando aqui. Bora fazer alguma coisa junto qualquer dia?`,
+    onArrive:d=>{const t=getT(d.tid);addReach(8000+S.fas*10,{feed:4,pista:1},t)},
+    choices:d=>[{l:'Agradecer em público e marcar ela',fx:()=>{S.wk.fansDirect+=10;xImg(2);return 'Que fofo! Vou repostar.'}},
+      {l:'Mandar uma demo inédita pra ela',hint:'Pode virar um feat. Ou não.',fx:()=>{if(Math.random()<.5&&xUnrel(30)){sched('w_feat_estrela',2,{tid:xUnrel(30).id});return 'Vou ouvir com calma e te falo.'}return 'Vou ouvir com calma e te falo.'}},
+      {l:'Responder só no privado',ignore:true,fx:()=>'De nada! Sucesso aí.'}]},
+  w_feat_estrela:{from:'estrela',head:'Feat inesperado',text:d=>`Ouvi a demo de "${getT(d.tid)?.nome}". Quero gravar uma parte. Não precisa pagar nada, só quero o crédito certinho.`,
+    choices:d=>[{l:'Fechar o feat',fx:()=>{const t=getT(d.tid);if(t&&!t.lancada){t.feat='Lia Monção';t.gancho=clamp(t.gancho+10,0,100);t.hype=(t.hype||0)+40;fixT(t);xImg(2);xDiary(`Gravou feat com Lia Monção em "${t.nome}".`)}return 'Combinado. Te mando minha voz essa semana.'}},
+      {l:'Agradecer e seguir sozinho nessa',ignore:true,fx:()=>'Tranquilo. Fica pra próxima.'}]},
+  w_celular:{from:'cena',head:'Roubaram seu celular',cond:()=>S.week>=4,text:()=>`Roubaram seu celular no ônibus. As demos que não tinham backup foram junto.`,
+    onArrive:d=>{const t=xUnrel(1);if(t&&t.sess<1){t.letra=Math.max(0,t.letra-25);d.tid=t.id}},
+    choices:()=>[{l:'Comprar um celular novo (R$ 700)',need:()=>S.grana<700?'Falta grana':null,fx:()=>{money(-700);return null}},
+      {l:'Pegar o celular velho da sua mãe',fx:()=>{rel('mae',4);return{who:'mae',txt:'Tá na gaveta. A tela tá rachada mas funciona.'}}},
+      {l:'Ficar uma semana sem celular',ignore:true,fx:()=>{S.disp=clamp(S.disp+10,0,100);return null}}]},
+  w_chuva:{from:'cena',head:'Temporal na noite do show',cond:()=>S.plan.some(p=>p&&p.type==='tocar'),text:()=>`Previsão de temporal pro sábado. A casa vai manter o show, mas metade do público não vai sair de casa.`,
+    choices:()=>[{l:'Fazer o show mesmo assim',fx:()=>{S.flags.xChuva=S.week;return null}},
+      {l:'Fazer e transmitir ao vivo pelo celular',hint:'Menos gente na casa, mais gente vendo',fx:()=>{S.flags.xChuva=S.week;addReach(2500,{feed:3,rua:1},bestOwn());return null}},
+      {l:'Pedir pra remarcar',ignore:true,fx:()=>{const i=S.plan.findIndex(p=>p&&p.type==='tocar');if(i>=0){const p=S.plan[i];S.plan[i]=null;commitLater({off:2,slot:2,type:'tocar',label:p.label||'Show remarcado',data:p.data,pen:null})}return null}}]},
+  w_vazou:{from:'feed',head:'Sua música vazou',cond:()=>!!xUnrel(60),mkData:()=>({tid:xUnrel(60).id}),text:d=>`Alguém vazou "${getT(d.tid)?.nome}" num grupo de zap. Já tem gente postando trecho.`,
+    choices:d=>[{l:'Lançar logo, do jeito que tá',fx:()=>{const t=getT(d.tid);if(t&&!t.lancada){if(t.sess<1){t.sess=1;t.cru=true}t.letra=Math.max(t.letra,100);t.lancar=true;t.releaseWeek=null;t.hype=(t.hype||0)+40}return null}},
+      {l:'Abrir o pré-save e aproveitar o barulho',fx:()=>{const t=getT(d.tid);if(t&&!t.lancada){t.xPresave=true;t.xPre=(t.xPre||0)+60;if(!t.releaseWeek&&!t.lancar)t.releaseWeek=Math.min(26,S.week+2)}return null}},
+      {l:'Desmentir e segurar',ignore:true,fx:()=>{const t=getT(d.tid);if(t)t.hype=(t.hype||0)+15;xImg(-2);return null}}]},
+  w_novela:{from:'novela',head:'Sua música na novela',cond:()=>!!xRelTrack()&&S.fas>=40,mkData:()=>({tid:xRelTrack().id}),text:d=>`A gente faz trilha pra novela das nove. Queremos "${getT(d.tid)?.nome}" numa cena. Pagamos R$ 1.500 pela licença.`,
+    choices:d=>[{l:'Fechar por R$ 1.500',fx:()=>{money(1500);S.wk.music+=1500;addReach(15000,{sala:2,feed:2,pista:1},getT(d.tid));xDiary(`"${getT(d.tid)?.nome}" tocou na novela.`);return 'Fechado. Vai ao ar em duas semanas.'}},
+      {l:'Pedir R$ 2.500',hint:'Eles podem ir atrás de outra música',fx:()=>{if(Math.random()<.45){money(2500);S.wk.music+=2500;addReach(15000,{sala:2,feed:2,pista:1},getT(d.tid));xDiary(`"${getT(d.tid)?.nome}" tocou na novela.`);return 'Tá bom, fechamos em R$ 2.500.'}return 'Não conseguimos esse valor. Fechamos com outra música.'}},
+      {l:'Não quero minha música em novela',ignore:true,fx:()=>{xImg(1);return 'Entendemos.'}}]},
+  w_dm:{from:'produtor',head:'Um produtor grande te chamou',text:()=>`Zé Kalunga aqui. Vi um vídeo seu. Manda o que você tem de mais forte, tô montando meu próximo projeto.`,
+    choices:()=>[{l:'Mandar a melhor demo',fx:()=>{const t=xUnrel(60)||xUnrel(0);if(t&&Math.random()<.5){t.producao=Math.min(92,t.producao+25);t.sess=Math.max(1,t.sess+1);fixT(t);xDiary(`Zé Kalunga mexeu em "${t.nome}".`);return `Mexi na tua "${t.nome}" no fim de semana. Te mandei o arquivo. Não precisa me pagar, só me chama quando lançar.`}return 'Ouvi. Ainda não é o que eu procuro, mas continua.'}},
+      {l:'Mandar tudo que eu tenho',fx:()=>{const t=xUnrel(0);if(t&&Math.random()<.3){t.producao=Math.min(92,t.producao+25);t.sess=Math.max(1,t.sess+1);fixT(t);return `No meio de tanta coisa achei "${t.nome}". Dei um trato nela.`}return 'Muita coisa. Quando tiver uma que você ache a melhor, me manda só ela.'}},
+      {l:'Responder depois',ignore:true,fx:()=>null}]},
+  w_luz:{from:'cena',head:'Apagão no bairro',text:()=>`Apagão no bairro: a luz foi e voltou a semana inteira.`,onArrive:()=>{S.disp=clamp(S.disp-6,0,100)},
+    choices:()=>[{l:'Escrever no caderno à luz de vela',fx:()=>{const t=S.tracks.find(t=>!t.cover&&!t.lancada&&t.letra<100);if(t){t.letra=Math.min(100,t.letra+12);t.profundidade=clamp(t.profundidade+3,0,100);fixT(t)}return null}},
+      {l:'Ir dormir na casa da sua mãe',ignore:true,fx:()=>{rel('mae',4);S.disp=clamp(S.disp+6,0,100);return null}}]},
+  w_hater:{from:'react',head:'Fizeram react da sua música',cond:()=>!!xRelTrack(),mkData:()=>({tid:xRelTrack().id}),text:d=>`Fiz um react de "${getT(d.tid)?.nome}". Spoiler: não gostei. O vídeo tá com 80 mil views.`,
+    onArrive:d=>addReach(3000,{feed:4},getT(d.tid)),
+    choices:()=>[{l:'Responder com humor',fx:()=>{if(Math.random()<.6){S.wk.fansDirect+=10;xImg(2);return 'Tá, essa foi boa. Respeito.'}xImg(-3);return 'Achou ruim? Faz melhor.'}},
+      {l:'Fazer react do react ao vivo',hint:'Muito alcance, risco de virar treta',fx:()=>{addReach(4000,{feed:4},bestOwn());xImg(Math.random()<.5?2:-3);return null}},
+      {l:'Ignorar',ignore:true,fx:()=>{xImg(1);return null}}]},
+  w_curso:{from:'cena',head:'Você ganhou um curso',text:()=>`Você ganhou o sorteio de um curso online de produção musical. São dois fins de semana.`,
+    choices:()=>[{l:'Fazer o curso',fx:()=>{S.xGear.curso=true;S.disp=clamp(S.disp-8,0,100);xDiary('Fez um curso de produção musical.');return null}},
+      {l:'Passar a vaga pro Dani',ignore:true,fx:()=>{rel('dani',8);return{who:'dani',txt:'Valeu demais. Vou fazer e te ensino depois.'}}}]},
+  w_mic:{from:'cena',head:'O microfone morreu',cond:()=>!!S.xGear.mic,text:()=>`Seu microfone deu chiado e morreu no meio de uma gravação.`,onArrive:()=>{delete S.xGear.mic},
+    choices:()=>[{l:'Comprar outro (R$ 450)',need:()=>S.grana<450?'Falta grana':null,fx:()=>{money(-450);S.xGear.mic=true;return null}},
+      {l:'Voltar pro fone de ouvido',ignore:true,fx:()=>null}]},
+  w_festival:{from:'quebramar',head:'Convite de festival',cond:()=>S.fas>=60&&S.week<=22,text:()=>`Caiu uma atração do Festival Quebra-Mar. Sobrou a vaga do fim de tarde, semana que vem. Cachê de R$ 900.`,
+    choices:()=>[{l:'Topar',hint:'Fim da próxima semana',fx:()=>{commitLater({off:1,slot:2,type:'x_show_fora',label:'Festival Quebra-Mar',data:{city:'Rio de Janeiro',venue:'Festival Quebra-Mar',cache:900,custo:60,cap:900},pen:{txt:'A produção do festival não vai te chamar de novo tão cedo.'}});return 'Fechado! A gente manda o horário da passagem de som.'}},
+      {l:'Não dá dessa vez',ignore:true,fx:()=>'Tranquilo, fica pra próxima edição.'}]},
+  w_meme:{from:'dani',head:'Viraram sua música em meme',cond:()=>!!xRelTrack(),mkData:()=>({tid:xRelTrack().id}),text:d=>`Mano, fizeram um meme com "${getT(d.tid)?.nome}". Tá em tudo que é grupo.`,
+    onArrive:d=>{const t=getT(d.tid);addReach(5000+(t?t.gancho*40:0),{feed:5},t)},
+    choices:()=>[{l:'Entrar na brincadeira e postar também',fx:()=>{S.wk.fansDirect+=6;return 'Aí sim, abraça o caos.'}},{l:'Fingir que não viu',ignore:true,fx:()=>'Tu é muito sério, hein.'}]},
+  w_royalties:{from:'dist',head:'Dinheiro esquecido',text:()=>`Revisão de relatórios: encontramos R$ 300 em royalties que não tinham sido pagos. O valor já está na sua conta.`,onArrive:()=>{money(300);S.wk.music+=300},choices:()=>[{l:'Ok',fx:()=>null}]},
+  w_gripe:{from:'mae',head:'Gripou',text:()=>`Tu tá com voz de taquara rachada no áudio. Toma o chá que eu deixei e descansa.`,onArrive:()=>{S.disp=clamp(S.disp-15,0,100)},
+    choices:()=>[{l:'Ficar de molho dois dias',fx:()=>{S.disp=clamp(S.disp+12,0,100);rel('mae',3);return 'Isso. E toma o chá.'}},{l:'Seguir no corre assim mesmo',ignore:true,fx:()=>{S.preparo=clamp(S.preparo-5,0,100);return 'Teimosia é de família.'}}]},
+  w_vizinho:{from:'vizinha',head:'Reclamação do barulho',cond:()=>(S.noites||[]).some(Boolean)||S.week>=6,text:()=>`Boa noite. O barulho de madrugada não dá mais. Da próxima vez eu chamo o síndico.`,
+    choices:()=>[{l:'Pedir desculpa e levar um bolo',fx:()=>{money(-30);return 'Aceito o bolo. E o silêncio também.'}},
+      {l:'Comprar espuma pra parede (R$ 250)',need:()=>S.grana<250?'Falta grana':null,fx:()=>{money(-250);S.xGear.espuma=true;return 'Melhorou bastante, obrigada.'}},
+      {l:'Continuar gravando de madrugada',ignore:true,fx:()=>{if(Math.random()<.4)sched('w_sindico',2);return null}}]},
+  w_sindico:{from:'vizinha',text:()=>`O síndico mandou a multa de barulho: R$ 200. Eu avisei.`,onArrive:()=>money(-200),choices:()=>[{l:'Pagar',fx:()=>null}]},
+  w_convite_feat:{from:'rival',head:'O rival te chamou',cond:()=>S.week>=5,text:()=>`Vou lançar single novo e queria você numa parte. Esquece as tretas por uma música?`,
+    choices:()=>[{l:'Topar o feat',hint:'Meio da próxima semana',fx:()=>{commitLater({off:1,slot:1,type:'rival_feat',label:'Feat com '+OUTROS.rival.nome,data:{},pen:{txt:'O rival lançou sem você.'}});return 'Fechou. Te mando o beat.'}},{l:'Não',ignore:true,fx:()=>'Sem problema.'}]},
+  w_estouro2:{from:'plei',text:d=>`"${getT(d.tid)?.nome}" entrou na playlist Destaques da semana. E três casas mandaram mensagem querendo data.`,onArrive:d=>addReach(4000,{feed:2,pista:2,rua:1,sala:1},getT(d.tid)),
+    choices:d=>[{l:'Marcar um show grande',hint:'Daqui a duas semanas',fx:()=>{commitLater({off:2,slot:2,type:'x_show_fora',label:'Show grande no embalo',data:{city:'Rio de Janeiro',venue:'Circo Voador do bairro',cache:1300,custo:80,cap:700},pen:{txt:'A casa ficou chateada.'}});return null}},
+      {l:'Aproveitar e lançar outra logo',fx:()=>{const t=xUnrel(30);if(t)t.hype=(t.hype||0)+40;return null}}]},
+  w_video_show:{from:'feed',text:d=>`O vídeo do show tá rodando: ${d.momento}`,onArrive:d=>addReach(d.big?4000:1500,{feed:3,rua:1,pista:1},bestOwn()),choices:()=>[{l:'Repostar',fx:()=>{S.wk.fansDirect+=3;return null}}]},
+  w_selo_indie:{from:'selo',head:'Um selo quer você',text:()=>`Queremos lançar seu próximo trabalho. Adiantamento de R$ 1.500, a gente cuida de distribuição e imprensa e fica com 30% do streaming dele.`,
+    choices:()=>[{l:'Assinar',fx:()=>{money(1500);S.xGear.selo=true;xDiary('Assinou com o Selo Farol Baixo.');return 'Bem-vindo à casa.'}},{l:'Seguir independente',ignore:true,fx:()=>{xImg(1);return 'Respeitamos. A porta fica aberta.'}}]},
+});
+
+/* ---------- 16 situações de composição por gênero ---------- */
+function xScene(t,opts){const m={identidade:'i',gancho:'g',profundidade:'p',palco:'v'};return{t,o:opts.map(([l,nome,attr])=>({l,nome,a:{[m[attr]]:14,i:attr==='identidade'?16:4},ap:attr==='gancho'?{feed:2,pista:2}:attr==='palco'?{rua:2,pista:2}:{sala:2,rua:2},es:attr==='gancho'?{feed:1}:attr==='profundidade'?{sala:1}:{rua:1}}))}}
+const X_SCENES={
+ rap:[
+  ['O Bigode mandou um beat às três da manhã com um áudio: "Esse é teu. Não deixa ninguém pegar."',['Escrever na hora, no escuro','Três da Manhã','identidade'],['Guardar o beat pra música certa','Na Gaveta','profundidade'],['Fazer um refrão de gritar junto','Grita','gancho']],
+  ['No ônibus lotado, um moleque rima baixinho uma música que não é sua.',['Escrever sobre quem rima pra não pirar','Baixinho','profundidade'],['Puxar o ritmo da catraca pro flow','Catraca','gancho'],['Pensar no que você cantaria no lugar dele','No Lugar Dele','identidade']],
+  ['O Kaká comentou depois da batalha: "Tu rima bem, mas ainda rima pros outros."',['Escrever só pra você','Pra Mim','identidade'],['Responder com punchline','Recado','palco'],['Contar de onde veio sua primeira rima','Primeira','profundidade']],
+  ['Sua mãe achou um caderno seu de quando você tinha 14 anos.',['Reaproveitar um verso antigo','Caderno de 14','identidade'],['Escrever uma conversa com quem você era','Eu de Antes','profundidade'],['Transformar o mico em refrão','Vergonha Alheia','gancho']]],
+ funk:[
+  ['A Bia avisou: "Sábado o baile é aniversário da comunidade. Quero uma música que o bairro inteiro cante."',['Fazer um refrão com o nome do bairro','Alto da Antena','gancho'],['Lembrar dos bailes de quando você era criança','Primeiro Baile','profundidade'],['Puxar uma resposta pro público','Responde Aí','palco']],
+  ['O Léo filmou a galera dançando sua música do jeito errado. Ficou melhor que o certo.',['Mudar a música pro passo novo','Passo Errado','gancho'],['Escrever sobre quem dança pra esquecer','Pra Esquecer','profundidade'],['Criar uma parte só pra dança','Solta','palco']],
+  ['A Nalú mandou uma letra pela metade: "Tô travada. Termina pra mim?"',['Terminar do jeito dela','Metade Dela','palco'],['Virar um diálogo entre vocês','Ida e Volta','gancho'],['Pegar só uma frase e fazer a sua','Uma Frase','identidade']],
+  ['O grave do paredão do vizinho atravessa a parede às duas da manhã.',['Fazer a música no tempo do grave dele','Parede Fina','gancho'],['Escrever sobre não conseguir dormir','Insônia','profundidade'],['Gravar a voz com o grave vazando','Vazou','identidade']],
+  ['Uma menina comentou no seu vídeo: "Essa é a única música que meu pai deixa tocar no carro."',['Fazer uma versão que todo mundo possa ouvir','Pode Tocar','gancho'],['Escrever sobre família e baile','Domingo em Casa','profundidade'],['Manter sua linguagem e não suavizar','Do Meu Jeito Mesmo','identidade']],
+  ['O Cadu: "Funk bom acaba antes da pista cansar. A tua tem quatro minutos."',['Cortar pra dois minutos e meio','Curta','gancho'],['Defender a música longa','Sem Pressa de Acabar','identidade'],['Fazer uma versão pro baile e outra pro fone','Duas Versões','profundidade']],
+  ['Faltou luz no meio do baile e a pista continuou cantando no escuro.',['Escrever sobre aquele minuto','Sem Luz','profundidade'],['Fazer um refrão que funciona sem som','No Gogó','palco'],['Contar o que é ser do Alto da Antena','Daqui','identidade']],
+  ['Seu primo voltou de São Paulo dizendo que lá o funk é outro.',['Misturar o que ele trouxe','Ponte Aérea','gancho'],['Escrever sobre quem foi embora','Quem Saiu','profundidade'],['Reforçar o som carioca','Sotaque','identidade']]],
+ pagode:[
+  ['Na roda de domingo, a Duda puxou um tom que ninguém esperava.',['Escrever em cima do tom da Duda','Tom da Duda','palco'],['Fazer um samba triste no meio da festa','Meio da Festa','profundidade'],['Achar um refrão pra mesa responder','Responde a Mesa','gancho']],
+  ['Um senhor na roda pediu uma música sobre a esposa que já se foi.',['Escrever pra ele','Pra Dona Lurdes','profundidade'],['Fazer uma homenagem alegre','Ela Gostava de Dançar','gancho'],['Lembrar da sua avó','Vó','identidade']],
+  ['O Téo: "Pagode bom tem uma parte em que o pandeiro fala sozinho."',['Abrir espaço pro pandeiro','Pandeiro Fala','palco'],['Escrever uma letra curta e precisa','Pouca Palavra','gancho'],['Fazer a música crescer devagar','Devagarinho','profundidade']],
+  ['Te mandaram o vídeo de um casal dançando sua música no casamento.',['Escrever uma de amor sem vergonha','Sem Vergonha','gancho'],['Escrever sobre o depois do casamento','Segunda-feira','profundidade'],['Contar como seus pais se conheceram','Como Começou','identidade']],
+  ['O Mauro Reis: "Teu samba é bonito, mas tá com medo de ser simples."',['Simplificar até sobrar o essencial','Simples Assim','gancho'],['Manter os acordes difíceis','Dissonante','identidade'],['Escrever sobre ter medo de ser simples','Medo Bobo','profundidade']],
+  ['A cerveja acabou na roda e ninguém foi embora.',['Fazer um samba sobre isso','Acabou a Gelada','gancho'],['Escrever sobre a amizade que segura a roda','Ninguém Saiu','profundidade'],['Criar um partido-alto pra improvisar','Partido da Saideira','palco']],
+  ['Choveu no Quintal da Ponte e a roda foi pra debaixo da lona.',['Escrever sobre a lona apertada','Debaixo da Lona','palco'],['Fazer um samba de chuva e saudade','Chuva Fina','profundidade'],['Puxar um refrão que todo mundo já sabe','Todo Mundo Sabe','gancho']],
+  ['Sua mãe cantarolou um samba antigo lavando a louça.',['Fazer uma resposta àquele samba','Resposta','identidade'],['Escrever sobre a cozinha de casa','Cozinha','profundidade'],['Trazer o samba antigo pro seu jeito','Novo de Novo','gancho']]],
+ indie:[
+  ['O Tomás deixou o microfone ligado no intervalo e gravou vocês conversando.',['Usar a conversa na música','Intervalo','identidade'],['Escrever sobre o que ninguém falou','Não Dito','profundidade'],['Transformar uma frase em refrão','Gravando','gancho']],
+  ['O Vicente escreveu: "Mais uma banda que soa como todo mundo da cena."',['Fazer a música mais estranha que der','Fora da Cena','identidade'],['Escrever sobre a crítica sem citar ninguém','Resenha','profundidade'],['Provar com um refrão que gruda','Gruda','gancho']],
+  ['A Nina deixou um pedal na sua casa e foi viajar.',['Compor só com o pedal dela','Emprestado','identidade'],['Escrever sobre quem viaja e quem fica','Quem Fica','profundidade'],['Fazer uma música pra tocar alto','Volume Dez','palco']],
+  ['Último trem da noite, vagão vazio, alguém tocando violão.',['Escrever sobre o vagão','Último Vagão','profundidade'],['Puxar a melodia que você ouviu','Melodia Alheia','gancho'],['Gravar a ideia no celular ali mesmo','Nota de Voz','identidade']],
+  ['A Cora: "Pra tocar no Teatro do Cais, a música tem que caber no silêncio."',['Fazer uma música quase sussurrada','Quase Nada','profundidade'],['Escrever um final que explode','Explode','palco'],['Deixar o refrão sem letra','Sem Palavra','gancho']],
+  ['Você achou uma fita cassete do seu pai numa caixa.',['Samplear um trecho da fita','Fita do Pai','identidade'],['Escrever sobre o que ele ouvia','Lado B','profundidade'],['Fazer uma versão daquele som','Regravação','gancho']],
+  ['Na loja de discos, um cliente pergunta se você tem banda.',['Escrever sobre essa pergunta','Você Tem Banda','identidade'],['Fazer uma música curta e direta','Dois Minutos','gancho'],['Escrever sobre a vida atrás do balcão','Atrás do Balcão','profundidade']],
+  ['A sala de ensaio alagou e vocês tocaram com os pés na água.',['Escrever sobre aquele ensaio','Pé na Água','palco'],['Fazer uma música sobre a cidade que alaga','Enchente','profundidade'],['Puxar o riff que ficou na cabeça','Riff Molhado','gancho']]]};
+function xAddScenes(){for(const [g,list] of Object.entries(X_SCENES)){const p=GENRE_PACKS[g];if(!p||p.__xScenes)continue;p.__xScenes=true;list.forEach(([t,...o])=>p.ideas.push(xScene(t,o)))}}
+const xAct12=activateGenre;activateGenre=function(id){const r=xAct12(id);xAddScenes();xWrapGender();return r};
+
+/* ---------- show jogável ---------- */
+function xShowTracks(d){const ids=(typeof readSet==='function'?readSet(d):[]).filter(Boolean);return ids.map(getT).filter(t=>t&&!t.cover)}
+function xLiveSteps(d){
+  const ts=xShowTracks(d);const rel=ts.filter(t=>t.lancada).sort((a,b)=>(b.plays||0)-(a.plays||0));const hit=rel[0]||ts[0];const nova=ts.filter(t=>!t.lancada)[0]||ts.slice().sort((a,b)=>(b.semanaLanc||0)-(a.semanaLanc||0))[0];
+  return[
+    {t:'Primeira música. A casa ainda tá conversando, o copo na mão.',o:[{k:'hit',l:hit?`Abrir com "${hit.nome}"`:'Abrir com a mais conhecida',h:'a que o público já conhece'},{k:'nova',l:nova?`Abrir com "${nova.nome}"`:'Abrir com a mais nova',h:'arriscar a novidade'},{k:'conversa',l:'Falar com o público antes de tocar',h:'quem você é pesa aqui'}]},
+    {t:'Meio do show. O público esfriou e tem gente olhando o celular.',o:[{k:'refrao',l:'Puxar o refrão mais forte',h:'depende do gancho das músicas'},{k:'historia',l:'Parar e contar a história da próxima',h:'depende da profundidade'},{k:'palco',l:'Chamar alguém da plateia pro palco',h:'pode dar muito certo ou muito errado'}]},
+    {t:'Acabou o set. Lá do fundo, pedem mais uma.',o:[{k:'bis',l:'Bis com a mais pedida',h:'seguro'},{k:'sair',l:'Sair por cima, sem bis',h:'deixa querendo mais'},{k:'inedita',l:'Tocar uma inédita no bis',h:'cria expectativa pro lançamento'}]}];
+}
+const xShow12=modernShow;
+modernShow=function(d){
+  const before=S.wk.fansDirect;const lines=xShow12(d);
+  if(S.flags.xChuva===S.week){const g=S.wk.fansDirect-before;if(g>0)S.wk.fansDirect-=Math.round(g*.4);lines.push('A chuva segurou metade do público em casa.')}
+  const ch=d.xLive;if(!Array.isArray(ch)||ch.length<3)return lines;
+  const ts=xShowTracks(d);const avg=k=>ts.length?ts.reduce((s,t)=>s+t[k],0)/ts.length:40;const mx=k=>ts.length?Math.max(...ts.map(t=>t[k])):40;
+  const rel=ts.filter(t=>t.lancada).sort((a,b)=>(b.plays||0)-(a.plays||0));const hit=rel[0];const nova=ts.find(t=>!t.lancada);
+  let f=0;const L=[];let best=null,big=false;
+  if(ch[0]==='hit'){if(hit){f+=4+Math.min(6,(hit.plays||0)/400);L.push(`Abriu com "${hit.nome}" e a frente do palco cantou desde o primeiro verso.`);best=`a abertura com "${hit.nome}", a casa cantando junto`}else{f+=1;L.push('Abriu com a mais conhecida, mas ninguém ali conhecia ainda.')}}
+  if(ch[0]==='nova'){const t=nova||ts.at(-1);if(t&&t.gancho>=55){f+=6;t.hype=(t.hype||0)+20;L.push(`Abriu com "${t.nome}" e o refrão grudou na hora. Teve gente perguntando o nome no final.`);best=`a primeira vez de "${t.nome}" ao vivo`}else{f+=1;L.push('Abriu com a música nova e a casa demorou a entrar.')}}
+  if(ch[0]==='conversa'){const i=avg('identidade');f+=i>=55?5:2;L.push(i>=55?'Contou de onde vem antes de tocar. A sala parou pra ouvir.':'Falou um pouco antes de tocar. Metade ouviu, metade pediu música.')}
+  if(ch[1]==='refrao'){const g=mx('gancho');f+=g>=60?6:2;L.push(g>=60?'Puxou o refrão e a casa voltou inteira.':'O refrão não segurou como você esperava.')}
+  if(ch[1]==='historia'){const p=avg('profundidade');f+=p>=50?6:0;if(p>=50){addReach(600,{sala:3},bestOwn());L.push('Contou a história da próxima música. Teve gente chorando no canto.');best=best||'a história contada antes da música'}else L.push('A história ficou longa e a conversa do bar voltou.')}
+  if(ch[1]==='palco'){if(Math.random()<.5){f+=9;big=true;L.push('Chamou uma menina da plateia e ela sabia a letra inteira. Momento do show.');best='a menina da plateia cantando a letra inteira'}else{f-=2;L.push('Chamou alguém pro palco e a pessoa travou. Ficou um silêncio constrangedor.')}}
+  if(ch[2]==='bis'){f+=4;L.push('Voltou pro bis e fechou com todo mundo cantando.')}
+  if(ch[2]==='sair'){f+=2;S.preparo=clamp(S.preparo+5,0,100);xImg(1);L.push('Saiu sem bis. Deixou a casa pedindo mais, e isso fica na memória.')}
+  if(ch[2]==='inedita'){const t=nova||xUnrel(30);if(t){t.hype=(t.hype||0)+25;f+=3;L.push(`Tocou "${t.nome}" no bis, ainda inédita. Já tem gente esperando ela sair.`)}else{f+=2;L.push('Não tinha inédita pronta, fechou com uma conhecida.')}}
+  const add=Math.round(Math.max(-3,f)*(1+Math.min(1.5,S.fas/400))*.35);S.wk.fansDirect+=add;
+  L.forEach(x=>lines.push(x));
+  if(best&&(f>=15||big)&&Math.random()<.5)sched('w_video_show',1,{momento:best+'.',big});
+  return lines;
+};
+const xSleep12=qSleep;
+qSleep=function(){
+  if(!S||S.ended||S.report)return xSleep12();
+  S.plan.forEach(p=>{if(p&&p.type==='tocar'&&!p.data.set&&typeof autoSet==='function')autoSet(p.data)});
+  const i=S.plan.findIndex(p=>p&&p.type==='tocar'&&!p.data.xLive);
+  if(i>=0&&!UI.xLive){UI.xLive={slot:i,step:0,ch:[]};render();return}
+  return xSleep12();
+};
+function xLiveHTML(){
+  const L=UI.xLive,p=S.plan[L.slot];if(!p)return'';const st=xLiveSteps(p.data)[L.step];const venue=(VENUES[p.data.venue]||{}).nome||p.label||'o show';
+  return`<div class="overlay xl-ov"><div class="xl" role="dialog" aria-label="Show">
+    <div class="xl-top"><span>${esc(venue)}</span><span>momento ${L.step+1} de 3</span></div>
+    <div class="xl-stage" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+    <p class="xl-sit">${esc(st.t)}</p>
+    <div class="xl-opts">${st.o.map(o=>`<button data-x12="live" data-k="${o.k}"><b>${esc(o.l)}</b><span>${esc(o.h)}</span></button>`).join('')}</div>
+    <button class="xl-skip" data-x12="liveSkip">Deixar o show rolar sozinho</button></div></div>`;
+}
+
+/* ---------- telas ---------- */
+const xRM12=renderModal;
+renderModal=function(){
+  if(S&&UI.xLive&&!S.report){const k='xlive:'+UI.xLive.step;if(Q.modalKey!==k){document.getElementById('modal').innerHTML=xLiveHTML();Q.modalKey=k}return}
+  return xRM12();
+};
+const xPrem12=xPremiereHTML;
+xPremiereHTML=function(list){const h=xPrem12(list);const t=list[0];const o=X_OUT[t.xOutcome];if(!o)return h;return h.replace('<p class="sub">',`<span class="xp-out" style="--c:${o.c}">${esc(o.n)}</span><p class="sub">`)};
+const xSem12=xSemanaHTML;
+xSemanaHTML=function(){
+  let h=xSem12();
+  h=h.replace(/<button class="xw-act" data-act="pick" data-i="\d" data-type="trampar"[\s\S]*?<\/button>/,'');
+  const b=S.clt?`<div class="x12-card"><div><b>Emprego no hospital</b><p>De manhã, sem ocupar período: +${brl(330)} e −18 de energia por semana.</p></div></div>`
+    :`<div class="x12-card"><div><b>Bico da semana</b><p>${esc(X_BICO[genreId()]||'Bico')}. Não ocupa período, mas cansa.</p></div><div class="x12-seg" role="group" aria-label="Quanto de bico">${X_BICO_LV.map((l,i)=>`<button data-x12="bico" data-k="${i}" aria-pressed="${(S.xBico|0)===i}"><b>${l.n}</b><span>${l.g?`+${brl(l.g)}, −${l.d} energia`:'foco na música'}</span></button>`).join('')}</div></div>`;
+  const bgl=(S.xBg||[]).filter(p=>p.type!=='clt');const bg=bgl.length?`<div class="x12-card"><div><b>Também nesta semana</b><p>Compromissos que não ocupam período: ${bgl.map(p=>esc(slotTitle(p).t)).join(', ')}.</p></div></div>`:'';
+  const cfg=X_CENA[genreId()];
+  const cena=cfg?`<div class="x12-card cena"><div><b>${esc(cfg.t)}</b><p>${esc(cfg.s())}</p></div><div class="x12-seg">${['a','b'].map(k=>`<button data-x12="cena" data-k="${k}" aria-pressed="${S.xCena.pick===k}"><b>${esc(cfg[k].n)}</b><span>${esc(cfg[k].h)}</span></button>`).join('')}<button data-x12="cena" data-k="" aria-pressed="${!S.xCena.pick}"><b>Não dessa vez</b><span>sem custo</span></button></div></div>`:'';
+  return h.replace('<div class="xw-bottom">',`<div class="x12-cards">${b}${bg}${cena}</div><div class="xw-bottom">`);
+};
+const xEst12=xEstudioHTML;
+xEstudioHTML=function(){
+  const h=xEst12();const t=getT(UI.track);
+  const gear=Object.entries(X_GEAR).map(([k,g])=>{const own=!!S.xGear[k];const can=S.grana>=g.p;
+    return`<div class="x12-gear ${own?'own':''}"><div><b>${esc(g.n)}</b><span>${esc(g.s)}</span></div>${own?(g.semanal?`<button class="btn" data-x12="unbuy" data-k="${k}">Dispensar</button>`:'<span class="st">seu</span>'):`<button class="btn" data-x12="buy" data-k="${k}" ${can?'':'disabled'}>${g.semanal?'Contratar':brl(g.p)}</button>`}</div>`}).join('');
+  const clip=t&&!t.cover&&!t.xBigClip?`<div class="x12-gear"><div><b>Clipe com diretor pra "${esc(t.nome)}"</b><span>Produção de verdade. Sai junto com o lançamento, ou na próxima semana se a música já saiu.</span></div><button class="btn" data-x12="clip" ${S.grana>=2800?'':'disabled'}>${brl(2800)}</button></div>`:t&&t.xBigClip?`<div class="x12-gear own"><div><b>Clipe de "${esc(t.nome)}"</b><span>${t.xBigClipDone?'Já estreou.':'Pronto pra estrear.'}</span></div><span class="st">pago</span></div>`:'';
+  return h+`<div class="xe-sec"><h3>Equipamento e investimentos</h3><p class="lede">Dinheiro que sobra vira estrutura. Cada compra muda alguma coisa pra sempre.</p><div class="x12-gears">${gear}${clip}</div></div>`;
+};
+const xCity12=qCityHTML;
+qCityHTML=function(){
+  const h=xCity12().replace(/Top Plei Rio/g,`Top Plei, ${xTierName()}`);
+  const next=S.xTier<3?`Fica três semanas em primeiro e você sobe pro ${xTierName(S.xTier+1)}.`:'Você chegou no topo da escada.';
+  return`<div class="x12-tier"><span>Seu patamar</span><b>${esc(xTierName())}</b><p>${esc(next)} ${S.xTierStreak?`Você tá há ${S.xTierStreak} semana${S.xTierStreak>1?'s':''} em primeiro.`:''}</p><div class="x12-steps">${[PACK.district||'Bairro','Zona','Rio','Brasil'].map((n,i)=>`<i class="${i<=S.xTier?'on':''}">${esc(n)}</i>`).join('')}</div></div>`+h;
+};
+if(typeof pleiHTML==='function'){const xPl12=pleiHTML;pleiHTML=function(){return xPl12().replace(/Top Plei Rio|Top Rio/g,()=>xTierName())}}
+const xStartH12=startHTML;
+startHTML=function(){const p=UI.startPron||'neutro';const box=`<div class="st-box" style="--d:.58s"><span class="lb">Como o jogo se refere a você</span><div class="st-origins">${Object.entries(X_PRON).map(([k,n])=>`<button class="st-o" data-x12="pron" data-k="${k}" aria-pressed="${p===k}"><b>${n}</b><span>${k==='ela'?'Filha, parceira, sozinha':k==='ele'?'Filho, parceiro, sozinho':'Sem marcar gênero'}</span></button>`).join('')}</div></div>`;
+  return xGender(xStartH12()).replace('Cada semana tem três períodos e','Cada semana tem três períodos, duas noites e').replace('<div class="st-box" style="--d:.6s">',box+'<div class="st-box" style="--d:.6s">')};
+const xNew12=newGame;newGame=function(n,o,g){xNew12(n,o,g);S.xPron=UI.startPron||'neutro';save()};
+
+/* ---------- clipe grande em música já lançada ---------- */
+const xBefore12b=settleBeforeWeek;
+settleBeforeWeek=function(){xBefore12b();S.tracks.forEach(t=>{if(t.xBigClip&&!t.xBigClipDone&&t.lancada){t.xBigClipDone=true;addReach(8000+t.gancho*60,{feed:3,pista:1,sala:1},t);S.wk.fansDirect+=15;xImg(2);(S.xBgLines=S.xBgLines||[]).push(`O clipe de "${t.nome}" estreou e rodou bem.`)}})};
+
+/* ---------- cliques ---------- */
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-x12]');if(!b)return;const a=b.dataset.x12,k=b.dataset.k;
+  if(a==='pron'){UI.startPron=k;const ni=document.getElementById('nameIn');if(ni)UI.startName=ni.value;ev.stopPropagation();render();return}
+  if(!S)return;ev.stopPropagation();
+  switch(a){
+    case 'bico':S.xBico=+k;break;
+    case 'cena':S.xCena={pick:k||null};break;
+    case 'buy':{const g=X_GEAR[k];if(!g||S.xGear[k])break;if(g.semanal){S.xGear[k]=true;xDiary(`Contratou ${g.n.toLowerCase()}.`);break}if(S.grana<g.p)break;money(-g.p);S.xGear[k]=true;if(k==='ape'){S.casa={id:'solo',nome:'Apê só seu',extra:150}}xDiary(`Comprou: ${g.n.toLowerCase()}.`);qToast({icon:'star',title:g.n,text:'É seu. '+g.s,ms:4200});break}
+    case 'unbuy':delete S.xGear[k];break;
+    case 'clip':{const t=getT(UI.track);if(t&&!t.xBigClip&&S.grana>=2800){money(-2800);t.xBigClip=true;xDiary(`Pagou um clipe com diretor pra "${t.nome}".`)}break}
+    case 'live':{const L=UI.xLive;if(!L)break;L.ch.push(k);if(L.step<2){L.step++;break}const p=S.plan[L.slot];if(p)p.data.xLive=L.ch;UI.xLive=null;Q.modalKey='';render();qSleep();return}
+    case 'liveSkip':{const L=UI.xLive;if(L){const p=S.plan[L.slot];if(p)p.data.xLive='auto';UI.xLive=null;Q.modalKey='';render();qSleep();return}break}
+  }
+  save();render();
+},true);
+
+/* ---------- reaplicar o pacote com tudo novo ---------- */
+activateGenre(PACK.id);
+
+/* ---------- textos de ajuda atualizados ---------- */
+if(typeof X_TUT!=='undefined'&&X_TUT[4]){X_TUT[4].p='Compor e gravar fazem música, circular te põe na cena, descansar recupera energia. O bico pra pagar as contas fica logo abaixo e não gasta período.'}
+if(typeof X_TIPS!=='undefined'){X_TIPS.semana=['Sua semana','Três períodos pra música e duas noites extras. O bico e os compromissos menores rodam por fora, sem ocupar período. Embaixo tem a rotina da sua cena: escolhe uma vez e ela fica marcada.']}
+
+</script>
+<script>
+/* =========================================================
+   O CORRE v13 · O DISCO E O ESTÚDIO NOVO
+   - EP e álbum viram projeto de várias semanas: conceito,
+     repertório em ordem, música de trabalho, acabamento,
+     campanha, estreia com crítica e era do disco
+   - Estúdio com cara de estúdio: fitas, linha do tempo,
+     mesa de som e rack de equipamento
+   ========================================================= */
+
+Object.assign(QI,{
+  up:'M12 19V5M6 11l6-6 6 6',down:'M12 5v14M6 13l6 6 6-6',
+  xmark:'M6 6l12 12M18 6 6 18',
+  list:'M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01',
+  box:'M4 8l8-4 8 4v8l-8 4-8-4ZM4 8l8 4 8-4M12 12v8',
+  wand:'M4 20 15 9M14 4v3M19 9h-3M17.5 5.5 16 7M9 4l.6 1.4L11 6l-1.4.6L9 8l-.6-1.4L7 6l1.4-.6Z',
+});
+
+/* ---------- conceitos por gênero ---------- */
+const X_CONC={
+  rap:{
+    cronica:{n:'Crônica do bairro',s:'O dia a dia de onde você vem, com nome de rua e gente de verdade.',w:{identidade:.55,profundidade:.45},seg:'rua'},
+    carta:{n:'Carta aberta',s:'Disco pessoal: família, medo, o que ninguém sabe de você.',w:{profundidade:.7,identidade:.3},seg:'sala'},
+    podio:{n:'Pódio',s:'Vitória, corre pago e moral. Pra tocar alto no carro.',w:{gancho:.5,palco:.5},seg:'feed'},
+    madrugada:{n:'Madrugada',s:'Noite, pista e cidade acesa. Batida pra rodar.',w:{gancho:.6,palco:.4},seg:'pista'}},
+  funk:{
+    baile:{n:'Baile de favela',s:'Feito pra explodir no paredão. Uma faixa atrás da outra, sem respiro.',w:{palco:.55,gancho:.45},seg:'pista'},
+    venceu:{n:'A favela venceu',s:'Orgulho, origem e o caminho até aqui.',w:{identidade:.6,profundidade:.4},seg:'rua'},
+    melody:{n:'Funk melody',s:'Romance, sofrência e refrão pra cantar junto.',w:{gancho:.55,profundidade:.45},seg:'feed'},
+    lab:{n:'Laboratório',s:'Batida torta, timbre estranho, coisa que ninguém fez ainda.',w:{identidade:.7,gancho:.3},seg:'pista'}},
+  pagode:{
+    roda:{n:'Ao vivo na roda',s:'Clima de quintal, gente cantando junto, cavaco puxando.',w:{palco:.55,identidade:.45},seg:'rua'},
+    sofrencia:{n:'Sofrência',s:'Coração partido do começo ao fim.',w:{profundidade:.55,gancho:.45},seg:'sala'},
+    churrasco:{n:'Churrasco de domingo',s:'Pra subir o volume da caixinha.',w:{gancho:.55,palco:.45},seg:'pista'},
+    raiz:{n:'Raiz',s:'Partido-alto, samba de terreiro, respeito aos mais velhos.',w:{identidade:.55,profundidade:.45},seg:'sala'}},
+  indie:{
+    quarto:{n:'Disco de quarto',s:'Gravado de madrugada, íntimo, cheio de detalhe.',w:{profundidade:.6,identidade:.4},seg:'sala'},
+    estrada:{n:'Estrada',s:'Guitarra alta, banda inteira, música pra pular junto.',w:{palco:.6,identidade:.4},seg:'rua'},
+    neon:{n:'Neon',s:'Synth, pista e cidade de noite.',w:{gancho:.6,palco:.4},seg:'pista'},
+    postal:{n:'Cartão-postal torto',s:'O Rio que não aparece na novela.',w:{identidade:.5,gancho:.5},seg:'feed'}},
+};
+const X_ATN={identidade:'identidade',gancho:'gancho',profundidade:'profundidade',palco:'palco'};
+function xConcs(){return X_CONC[genreId()]||X_CONC.rap}
+function xConc(p){return p&&p.conceito?xConcs()[p.conceito]||null:null}
+function xFit(t,c){
+  if(!c)return .5;let a=0;for(const [k,w] of Object.entries(c.w))a+=w*(t[k]||0)/100;
+  const sh=norm(t.apelo||{})[c.seg]||0;return clamp(.72*a/.75+.28*Math.min(1,sh*2.2),0,1);
+}
+function xFitDots(f){const n=f>=.72?3:f>=.5?2:1;return`<span class="x13-dots" title="Combina com o conceito">${[0,1,2].map(i=>`<i class="${i<n?'on':''}"></i>`).join('')}</span>`}
+
+/* ---------- estado do projeto ---------- */
+const X_DMIN={ep:3,album:7},X_DMAX={ep:6,album:12};
+function xPN(p){
+  if(!p.tids)p.tids=[];
+  for(const [k,v] of Object.entries({conceito:null,foco:null,hype:0,pre:0,presave:false,anuncio:false,press:false,festa:false,inter:false,master:false,capa:false,fis:null,cover:null,bast:0}))if(p[k]===undefined)p[k]=v;
+  return p;
+}
+function xDiscs(){return(S.projects||[]).map(xPN)}
+function xActive(){return xDiscs().find(p=>!p.released)||null}
+function xAW(){return((S.year||1)-1)*100+S.week}
+function xTipo(p,cap){const a=p.tipo==='album'?'álbum':'EP';return cap?a.charAt(0).toUpperCase()+a.slice(1):a}
+function xDoTipo(p){return p.tipo==='album'?'do álbum':'do EP'}
+function xOTipo(p){return p.tipo==='album'?'o álbum':'o EP'}
+function xPTracks(p){return p.tids.map(getT).filter(t=>t&&!t.cover)}
+function xQ(ts){if(!ts.length)return 0;return ts.reduce((s,t)=>s+(t.gancho*.3+t.identidade*.25+t.producao*.25+t.profundidade*.12+t.palco*.08)/100,0)/ts.length}
+function xDiscCoh(p,ts){
+  if(!ts.length)return 0;const base=ts.length>=2?xProjCoherence(ts):.6;const c=xConc(p);
+  const fit=c?ts.reduce((s,t)=>s+xFit(t,c),0)/ts.length:.45;
+  return clamp(.5*base+.42*fit+(p.inter?.06:0)+(p.master?.04:0),0,1);
+}
+function xFlow(ts,foco){
+  if(ts.length<2)return{v:.5,tags:[]};
+  const a=ts[0],z=ts.at(-1);const open=(a.gancho*.5+a.identidade*.5)/100,close=(z.profundidade*.6+z.identidade*.4)/100;
+  let alt=0;for(let i=1;i<ts.length;i++)if(Math.abs(ts[i].gancho-ts[i-1].gancho)>=10||Math.abs(ts[i].palco-ts[i-1].palco)>=12)alt++;alt/=ts.length-1;
+  const fi=foco?ts.findIndex(t=>t.id===foco):-1;const fpos=fi<0?.35:fi<=2?1:fi<ts.length-1?.6:.3;
+  const v=clamp(.3*Math.min(1,open/.6)+.26*Math.min(1,close/.6)+.2*alt+.24*fpos,0,1);
+  const tags=[open>=.5?['ok','Abertura forte']:['bad','Abertura morna'],close>=.5?['ok','Final que fica']:['bad','Final sem peso'],alt>=.5?['ok','Altos e baixos bem dosados']:['bad','Tudo no mesmo tom']];
+  if(fi<0)tags.push(['bad','Sem música de trabalho']);else if(fi<=2)tags.push(['ok','Música de trabalho logo no começo']);else tags.push(['bad','Música de trabalho escondida no fim']);
+  return{v,tags};
+}
+function xAutoOrder(p){
+  const ts=xPTracks(p);if(ts.length<3)return;
+  const sc={open:t=>t.gancho*.5+t.identidade*.5,close:t=>t.profundidade*.6+t.identidade*.4};
+  let rest=ts.slice();const first=rest.sort((a,b)=>sc.open(b)-sc.open(a))[0];rest=rest.filter(t=>t!==first);
+  const last=rest.filter(t=>t.id!==p.foco).sort((a,b)=>sc.close(b)-sc.close(a))[0]||rest[0];rest=rest.filter(t=>t!==last);
+  const foco=rest.find(t=>t.id===p.foco);if(foco)rest=rest.filter(t=>t!==foco);
+  rest.sort((a,b)=>b.gancho-a.gancho);const mid=[];while(rest.length){mid.push(rest.shift());if(rest.length)mid.push(rest.pop())}
+  const order=[first,...(foco?[foco]:[]),...mid,last];p.tids=order.map(t=>t.id).concat(p.tids.filter(id=>!order.some(t=>t.id===id)));
+}
+function xExpect(p){return Math.round(p.hype+p.pre*.5)}
+function xExpectGoal(){return Math.round(60+S.fas*.45)}
+function xPCov(p){
+  const ts=xPTracks(p);const ap={rua:0,pista:0,feed:0,sala:0};ts.forEach(t=>{const n=norm(t.apelo);SEGS.forEach(k=>ap[k]+=n[k])});
+  const av=k=>ts.length?ts.reduce((s,t)=>s+t[k],0)/ts.length:30;
+  return{id:p.id,nome:p.nome,apelo:ts.length?ap:{rua:1,pista:1,feed:1,sala:1},gancho:av('gancho'),palco:av('palco'),profundidade:av('profundidade'),capa:p.capa,capaPaga:p.capa,xCover:p.cover};
+}
+function xPCovSVG(p,small){return coverSVG(xPCov(p),small)}
+
+/* ---------- tarefas do disco ---------- */
+const X_DT={
+  inter:{n:'Gravar um interlúdio',s:'Uma vinheta curta que costura as faixas. O disco soa mais inteiro.',cost:0,ic:'mic',once:'inter'},
+  anuncio:{n:'Anunciar o disco',s:'Capa, data e tracklist no ar. A expectativa começa a subir sozinha.',cost:0,ic:'megaphone',once:'anuncio',why:p=>!p.week?'precisa de data':null},
+  bast:{n:'Postar bastidor',s:'Foto e vídeo do disco sendo feito. Esquenta quem tá esperando.',cost:0,ic:'phone'},
+  press:{n:'Mandar pra crítica',s:'Link privado pros blogs ouvirem antes. A resenha sai mais caprichada.',cost:0,ic:'book',once:'press',why:p=>!p.week?'precisa de data':p.week-S.week<2?'precisa de 2 semanas de antecedência':null},
+  festa:{n:'Festa de audição',s:'Chama os chegados pra ouvir o disco inteiro antes de todo mundo.',cost:200,ic:'people',once:'festa',why:p=>!p.week?'precisa de data':p.week-S.week>1?'abre na semana do lançamento ou na anterior':null},
+};
+N_KINDS.disco={n:'Trabalhar no disco',s:'anúncio, bastidor, crítica, festa',ic:'disc',c:'#C04FD6'};
+const xNLabel13=xNightLabel;
+xNightLabel=function(n){if(n&&n.k==='disco'){const p=xDiscs().find(x=>x.id===n.tid);return`${X_DT[n.kind].n}${p?` (${p.nome})`:''}`}return xNLabel13(n)};
+const xNCost13=xNightCost;
+xNightCost=function(n){if(n&&n.k==='disco')return{g:X_DT[n.kind].cost,d:N_COST};return xNCost13(n)};
+function xDTaskState(p,k){
+  const d=X_DT[k];if(d.once&&p[d.once])return{done:true};if(xHasNight('disco',p.id,k))return{sched:true};
+  const why=d.why?d.why(p):null;return{why};
+}
+const xNP13=xNightPicker;
+xNightPicker=function(){
+  const x=UI.xN;
+  if(x&&x.k==='disco'){
+    const p=xActive();const back=`<button class="link" data-x9="nBack" style="align-self:flex-start">Voltar</button>`;
+    if(!p)return`<h4 class="pk-h">Noite ${x.i+1}: disco</h4><span class="empty">Nenhum disco em andamento. Começa um na aba Estúdio.</span>`+back;
+    return`<h4 class="pk-h">Noite ${x.i+1}: ${esc(xOTipo(p))} "${esc(p.nome)}"</h4><div class="opts">${Object.entries(X_DT).map(([k,d])=>{const s=xDTaskState(p,k);const off=s.done||s.sched||s.why;
+      return`<button class="opt" data-x13="nDisco" data-k="${k}" ${off?'disabled':''}><b>${esc(d.n)}</b><span>${esc(s.done?'já feito':s.sched?'já tá numa noite':s.why||d.s+(d.cost?' '+brl(d.cost)+'.':''))}</span></button>`}).join('')}</div>`+back;
+  }
+  let h=xNP13();
+  if(x&&!x.k&&!xActive())h=h.replace(/<button class="xw-act" data-x9="nKind" data-k="disco"[\s\S]*?<\/button>/,'');
+  return h;
+};
+const xRN13=xResolveNights;
+xResolveNights=function(){
+  const mine=[];(S.noites||[]).forEach((n,i)=>{if(n&&n.k==='disco'){mine.push(n);S.noites[i]=null}});
+  const L=xRN13();
+  mine.forEach(n=>{
+    const p=xDiscs().find(x=>x.id===n.tid&&!x.released);S.disp=clamp(S.disp-N_COST,0,100);
+    if(!p){L.push('A noite do disco virou conversa de bar.');return}
+    const d=X_DT[n.kind];if(d.cost){money(-d.cost);S.wk.music-=d.cost}
+    if(n.kind==='inter'){p.inter=true;L.push(pick([`Gravou um interlúdio pro ${xTipo(p)} "${p.nome}": barulho de rua, uma risada e dois acordes. Costurou tudo.`,`Uma vinheta de quarenta segundos pra "${p.nome}". Pequena, mas o disco agora respira junto.`]))}
+    if(n.kind==='anuncio'){p.anuncio=true;p.hype+=25;addReach(300+S.fas*2*(S.xGear&&S.xGear.ring?1.3:1),{feed:2,rua:1},null);L.push(`Anunciou ${xOTipo(p)} "${p.nome}" pra semana ${p.week}. ${S.fas>=150?'Os comentários encheram de gente marcando os amigos.':'Os amigos repostaram e uns desconhecidos salvaram.'}`)}
+    if(n.kind==='bast'){p.bast++;const g=Math.round(Math.max(3,12-p.bast*2)+S.fas*.03);p.hype+=g;addReach((180+S.fas*1.2)*(S.xGear&&S.xGear.ring?1.3:1),{feed:3},null);L.push(pick([`Postou um vídeo do estúdio, fone na cabeça e a letra no papel. Gente perguntando quando sai "${p.nome}".`,`Bastidor do disco: a mesa, o café frio e um trecho de dez segundos. A expectativa subiu.`,`Foto do quadro com a tracklist rabiscada. Teve gente dando zoom pra ler os nomes.`]))}
+    if(n.kind==='press'){p.press=true;L.push(`Mandou "${p.nome}" pra uns blogs e jornalistas. Dois responderam que vão ouvir com calma.`)}
+    if(n.kind==='festa'){p.festa=true;p.hype+=15;S.wk.fansDirect+=Math.round(6+S.fas*.02);L.push(`Festa de audição de "${p.nome}" na sala de um amigo. ${Math.round(14+S.fas*.05)} pessoas ouvindo o disco inteiro em silêncio, e o grito no final.`)}
+  });
+  return L;
+};
+
+/* ---------- semana: lançamento, single, era, deluxe, física ---------- */
+const X_DOUT={batido:{n:'Passou batido',c:'#8E84A8',m:.55,t:'flop'},bem:{n:'Bem recebido',c:'#36D2BF',m:1,t:'ok'},pegou:{n:'O disco pegou',c:'#FFCF4A',m:1.7,t:'pegou'},classico:{n:'Virou referência',c:'#FF5C8A',m:2.8,t:'estourou'}};
+const X_CRIT={rap:'Rimas & Ruas',funk:'Portal do Baile',pagode:'Roda de Bamba',indie:'Vicente Lins, Ruído Independente'};
+function xReview(p,ts,coh,fl,nota){
+  const c=xConc(p);const top=getT(p.top);const lines=[];
+  lines.push(nota>=8.5?'Um disco que vai ser lembrado.':nota>=7?'Disco firme, com momentos grandes.':nota>=5.5?'Tem boas ideias, mas nem tudo se sustenta.':'Soa mais como uma coleção de faixas do que como um disco.');
+  if(coh>=.7)lines.push(c?`A ideia de "${c.n.toLowerCase()}" atravessa as faixas do começo ao fim.`:'As faixas conversam entre si do começo ao fim.');
+  else if(coh<.5)lines.push(c?`A ideia de "${c.n.toLowerCase()}" se perde no meio do caminho.`:'Falta um fio que amarre as músicas.');
+  if(top)lines.push(`"${top.nome}" é o ponto alto.`);
+  const t0=ts[0];if(t0&&(t0.gancho+t0.identidade)/2<50)lines.push('A abertura demora a engrenar.');
+  else if(ts.length>=3&&fl>=.7)lines.push('A ordem das faixas foi pensada, dá pra ouvir de uma vez.');
+  if(ts.reduce((s,t)=>s+t.producao,0)/ts.length<40)lines.push('A produção ainda é crua.');
+  return lines.slice(0,3).join(' ');
+}
+function xDiscRelease(p){
+  const ts=xPTracks(p);const ready=ts.filter(t=>t.lancada||readyLive(t));const fora=ts.filter(t=>!ready.includes(t));const min=X_DMIN[p.tipo]||3;
+  if(ready.length<min){p.week=null;p.hype=Math.round(p.hype*.7);xNote(`${xTipo(p,true)} "${p.nome}" não saiu: só ${ready.length} de ${min} faixas mínimas estavam prontas. A expectativa caiu um pouco. Remarca no Estúdio.`);logChat('cena',false,`O lançamento de "${p.nome}" foi adiado.`);return}
+  if(p.master)ready.forEach(t=>{if(!t.lancada){t.producao=Math.min(92,t.producao+8);fixT(t)}});
+  p.tids=ready.map(t=>t.id);if(p.foco&&!p.tids.includes(p.foco))p.foco=null;
+  const coh=xDiscCoh(p,ready),fl=xFlow(ready,p.foco).v,Q=xQ(ready);
+  const H=clamp(xExpect(p)/xExpectGoal(),0,1.4);
+  const nota=Math.round(clamp(2.2+5.2*Q+1.6*coh+.8*fl+(p.press?.5:0)+(Math.random()-.5)*1.4,1,10)*10)/10;
+  const r=.34*Q+.22*coh+.12*fl+.16*Math.min(1,H)+.08*nota/10+(S.imagem-50)/500+(p.capa?.03:0)+(Math.random()-.5)*.36;
+  const o=r<.34?'batido':r<.5?'bem':r<.64?'pegou':'classico';const O=X_DOUT[o];
+  const score=t=>(t.gancho*.45+t.identidade*.25+t.producao*.2+t.palco*.1)*(t.id===p.foco?1.25:1);
+  p.top=ready.slice().sort((a,b)=>score(b)-score(a))[0].id;
+  const base=(380+S.fas*5+recTot()*.22)*(p.tipo==='album'?1.7:1.2)*(.6+coh*.8)*(1+Math.min(H,1.2)*.5)*O.m;
+  const wt=t=>(t.id===p.foco?2:t.id===p.top?1.5:1)*(t.lancada?.6:1);const W=ready.reduce((s,t)=>s+wt(t),0);
+  ready.forEach(t=>{addReach(base*wt(t)/W,null,t);t.projeto=p.id;if(!t.lancada){t.lancar=true;t.releaseWeek=null;t.xOutcome=O.t;t.xDisco=p.id;t.hype=(t.hype||0)+Math.min(80,p.hype*.3);if(p.capa){t.capa=true;t.capaPaga=true}}});
+  S.wk.fansDirect+=Math.round(((p.tipo==='album'?28:13)*(.5+coh)+ready.length*1.5+(p.festa?6:0))*O.m);
+  xImg(o==='classico'?4:o==='pegou'?2:o==='batido'?-1:1);
+  Object.assign(p,{released:true,relWeek:S.week,relYear:S.year||1,coh:Math.round(coh*100),fl:Math.round(fl*100),nota,out:o,eraUntil:xAW()+(p.tipo==='album'?8:5),review:xReview(p,ready,coh,fl,nota)});
+  p.week=S.week;
+  xNote(`${xTipo(p,true)} "${p.nome}" saiu com ${ready.length} faixas. ${O.n}. Nota ${String(nota).replace('.',',')} na crítica, coesão ${p.coh}%.${fora.length?' Ficaram de fora: '+fora.map(t=>'"'+t.nome+'"').join(', ')+'.':''}`);
+  logChat('cena',false,`${S.name} lançou ${xOTipo(p)} "${p.nome}".`);xDiary(`Lançou ${xOTipo(p)} "${p.nome}". ${O.n}, nota ${String(nota).replace('.',',')}.`);
+  S.xDiscPrem=p.id;S.xDiscHead=`${xTipo(p,true)} "${p.nome}": ${O.n.toLowerCase()}`;S.xDiscHeadW=S.week;
+}
+function xShowsThisWeek(){return(S.plan||[]).filter(x=>x&&(x.type==='tocar'||x.type==='x_show_fora')).length}
+const xBefore13=settleBeforeWeek;
+settleBeforeWeek=function(){
+  // músicas marcadas pra esta semana entram no sorteio de lançamento
+  S.tracks.forEach(t=>{if(!t.cover&&!t.lancada&&!t.lancar&&t.releaseWeek===S.week&&readyLive(t)&&!xDiscs().some(p=>!p.released&&p.week===S.week&&p.tids.includes(t.id))){t.lancar=true;t.releaseWeek=null}});
+  const due=xDiscs().filter(p=>!p.released&&p.week===S.week);due.forEach(p=>{p.week=null;p.xDue=true});
+  xBefore13();
+  due.forEach(p=>{p.week=S.week;delete p.xDue});
+  const shows=xShowsThisWeek();
+  xDiscs().forEach(p=>{
+    if(!p.released){
+      if(p.week&&p.week<S.week)p.week=null;
+      // single do disco saindo nesta semana
+      xPTracks(p).forEach(t=>{if(t.lancar&&!t.lancada&&!t.xSingle&&p.week!==S.week){t.xSingle=p.id;p.hype+=15+({pegou:15,estourou:40,flop:-5}[t.xOutcome]||0);xNote(`"${t.nome}" saiu como single ${xDoTipo(p)} "${p.nome}". A expectativa pelo disco subiu.`)}});
+      if(p.week===S.week){xDiscRelease(p);return}
+      if(p.week){p.hype+=3+(p.anuncio?5:0)+Math.min(8,S.fas*.01)}else p.hype*=.95;
+      if(p.presave)p.pre+=2+S.fas*.06+p.hype*.05;
+      p.hype=Math.round(p.hype);p.pre=Math.round(p.pre);
+      return;
+    }
+    // deluxe
+    if(p.dlxWeek===S.week&&!p.dlxDone){
+      const ts=(p.dlx||[]).map(getT).filter(t=>t&&!t.lancada&&readyLive(t));p.dlxDone=true;
+      if(ts.length){ts.forEach(t=>{t.lancar=true;t.releaseWeek=null;t.projeto=p.id;t.xDisco=p.id;p.tids.push(t.id);addReach((300+S.fas*3)*.8,null,t)});S.wk.fansDirect+=5*ts.length;xImg(1);
+        xNote(`Saiu a edição deluxe de "${p.nome}" com ${ts.map(t=>'"'+t.nome+'"').join(' e ')}. Quem já tinha ouvido voltou pro disco.`);xDiary(`Lançou a edição deluxe de "${p.nome}".`)}
+    }
+    // era do disco e venda física nos shows
+    const era=p.eraUntil&&xAW()<=p.eraUntil&&p.relWeek!==S.week;
+    if(era&&shows){const ts=xPTracks(p);for(let i=0;i<shows;i++){const t=pick(ts);if(t)addReach(150+S.fas*.4,null,t)}S.wk.fansDirect+=2*shows}
+    if(p.fis&&p.fis.n>p.fis.sold&&shows){
+      const F=X_FIS[p.fis.k];let n=0;for(let i=0;i<shows;i++)n+=RI(F.min,F.max)+Math.floor(S.fas/F.per);n=Math.round(n*(era?1:.5));n=Math.min(n,p.fis.n-p.fis.sold);
+      if(n>0){p.fis.sold+=n;const g=n*F.preco;money(g);S.wk.music+=g;xNote(`Vendeu ${n} ${F.un(n)} de "${p.nome}" na banca do show: +${brl(g)}.${p.fis.sold>=p.fis.n?' Acabou a tiragem.':''}`)}
+    }
+    if(p.eraUntil&&xAW()===p.eraUntil+1)xNote(`A era de "${p.nome}" chegou ao fim. O disco continua tocando, mas o público já quer coisa nova.`);
+  });
+};
+const X_FIS={cd:{n:'CD',p:450,preco:20,min:4,max:10,per:150,un:n=>n>1?'CDs':'CD',s:'100 cópias, vende a R$ 20 na banca do show.'},vinil:{n:'Vinil',p:2400,preco:80,min:2,max:6,per:300,un:n=>n>1?'vinis':'vinil',s:'100 cópias, vende a R$ 80. Caro, mas quem compra vira fã de verdade.'}};
+
+// faixa nova composta pro disco e o conceito puxando a escrita
+const xConf13=confirmWeek;
+confirmWeek=function(){
+  const go=S&&!S.ended&&!S.report;let ids=null,let0=null;
+  if(go){ids=new Set(S.tracks.map(t=>t.id));let0=Object.fromEntries(S.tracks.map(t=>[t.id,t.letra]))}
+  xConf13();
+  if(!go||!S)return;
+  const p=xActive();if(!p)return;
+  S.tracks.forEach(t=>{if(!ids.has(t.id)&&!t.cover&&S.xDiscAdd===p.id&&p.tids.length<X_DMAX[p.tipo]){p.tids.push(t.id);S.xDiscAdd=null;xDiary(`"${t.nome}" nasceu pro ${xTipo(p)} "${p.nome}".`)}});
+  const c=xConc(p);if(c){const k=Object.entries(c.w).sort((a,b)=>b[1]-a[1])[0][0];xPTracks(p).forEach(t=>{if(!t.lancada&&let0[t.id]!=null&&t.letra>let0[t.id]){t[k]+=2;t.apelo[c.seg]=(t.apelo[c.seg]||0)+1;fixT(t)}})}
+  save();
+};
+const xHead13=weekHeadline;
+weekHeadline=function(r){try{if(S.xDiscHead&&S.xDiscHeadW===r.week)return S.xDiscHead}catch(e){}return xHead13(r)};
+// o caderno antigo de projetos sai de cena
+xProjectsHTML=function(){return''};
+
+/* ---------- estreia do disco ---------- */
+function xDiscPremHTML(p){
+  const O=X_DOUT[p.out]||X_DOUT.bem;const ts=xPTracks(p);const R=S.weekTrackReach||{};const mx=Math.max(1,...ts.map(t=>R[t.id]||0));
+  const reach=ts.reduce((s,t)=>s+(R[t.id]||0),0);const fans=Math.max(0,Math.round(S.report.d.fas));
+  const plays=ts.reduce((s,t)=>s+((t.playHistory.at(-1)||{}).plays||0),0);
+  const top=getT(p.top);const c=xConc(p);
+  const Rx=[];
+  if((S.rel.mae||0)>=15)Rx.push({k:'mae',txt:pick([`Ouvi o disco inteiro no ônibus, ida e volta. A última música me fez chorar.`,`Botei pra tocar na cozinha. Sua tia pediu pra repetir a ${top?`"${top.nome}"`:'terceira'}.`,`Tô orgulhosa. Um disco inteiro, com seu nome na capa.`])});
+  else Rx.push({k:'mae',txt:'Vi que saiu o disco. Me ensina a achar no celular?'});
+  if((S.rel.dani||0)>=10)Rx.push({k:'dani',txt:pick([`Mano. Ouvi de uma vez, sem pular nenhuma. Isso é raro.`,`Já tenho a favorita e não é a que você acha.`,`Mandei o link no grupo do trabalho inteiro.`])});
+  Rx.push({who:'@'+pick(['lu.anjos','biel_zs','mari.ferraz','thi_oficial','jessicamr','gordin.rj']),txt:p.out==='batido'?'cadê o pessoal ouvindo isso aqui? merecia mais':p.coh>=70?'dá pra ouvir do começo ao fim sem pular nada':top?`"${top.nome}" no repeat desde meia-noite`:'esse disco é diferente de tudo que vc já fez'});
+  if(p.out==='pegou'||p.out==='classico')Rx.push({who:OUTROS.rival.nome,txt:pick(['Ouvi o disco. Tá de parabéns, de verdade.','Tá todo mundo falando do seu disco. Respeito.'])});
+  const who=r=>r.k?senderInfo(r.k).nome:r.who,col=r=>r.k?senderInfo(r.k).cor:'#5B5175';
+  return`<div class="overlay xp-ov x13p-ov"><div class="xp x13p" role="dialog" aria-label="Estreia ${esc(xDoTipo(p))}">
+    <div class="xp-clock"><span>sexta-feira, meia-noite</span><b id="xpClock">23:59</b></div>
+    <div class="x13p-sleeve"><div class="vinyl"></div><div class="cv">${xPCovSVG(p)}</div></div>
+    <span class="x13p-k">${esc(xTipo(p,true))}${c?' · '+esc(c.n):''} · ${ts.length} faixas</span>
+    <h2>${esc(p.nome)}</h2><span class="xp-out" style="--c:${O.c}">${esc(O.n)}</span>
+    <div class="x13p-crit"><div class="nt"><b data-xn="${Math.round(p.nota*10)}">${String(p.nota).replace('.',',')}</b><span>de 10</span></div><div><p>"${esc(p.review)}"</p><small>${esc(X_CRIT[genreId()]||'Crítica')}</small></div></div>
+    <ol class="x13p-tl">${ts.map((t,i)=>`<li style="--i:${i}"><span class="n">${i+1}</span><b>${esc(t.nome)}${t.id===p.foco?'<em>música de trabalho</em>':''}${t.id===p.top&&t.id!==p.foco?'<em class="top">a mais ouvida</em>':''}</b><span class="br"><i style="width:${Math.round((R[t.id]||0)/mx*100)}%"></i></span></li>`).join('')}</ol>
+    <div class="xp-nums"><div><b data-xc="${plays}">${fmt(plays)}</b><span>plays na Plei</span></div><div><b data-xc="${Math.round(reach)}">${fmt(reach)}</b><span>pessoas alcançadas</span></div><div><b data-xc="${fans}">${fmt(fans)}</b><span>fãs novos</span></div></div>
+    <div class="xp-react">${Rx.slice(0,4).map((r,i)=>`<div style="--i:${i};--c:${col(r)}"><b>${esc(who(r))}</b>${esc(r.txt)}</div>`).join('')}</div>
+    <button class="rep-next" data-x13="premDone">${qi('sun')}Ver o resto da semana</button>
+  </div></div>`;
+}
+const xRM13=renderModal;
+renderModal=function(){
+  const p=S&&S.report&&S.xDiscPrem&&!UI.packError&&!UI.setRef&&!UI.menu?xDiscs().find(x=>x.id===S.xDiscPrem&&x.released):null;
+  if(p){
+    const kind='disco:'+p.id;if(Q.modalKey===kind)return;
+    const m=document.getElementById('modal');m.innerHTML=xDiscPremHTML(p);Q.modalKey=kind;
+    const ck=$q('xpClock');if(Q.reduce){if(ck)ck.textContent='00:00';return}
+    setTimeout(()=>{if(ck){ck.textContent='00:00';ck.classList.add('tick')}},850);
+    m.querySelectorAll('[data-xc]').forEach((el,i)=>{const to=+el.dataset.xc;el.textContent='0';setTimeout(()=>qCount(el,0,to,v=>fmt(v),1300),2300+i*120)});
+    const nt=m.querySelector('[data-xn]');if(nt){const to=+nt.dataset.xn;nt.textContent='0,0';setTimeout(()=>qCount(nt,0,to,v=>(v/10).toFixed(1).replace('.',','),1500),1300)}
+    if(p.out!=='batido')setTimeout(()=>qConfetti(p.out==='classico'?3600:2400),1000);
+    return;
+  }
+  return xRM13();
+};
+
+/* =========================================================
+   ESTÚDIO
+   ========================================================= */
+X_TIPS.estudio=['Seu estúdio','Cada fita é uma música. Toca numa pra abrir a sessão: a linha do tempo mostra o que falta, a mesa mostra como ela soa. Em cima, a aba Disco é onde você monta um EP ou álbum.'];
+X_TIPS.disco=['Montando um disco','Escolhe o formato e um conceito. Depois vai juntando as faixas ao longo das semanas, define a ordem e a música de trabalho, cuida da capa e da campanha, e marca a data. Faixa que combina com o conceito deixa o disco mais coeso.'];
+function xSeed13(s){let h=7;for(const c of String(s))h=(h*31+c.charCodeAt(0))>>>0;return()=>{h=(h*1103515245+12345)>>>0;return(h>>>8)/16777216}}
+function xWave(seed,n=56){const r=xSeed13(seed);let b='';for(let i=0;i<n;i++){const h=4+Math.round((.25+.75*Math.abs(Math.sin(i*.45+r()*2)))*r()*26+r()*6);b+=`<rect x="${i*4}" y="${18-h/2}" width="2.4" height="${h}" rx="1"/>`}return`<svg viewBox="0 0 ${n*4} 36" preserveAspectRatio="none" aria-hidden="true">${b}</svg>`}
+function xStudioName(){const g=S.xGear||{};return g.home?'Home studio tratado':g.mic||g.interface?'Home studio':'Estúdio de quarto'}
+function xRecLit(){return(S.plan||[]).some(p=>p&&p.type==='gravar')||(S.noites||[]).some(n=>n&&(n.k==='gravar'||n.k==='mix'))}
+function xReadyLoose(){const inD=new Set(xDiscs().filter(p=>!p.released).flatMap(p=>p.tids));return S.tracks.filter(t=>!t.cover&&!t.lancada&&!t.lancar&&!t.releaseWeek&&readyLive(t)&&!inD.has(t.id)).length}
+const xTB13=xTabBadge;xTabBadge=function(k){return k==='faixas'?xReadyLoose():xTB13(k)};
+function xEstNav(){
+  const v=UI.xEst||'faixas';const a=xActive();
+  const it=[['faixas','Faixas',xReadyLoose()],['disco','Disco',0],['equip','Equipamento',0]];
+  return`<nav class="x13-nav" role="tablist" aria-label="Partes do estúdio">${it.map(([k,n,b])=>`<button role="tab" data-x13="est" data-k="${k}" aria-selected="${v===k}"><i class="led"></i>${n}${b?`<span class="n">${b}</span>`:''}</button>`).join('')}</nav>`;
+}
+function xEstBar(){
+  const lit=xRecLit();
+  return`<div class="x13-bar"><div class="x13-sign ${lit?'on':''}" title="${lit?'Tem gravação marcada nesta semana':'Nenhuma gravação marcada'}">${lit?'GRAVANDO':'SILÊNCIO'}</div>
+    <div class="x13-room"><b>${esc(xStudioName())}</b><span>${S.tracks.filter(t=>!t.cover).length} fitas · ${xDiscs().filter(p=>p.released).length} disco${xDiscs().filter(p=>p.released).length===1?'':'s'} lançado${xDiscs().filter(p=>p.released).length===1?'':'s'}</span></div>
+    <div class="x13-vu" aria-hidden="true">${Array.from({length:14},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div>${xEstNav()}</div>`;
+}
+function xTape(t){
+  const st=xSongStatus(t);const d=t.projeto||t.xDisco?xDiscs().find(p=>p.id===(t.projeto||t.xDisco)):xDiscs().find(p=>!p.released&&p.tids.includes(t.id));
+  return`<button class="x13-tape ${t.lancada?'out':''} ${st.c}" role="listitem" data-act="openTrack" data-tid="${t.id}" aria-current="${UI.track===t.id}">
+    <span class="cass"><span class="lbl"><b>${esc(t.nome)}</b><small>${esc(st.l)}</small></span><span class="win"><i class="reel"></i><span class="tp" style="--p:${t.lancada?100:Math.round((Math.min(t.letra,100)*.5+(t.sess?25:0)+Math.min(t.producao,80)/80*25))}%"></span><i class="reel"></i></span><span class="cv">${coverSVG(t,true)}</span></span>
+    ${d?`<span class="tag">${esc(xTipo(d))} ${esc(d.nome)}</span>`:''}</button>`;
+}
+function xLanes(t){
+  const relTxt=t.lancada?`saiu na semana ${t.semanaLanc}`:t.lancar?'sai nesta sexta':t.releaseWeek?`marcada pra semana ${t.releaseWeek}`:readyLive(t)?'pronta, sem data':'esperando';
+  const L=[
+    {n:'Letra',c:'#8D6BFF',p:t.letra,s:t.letra>=100?'fechada':t.letra+'%'},
+    {n:'Gravação',c:'#FF5C5C',p:t.sess>=1?100:0,s:t.sess?(t.sess>1?t.sess+' sessões':'1 sessão'):'falta gravar'},
+    {n:'Produção',c:'#4FA3FF',p:t.producao,s:`nível ${t.producao}`},
+    {n:'Lançamento',c:'#FFB547',p:t.lancada?100:(t.lancar||t.releaseWeek)?50:0,s:relTxt}];
+  const now=L.findIndex(x=>x.p<(x.n==='Produção'?60:100));
+  return`<div class="x13-lanes">${L.map((x,i)=>`<div class="x13-lane ${i===now&&!t.lancada?'now':''}" style="--c:${x.c}"><span class="hd"><i></i><b>${x.n}</b></span><span class="trk">${x.p>0?`<span class="clip" style="width:${clamp(x.p,3,100)}%">${xWave(t.id+x.n)}</span>`:''}${i===now&&!t.lancada?'<span class="ph"></span>':''}</span><span class="vl">${esc(x.s)}</span></div>`).join('')}</div>`;
+}
+function xDesk(t){
+  const ch=[['IDENT',t.identidade,'Identidade','o quanto soa como você'],['GANCHO',t.gancho,'Gancho','chance de grudar'],['PROF',t.profundidade,'Profundidade','segura quem escuta de verdade'],['PALCO',t.palco,'Palco','funciona ao vivo'],['PROD',t.producao,'Produção','qualidade do som']];
+  const sh=norm(t.apelo);
+  return`<div class="x13-desk"><h3 class="x13-h">Mesa</h3><div class="x13-strips">${ch.map(([k,v,n,s])=>`<div class="x13-ch" title="${esc(n)}: ${esc(s)}"><span class="dig">${String(Math.round(v)).padStart(2,'0')}</span><span class="fd"><span class="meter">${Array.from({length:10},(_,i)=>`<i class="${i<Math.round(v/10)?'on':''}"></i>`).join('')}</span><span class="slot"><span class="knob" style="bottom:calc(${clamp(v,0,100)}% - 9px)"></span></span></span><b>${k}</b><small>${esc(s)}</small></div>`).join('')}</div>
+    <span class="x13-lab">Pra quem ela fala</span><div class="x13-segs">${SEGS.map(k=>`<div><span>${esc(SEG[k].n)}</span><span class="vu" style="--c:var(--${k})"><i style="width:${Math.round(sh[k]*100)}%"></i></span><em>${Math.round(sh[k]*100)}%</em></div>`).join('')}</div>
+    <details class="x13-more"><summary>Mais detalhes da faixa</summary>${trackExtrasHTML(t)}</details></div>`;
+}
+function xEstFaixas(){
+  const ts=S.tracks.filter(t=>!t.cover).sort((a,b)=>(a.lancada-b.lancada)||((b.lancar||b.releaseWeek?1:0)-(a.lancar||a.releaseWeek?1:0))||(b.letra-a.letra));
+  if(!UI.track||!getT(UI.track)||getT(UI.track).cover)UI.track=ts[0]&&ts[0].id;
+  const rack=`<div class="x13-rack" role="list">${ts.map(xTape).join('')}<button class="x13-tape new" data-x9="newSong"><span class="cass"><span class="lbl"><b>Fita nova</b><small>começa numa noite</small></span><span class="win">${qi('plus')}</span></span></button></div>`;
+  const t=getT(UI.track);if(!t)return rack;
+  const st=xSongStatus(t);const doBtns=[];
+  if(!t.lancada){
+    if(t.letra<100){doBtns.push(`<button class="x13-b amber" data-x9="nightTask" data-k="compor" data-tid="${t.id}">${qi('pen')}Escrever numa noite</button>`);doBtns.push(xGoPickBtn('compor','Compor num período'))}
+    else if(t.sess<1){doBtns.push(`<button class="x13-b rec" data-x9="nightTask" data-k="gravar" data-tid="${t.id}"><i class="dot"></i>Gravar guia numa noite</button>`);doBtns.push(xGoPickBtn('gravar','Gravar no estúdio'))}
+    else{if(t.producao<80)doBtns.push(`<button class="x13-b" data-x9="nightTask" data-k="mix" data-tid="${t.id}">${qi('sliders')}Mexer na mix numa noite</button>`);doBtns.push(xGoPickBtn('gravar','Regravar no estúdio'))}
+    if(t.letra>=60&&t.letra<100)doBtns.push(`<button class="x13-b rec" data-x9="nightTask" data-k="gravar" data-tid="${t.id}"><i class="dot"></i>Gravar guia numa noite</button>`);
+  }
+  const d=xDiscs().find(p=>p.tids.includes(t.id));
+  const head=`<div class="x13-sess"><div class="x13-sh"><div class="x13-cov">${coverSVG(t)}<button class="x13-covbtn" data-x10="covEdit">${UI.xCovEdit===t.id?'Fechar':'Mudar capa'}</button></div>
+    <div class="x13-meta"><span class="x13-kick">Sessão aberta</span>${UI.renaming===t.id?`<input class="tname-in" id="renameIn" data-tid="${t.id}" value="${esc(t.nome)}" maxlength="40" aria-label="Nome da faixa">`:`<button class="x13-name" data-act="rename" data-tid="${t.id}" title="Renomear">${esc(t.nome)}</button>`}
+      <p class="x13-st">${t.lancada?`Saiu na semana ${t.semanaLanc}.`:st.l.charAt(0).toUpperCase()+st.l.slice(1)+'.'}${t.feat?` Feat. ${esc(t.feat)}.`:''}${t.beatBigode?' Beat do Bigode.':''}${t.cru?' Saiu crua.':''}</p>
+      ${d?`<button class="x13-chip" data-x13="goDisco">${qi('disc')}${d.released?'Faz parte':'Vai entrar'} ${esc(xDoTipo(d))} "${esc(d.nome)}"${d.foco===t.id?', música de trabalho':''}</button>`:''}
+      ${doBtns.filter(Boolean).length?`<div class="x13-do">${doBtns.filter(Boolean).join('')}</div>`:''}</div></div>
+    ${UI.xCovEdit===t.id?xCoverEditor(t):''}${xLanes(t)}</div>`;
+  let main=t.lancada?xAfterLife(t):xReleasePlan(t);
+  if(d&&!d.released&&!t.lancada)main=main.replace('<h3>Lançamento</h3>',`<h3>Lançamento</h3><p class="lede x13-note">Ela tá no ${esc(xTipo(d))} "${esc(d.nome)}". Pode sair antes como single, o que esquenta o disco, ou esperar e sair junto com ele.</p>`);
+  const clip=!t.cover&&!t.xBigClip?`<div class="xe-task"><i>${qi('film')}</i><div><b>Clipe com diretor</b><span>Produção de verdade. Sai junto com o lançamento, ou na semana seguinte se a música já saiu. ${brl(2800)}.</span></div><button class="btn" data-x12="clip" ${S.grana>=2800?'':'disabled'}>Pagar</button></div>`:t.xBigClip?`<div class="xe-task done"><i>${qi('check')}</i><div><b>Clipe com diretor</b><span>${t.xBigClipDone?'Já estreou.':'Pago, estreia junto com a música.'}</span></div><span class="st">pago</span></div>`:'';
+  const covers=genreId()==='pagode'?`<div class="xe-sec"><h3>Covers do grupo</h3>${S.tracks.filter(x=>x.cover).map(x=>`<div class="line"><span>${esc(x.nome)}</span><span>${x.coverReady?'ensaiado':'precisa ensaiar'}</span></div>`).join('')}<span class="lab">Covers entram no repertório depois de ensaiar e não viram lançamento.</span></div>`:'';
+  return rack+head+`<div class="x13-cols"><div class="x13-col">${main}${clip?`<div class="xe-sec"><div class="xe-tasks">${clip}</div></div>`:''}</div>${xDesk(t)}</div>`+covers;
+}
+
+/* ---------- aba Disco ---------- */
+function xVU(v,label,sub){
+  const a=-58+clamp(v,0,1.15)/1.15*116;
+  return`<div class="x13-gauge"><svg viewBox="0 0 120 74" aria-hidden="true"><rect x="2" y="2" width="116" height="70" rx="8" class="face"/><path d="M18 58 A48 48 0 0 1 102 58" class="arc"/><path d="M86 30 A48 48 0 0 1 102 58" class="red"/>${Array.from({length:9},(_,i)=>{const r=(-58+i*14.5)*Math.PI/180;return`<line x1="${60+Math.sin(r)*42}" y1="${64-Math.cos(r)*42}" x2="${60+Math.sin(r)*48}" y2="${64-Math.cos(r)*48}" class="tk"/>`}).join('')}<text x="60" y="48" class="vu">VU</text><line x1="60" y1="64" x2="60" y2="18" class="ndl" style="transform:rotate(${a.toFixed(1)}deg)"/><circle cx="60" cy="64" r="4" class="hub"/></svg><b>${esc(label)}</b><span>${esc(sub)}</span></div>`;
+}
+function xDiscCreate(){
+  const N=UI.x13N;const C=xConcs();
+  const step=!N.tipo?1:N.conceito===undefined?2:3;
+  const head=`<div class="x13-wiz-h"><span class="x13-kick">Disco novo · passo ${step} de 3</span><button class="link" data-x13="newCancel">cancelar</button></div>`;
+  if(step===1)return`<div class="x13-wiz">${head}<h3>Que tamanho de disco?</h3><div class="x13-cards">
+    <button class="x13-card" data-x13="newTipo" data-k="ep"><b>EP</b><span>3 a 6 faixas. Dá pra fechar em algumas semanas e apresenta seu som pra cidade.</span><em>mais rápido</em></button>
+    <button class="x13-card" data-x13="newTipo" data-k="album"><b>Álbum</b><span>7 a 12 faixas. Leva meses, rende muito mais e muda o peso do seu nome.</span><em>mais ambicioso</em></button></div></div>`;
+  if(step===2)return`<div class="x13-wiz">${head}<h3>Qual é a ideia do disco?</h3><p class="x13-p">O conceito é o fio que amarra as faixas. Música que combina com ele deixa o disco mais coeso, e o que você escrever enquanto monta o disco vai puxando pro conceito.</p><div class="x13-cards four">
+    ${Object.entries(C).map(([k,c])=>`<button class="x13-card" data-x13="newConc" data-k="${k}"><b>${esc(c.n)}</b><span>${esc(c.s)}</span><em>${Object.keys(c.w).map(a=>X_ATN[a]).join(' e ')} · ${esc(SEG[c.seg].n.toLowerCase())}</em></button>`).join('')}
+    <button class="x13-card ghost" data-x13="newConc" data-k=""><b>Sem conceito</b><span>Junta as melhores que você tiver. Mais fácil, menos coeso.</span></button></div></div>`;
+  const sug=[...new Set(['Quarto e Sala','Fim de Linha','Laje','Primeira Pessoa','Hora Extra','Barulho Bom','Céu de Concreto',...S.tracks.filter(t=>!t.cover).map(t=>t.nome)])].filter(Boolean).slice(0,7);
+  return`<div class="x13-wiz">${head}<h3>Como chama?</h3><input class="x13-in" id="x13Name" maxlength="40" value="${esc(N.nome||'')}" placeholder="Nome ${N.tipo==='album'?'do álbum':'do EP'}" autocomplete="off"><div class="x13-sug">${sug.map(s=>`<button data-x13="newSug" data-k="${esc(s)}">${esc(s)}</button>`).join('')}</div>
+    ${UI.x13Err?`<div class="warn">${esc(UI.x13Err)}</div>`:''}<button class="x13-b amber big" data-x13="newSave">${qi('disc')}Começar ${N.tipo==='album'?'o álbum':'o EP'}</button></div>`;
+}
+function xTrackRow(p,t,i,n,c){
+  const role=i===0?'abertura':i===n-1&&n>1?'encerramento':'';const ready=t.lancada||readyLive(t);
+  return`<li class="x13-tr ${t.id===p.foco?'foco':''} ${ready?'ok':''}"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="cv">${coverSVG(t,true)}</span>
+    <span class="nm"><b>${esc(t.nome)}</b><small>${t.lancada?(t.xSingle?'single já lançado':'já lançada'):ready?'pronta':`letra ${t.letra}%${t.sess?'':', sem gravação'}`}${role?` · ${role}`:''}</small></span>
+    ${c?xFitDots(xFit(t,c)):''}
+    <span class="ac"><button data-x13="foco" data-tid="${t.id}" aria-pressed="${t.id===p.foco}" title="Música de trabalho" aria-label="Música de trabalho">${qi('star')}</button><button data-x13="mv" data-d="-1" data-tid="${t.id}" ${i===0?'disabled':''} aria-label="Subir">${qi('up')}</button><button data-x13="mv" data-d="1" data-tid="${t.id}" ${i===n-1?'disabled':''} aria-label="Descer">${qi('down')}</button><button data-x13="rm" data-tid="${t.id}" aria-label="Tirar do disco">${qi('xmark')}</button></span></li>`;
+}
+function xTaskR(ic,name,desc,state,btn){return`<div class="xe-task ${state==='done'?'done':state==='sched'?'sched':''}"><i>${qi(state==='done'?'check':ic)}</i><div><b>${esc(name)}</b><span>${esc(desc)}</span></div>${btn||''}</div>`}
+function xDTaskRow(p,k){
+  const d=X_DT[k];const s=xDTaskState(p,k);
+  const extra=k==='bast'&&p.bast?` Já postou ${p.bast}.`:'';
+  return xTaskR(d.ic,d.n,d.s+(d.cost?` ${brl(d.cost)}.`:'')+extra,s.done?'done':s.sched?'sched':'',s.done?'<span class="st">feito</span>':s.sched?'<span class="st">numa noite</span>':s.why?`<span class="st">${esc(s.why)}</span>`:`<button class="btn" data-x13="night" data-k="${k}">Numa noite</button>`);
+}
+function xDiscView(p){
+  const c=xConc(p);const ts=xPTracks(p);const ready=ts.filter(t=>t.lancada||readyLive(t));const min=X_DMIN[p.tipo],max=X_DMAX[p.tipo];
+  const coh=xDiscCoh(p,ts),fl=xFlow(ts,p.foco);const E=xExpect(p),G=xExpectGoal();
+  const used=new Set(xDiscs().flatMap(x=>x.tids));
+  const pool=S.tracks.filter(t=>!t.cover&&!used.has(t.id)&&!(t.lancada&&(S.week-t.semanaLanc)>10&&(S.year||1)===1)).sort((a,b)=>xFit(b,c)-xFit(a,c));
+  const stepDone=[true,ready.length>=min,!!(p.capa&&(p.master||p.inter)),!!(p.week&&(p.anuncio||p.presave)),false];
+  const steps=['Conceito','Repertório','Acabamento','Campanha','Lançamento'];const now=stepDone.findIndex(x=>!x);
+  const weeks=Array.from({length:Math.max(0,27-S.week)},(_,i)=>S.week+i).filter(w=>w>S.week);
+  const covEdit=UI.x13Cov===p.id?`<div class="xcov x13-pcov"><span class="lab">Estilo da capa</span><div class="xcov-sty">${Object.entries(X_COVSTY).filter(([k])=>k!=='auto').map(([k,n])=>`<button data-x13="pcSty" data-k="${k}" aria-pressed="${p.cover&&p.cover.style===k}"><span class="cv">${xCoverArt(xPCov(p),k,(p.cover&&p.cover.pal)||'noite',true)}</span>${n}</button>`).join('')}</div>
+    ${p.cover?`<span class="lab">Cor</span><div class="xcov-pal">${Object.entries(X_PAL).map(([k,pl])=>`<button data-x13="pcPal" data-k="${k}" aria-pressed="${p.cover.pal===k}" aria-label="${pl.n}" title="${pl.n}" style="background:linear-gradient(135deg,${pl.bg} 50%,${pl.fg} 50%)"></button>`).join('')}</div>`:''}<button class="btn" data-x13="pcov" style="align-self:flex-start">Pronto</button></div>`:'';
+  const capaCost=p.tipo==='album'?250:180,mCost=Math.max(3,ts.length)*90;
+  const foco=getT(p.foco);
+  const singleBtn=foco&&!foco.lancada&&readyLive(foco)&&p.week&&p.week>S.week?`<button class="btn" data-act="release" data-tid="${foco.id}">${foco.lancar?'Não soltar nesta sexta':'Soltar nesta sexta'}</button>`:'';
+  const singleDesc=!foco?'Escolhe a música de trabalho com a estrela no repertório. Soltar ela antes do disco aumenta a expectativa.':foco.lancada?`"${foco.nome}" já tá na rua${foco.xSingle?' como single do disco':''}.`:foco.lancar?`"${foco.nome}" sai nesta sexta como single.`:!readyLive(foco)?`"${foco.nome}" ainda não tá pronta pra sair.`:!p.week?'Marca a data do disco primeiro.':p.week<=S.week+0?'O disco sai nesta semana, a música vai junto.':`Solta "${foco.nome}" antes, pelo menos uma semana antes do disco.`;
+  return`<div class="x13-proj">
+    <div class="x13-ph"><div class="x13-sleeve"><div class="vinyl"></div><div class="cv">${xPCovSVG(p)}</div></div>
+      <div class="x13-meta"><span class="x13-kick">${esc(xTipo(p,true))} em produção${c?' · '+esc(c.n):' · sem conceito'}</span>
+        ${UI.x13Ren===p.id?`<input class="x13-in" id="x13Ren" data-pid="${p.id}" value="${esc(p.nome)}" maxlength="40" aria-label="Nome do disco">`:`<button class="x13-name" data-x13="ren" title="Renomear">${esc(p.nome)}</button>`}
+        <p class="x13-st">${p.week?`Sai na sexta da semana ${p.week}${p.week===S.week+1?', semana que vem':''}.`:'Ainda sem data.'} ${ready.length} de ${ts.length} faixa${ts.length===1?'':'s'} pronta${ready.length===1?'':'s'}, mínimo ${min}.</p>
+        ${c?`<p class="x13-p">${esc(c.s)}</p>`:''}
+        <div class="x13-do"><button class="x13-b" data-x13="pcov">${qi('image')}${UI.x13Cov===p.id?'Fechar capa':'Capa do disco'}</button></div></div>
+      <div class="x13-gauges">${xVU(coh,'Coesão',Math.round(coh*100)+'%')}${xVU(fl.v,'Fluxo',Math.round(fl.v*100)+'%')}${xVU(E/G,'Expectativa',`${fmt(E)} de ${fmt(G)}`)}</div></div>
+    ${covEdit}
+    <ol class="x13-steps">${steps.map((s,i)=>`<li class="${stepDone[i]?'done':i===now?'now':''}"><i>${stepDone[i]?qi('check'):i+1}</i>${s}</li>`).join('')}</ol>
+    <div class="x13-cols"><div class="x13-col">
+      <div class="xe-sec"><h3>Repertório <small>${ts.length} de ${min} a ${max}</small></h3>
+        ${ts.length?`<ol class="x13-tl">${ts.map((t,i)=>xTrackRow(p,t,i,ts.length,c)).join('')}</ol>`:'<p class="lede">Nenhuma faixa ainda. Adiciona as que você já tem ou compõe uma nova pensando no disco.</p>'}
+        ${ts.length>=2?`<div class="x13-tags">${fl.tags.map(([k,s])=>`<span class="${k}">${esc(s)}</span>`).join('')}</div>`:''}
+        <div class="x13-do">${ts.length>=3?`<button class="x13-b" data-x13="auto">${qi('wand')}Ordenar sozinho</button>`:''}${ts.length<max?`<button class="x13-b" data-x13="addOpen">${qi('plus')}${UI.x13Add?'Fechar lista':'Adicionar faixa'}</button><button class="x13-b amber" data-x13="compose">${qi('pen')}Compor uma pro disco</button>`:''}</div>
+        ${UI.x13Add&&ts.length<max?`<div class="x13-pool">${pool.length?pool.map(t=>`<button data-x13="add" data-tid="${t.id}"><span class="cv">${coverSVG(t,true)}</span><span><b>${esc(t.nome)}</b><small>${t.lancada?'já lançada, entra como single':readyLive(t)?'pronta':`letra ${t.letra}%`}</small></span>${c?xFitDots(xFit(t,c)):''}</button>`).join(''):'<span class="empty">Nenhuma faixa livre. Compõe uma nova.</span>'}</div>`:''}
+        ${S.xDiscAdd===p.id?'<p class="lab">A próxima música nova que você começar entra direto no disco.</p>':''}
+      </div>
+      <div class="xe-sec"><h3>Acabamento</h3><div class="xe-tasks">
+        ${xTaskR('image','Arte da Tainá',`Capa de verdade pro disco, com encarte. Faz o disco chamar mais atenção nas plataformas. ${brl(capaCost)}.`,p.capa?'done':'',p.capa?'<span class="st">feita</span>':`<button class="btn" data-x13="capa" ${S.grana>=capaCost?'':'disabled'}>Pagar</button>`)}
+        ${xTaskR('sliders','Masterização',`O disco inteiro passa pelo mesmo ouvido: +8 de produção nas faixas que ainda não saíram e mais coesão. ${brl(mCost)} (R$ 90 por faixa).`,p.master?'done':'',p.master?'<span class="st">paga</span>':`<button class="btn" data-x13="master" ${S.grana>=mCost&&ts.length>=min?'':'disabled'}>${ts.length>=min?'Pagar':'Junta as faixas antes'}</button>`)}
+        ${xDTaskRow(p,'inter')}
+        ${Object.entries(X_FIS).filter(([k])=>k==='cd'||p.tipo==='album').map(([k,F])=>xTaskR('box',`Tiragem em ${F.n==='CD'?'CD':'vinil'}`,`${F.s} ${brl(F.p)}.`,p.fis&&p.fis.k===k?'done':'',p.fis?(p.fis.k===k?'<span class="st">encomendado</span>':''):`<button class="btn" data-x13="fis" data-k="${k}" ${S.grana>=F.p?'':'disabled'}>Encomendar</button>`)).join('')}
+      </div></div></div>
+    <div class="x13-col"><div class="xe-sec"><h3>Campanha</h3>
+      <div class="xe-when"><label class="lab" for="x13Week">Data de lançamento</label><select id="x13Week" data-x13w="${p.id}"><option value="">sem data</option>${weeks.map(w=>`<option value="${w}" ${p.week===w?'selected':''}>semana ${w}${w===S.week+1?' (semana que vem)':''}</option>`).join('')}</select></div>
+      ${p.presave?`<div class="xe-hype"><span class="lab" style="color:inherit;opacity:.75">Pré-saves do disco</span><span class="n">${fmt(p.pre)}</span><p>Sobem toda semana com seus fãs e com a expectativa.</p></div>`:''}
+      <div class="xe-tasks">
+        ${xTaskR('heart','Pré-save do disco','Abre o link pros fãs salvarem o disco inteiro antes de sair. Não custa nada.',p.presave?'done':'',p.presave?'<span class="st">aberto</span>':`<button class="btn" data-x13="presave" ${p.week?'':'disabled'}>${p.week?'Abrir':'Precisa de data'}</button>`)}
+        ${xDTaskRow(p,'anuncio')}
+        ${xTaskR('star','Single antes do disco',singleDesc,foco&&foco.xSingle?'done':foco&&foco.lancar?'sched':'',singleBtn)}
+        ${xDTaskRow(p,'bast')}${xDTaskRow(p,'press')}${xDTaskRow(p,'festa')}
+      </div></div>
+      <div class="xe-sec"><h3>Previsão</h3><p class="lede">${xForecastTxt(p,ts,ready,coh,fl.v,E/G)}</p></div>
+      <p class="lab">${UI.x13Del===p.id?`Desfazer o disco libera as faixas, mas o que foi pago não volta. <button class="link" data-x13="delYes">desfazer mesmo</button> <button class="link" data-x13="delNo">manter</button>`:`<button class="link" data-x13="del">desfazer disco</button>`}</p>
+    </div></div></div>`;
+}
+function xForecastTxt(p,ts,ready,coh,fl,h){
+  const min=X_DMIN[p.tipo];const L=[];
+  if(ready.length<min)L.push(`Faltam ${min-ready.length} faixa${min-ready.length>1?'s':''} pronta${min-ready.length>1?'s':''} pra poder lançar.`);
+  L.push(coh>=.7?'O disco tá soando como uma coisa só.':coh>=.5?'As faixas conversam, mas dá pra amarrar mais.':'Por enquanto parece uma coletânea. Faixas que combinam mais com o conceito ajudam.');
+  if(ts.length>=2)L.push(fl>=.65?'A ordem tá boa.':'A ordem das faixas pode melhorar.');
+  L.push(h>=1?'Tem gente esperando.':h>=.5?'A expectativa tá subindo.':'Pouca gente sabe que esse disco existe. Anúncio, bastidor e single resolvem.');
+  return esc(L.join(' '));
+}
+function xDiscog(){
+  const R=xDiscs().filter(p=>p.released).slice().reverse();if(!R.length)return'';
+  return`<div class="xe-sec"><h3>Discografia</h3><div class="x13-dg">${R.map(p=>{const O=X_DOUT[p.out];const era=p.eraUntil&&xAW()<=p.eraUntil;const top=getT(p.top);
+    const dlxPool=S.tracks.filter(t=>!t.cover&&!t.lancada&&readyLive(t)&&!xDiscs().some(x=>x.tids.includes(t.id)));
+    const canDlx=!p.dlxDone&&!p.dlxWeek&&p.eraUntil&&xAW()<=p.eraUntil+6&&dlxPool.length;
+    const D=UI.x13Dlx&&UI.x13Dlx.pid===p.id?UI.x13Dlx:null;
+    return`<div class="x13-dgi"><div class="x13-sleeve sm"><div class="vinyl"></div><div class="cv">${xPCovSVG(p,true)}</div></div><div class="x13-dgm">
+      <b>${esc(p.nome)}</b><span>${esc(xTipo(p,true))} · semana ${p.relWeek}${(p.relYear||1)>1?', ano '+p.relYear:''} · ${xPTracks(p).length} faixas</span>
+      <div class="x13-tags">${O?`<span style="--c:${O.c}" class="o">${esc(O.n)}</span>`:''}${p.nota?`<span>nota ${String(p.nota).replace('.',',')}</span>`:''}${p.coh!=null?`<span>coesão ${p.coh}%</span>`:''}${era?`<span class="ok">era do disco até a semana ${p.eraUntil%100}</span>`:''}</div>
+      ${p.review?`<p>"${esc(p.review)}"</p>`:''}${top?`<small>A mais ouvida: "${esc(top.nome)}"</small>`:''}
+      ${p.fis?`<small>${X_FIS[p.fis.k].n}: ${p.fis.sold} de ${p.fis.n} vendidos na banca dos shows.</small>`:''}
+      ${p.dlxWeek&&!p.dlxDone?'<small>Edição deluxe sai nesta sexta.</small>':''}
+      ${canDlx&&!D?`<button class="x13-b" data-x13="dlx" data-pid="${p.id}">${qi('plus')}Edição deluxe</button>`:''}
+      ${D?`<div class="x13-pool">${dlxPool.map(t=>`<button data-x13="dlxT" data-tid="${t.id}" aria-pressed="${D.tids.includes(t.id)}"><span class="cv">${coverSVG(t,true)}</span><span><b>${esc(t.nome)}</b><small>pronta</small></span></button>`).join('')}</div><span class="lab">Até duas faixas novas, saindo junto com o disco de novo. Quem já ouviu volta.</span><div class="x13-do"><button class="x13-b amber" data-x13="dlxGo" ${D.tids.length?'':'disabled'}>Soltar deluxe nesta sexta</button><button class="link" data-x13="dlxNo">cancelar</button></div>`:''}
+    </div></div>`}).join('')}</div></div>`;
+}
+function xEstDisco(){
+  const a=xActive();let h=xTip('disco');
+  if(UI.x13N)h+=xDiscCreate();
+  else if(a)h+=xDiscView(a);
+  else h+=`<div class="x13-hero"><div class="x13-sleeve big"><div class="vinyl"></div><div class="cv blank">${qi('disc')}</div></div><div><span class="x13-kick">Mesa de montagem</span><h3>${xDiscs().some(p=>p.released)?'Bora pro próximo disco?':'Seu primeiro disco'}</h3>
+    <p class="x13-p">Single é conversa. Disco é declaração. Escolhe o formato e a ideia, junta as faixas ao longo das semanas, acerta a ordem, cuida da capa e da campanha. A estreia tem crítica, nota e uma era inteira de shows depois.</p>
+    <button class="x13-b amber big" data-x13="new">${qi('disc')}Começar um disco</button></div></div>`;
+  return h+xDiscog();
+}
+
+/* ---------- aba Equipamento ---------- */
+function xEstEquip(){
+  const g=Object.entries(X_GEAR).map(([k,G])=>{const own=!!S.xGear[k];const can=S.grana>=G.p;
+    return`<div class="x13-unit ${own?'own':''}"><i class="scr"></i><i class="scr"></i><span class="led"></span><div><b>${esc(G.n)}</b><span>${esc(G.s)}</span></div>${own?(G.semanal?`<button class="btn" data-x12="unbuy" data-k="${k}">Dispensar</button>`:'<span class="st">instalado</span>'):`<button class="btn" data-x12="buy" data-k="${k}" ${can||G.semanal?'':'disabled'}>${G.semanal?'Contratar':brl(G.p)}</button>`}<i class="scr"></i><i class="scr"></i></div>`}).join('');
+  return`<div class="xe-sec"><h3>Rack</h3><p class="lede">Dinheiro que sobra vira estrutura. Cada peça muda alguma coisa pra sempre. Em casa, sua gravação chega até nível ${xHomeCap()} de produção.</p><div class="x13-racks">${g}</div></div>`;
+}
+
+xEstudioHTML=function(){
+  const v=UI.xEst||'faixas';
+  const body=v==='disco'?xEstDisco():v==='equip'?xEstEquip():xEstFaixas();
+  return`<div class="x13">${xEstBar()}<div class="x13-body" data-v="${v}">${body}</div></div>`;
+};
+const xQP13=qPanel;
+qPanel=function(){xQP13();const c=$q('qCard');if(c)c.classList.toggle('x13-dark',UI.view==='faixas')};
+
+/* ---------- cliques ---------- */
+document.addEventListener('click',ev=>{
+  const o=ev.target.closest('[data-act="openTrack"]');if(o)UI.xEst='faixas';
+  const b=ev.target.closest('[data-x13]');if(!b||!S)return;ev.stopPropagation();
+  const a=b.dataset.x13,k=b.dataset.k,p=xActive();
+  const rn=document.getElementById('x13Name');if(rn&&UI.x13N)UI.x13N.nome=rn.value;
+  switch(a){
+    case 'est':UI.xEst=k;UI.x13Add=false;break;
+    case 'goDisco':UI.xEst='disco';break;
+    case 'new':UI.x13N={};UI.x13Err=null;break;
+    case 'newCancel':UI.x13N=null;break;
+    case 'newTipo':UI.x13N.tipo=k;break;
+    case 'newConc':UI.x13N.conceito=k||null;break;
+    case 'newSug':UI.x13N.nome=k;break;
+    case 'newSave':{const N=UI.x13N;const nm=(N.nome||'').trim();if(!nm){UI.x13Err='Dá um nome pro disco.';break}
+      if(xActive()){UI.x13Err='Termina o disco que já tá em andamento antes.';break}
+      const np=xPN({id:'p'+(S.nextId++),nome:nm.slice(0,40),tipo:N.tipo,conceito:N.conceito||null,tids:[],week:null,released:false});S.projects.push(np);
+      // a música mais adiantada que combina já entra
+      UI.x13N=null;UI.x13Err=null;UI.x13Add=true;xDiary(`Começou a montar ${xOTipo(np)} "${np.nome}".`);
+      qToast({icon:'disc',title:`${xTipo(np,true)} "${np.nome}"`,text:'Agora junta as faixas. Pode levar várias semanas.',ms:3800});break}
+    case 'add':if(p&&p.tids.length<X_DMAX[p.tipo]&&!p.tids.includes(b.dataset.tid)){p.tids.push(b.dataset.tid);if(p.tids.length>=X_DMAX[p.tipo])UI.x13Add=false}break;
+    case 'addOpen':UI.x13Add=!UI.x13Add;break;
+    case 'rm':if(p){p.tids=p.tids.filter(x=>x!==b.dataset.tid);if(p.foco===b.dataset.tid)p.foco=null}break;
+    case 'mv':if(p){const i=p.tids.indexOf(b.dataset.tid),j=i+(+b.dataset.d);if(i>=0&&j>=0&&j<p.tids.length){[p.tids[i],p.tids[j]]=[p.tids[j],p.tids[i]]}}break;
+    case 'foco':if(p)p.foco=p.foco===b.dataset.tid?null:b.dataset.tid;break;
+    case 'auto':if(p){xAutoOrder(p);qToast({icon:'disc',title:'Ordem nova',text:'Abertura forte, música de trabalho no começo e o fim mais profundo.',ms:3200})}break;
+    case 'compose':{if(!p)break;const ni=S.noites.findIndex(x=>!x);S.xDiscAdd=p.id;
+      if(ni<0){qToast({icon:'pen',title:'Noites ocupadas',text:'A próxima música nova que você começar, de dia ou de noite, entra no disco.',ms:4200});break}
+      UI.view='agenda';UI.pick=null;UI.xN={i:ni,k:'compor',tid:'new',pi:pick(xIdeaPool())};break}
+    case 'capa':{const c=p&&(p.tipo==='album'?250:180);if(p&&!p.capa&&S.grana>=c){money(-c);S.wk.music-=c;p.capa=true;if(!p.cover)p.cover={style:'colagem',pal:pick(Object.keys(X_PAL))};xDiary(`A Tainá fez a capa de "${p.nome}".`);qToast({icon:'image',title:'Capa encomendada',text:'A Tainá entrega a arte com encarte e tudo.',ms:3200})}break}
+    case 'master':{if(!p||p.master)break;const c=Math.max(3,xPTracks(p).length)*90;if(S.grana>=c){money(-c);S.wk.music-=c;p.master=true;xDiary(`Mandou "${p.nome}" pra masterizar.`)}break}
+    case 'fis':{const F=X_FIS[k];if(p&&!p.fis&&S.grana>=F.p){money(-F.p);S.wk.music-=F.p;p.fis={k,n:100,sold:0};xDiary(`Encomendou 100 ${F.un(2)} de "${p.nome}".`)}break}
+    case 'presave':if(p&&p.week&&!p.presave){p.presave=true;p.pre=Math.round(S.fas*.2);xDiary(`Abriu o pré-save de "${p.nome}".`)}break;
+    case 'night':if(p)xAssignNight({k:'disco',tid:p.id,kind:k});break;
+    case 'nDisco':{const x=UI.xN;const ap=xActive();if(x&&ap){S.noites[x.i]={k:'disco',tid:ap.id,kind:k};UI.xN=null}break}
+    case 'pcov':UI.x13Cov=UI.x13Cov===(p&&p.id)?null:p&&p.id;break;
+    case 'pcSty':if(p)p.cover={style:k,pal:(p.cover&&p.cover.pal)||pick(Object.keys(X_PAL))};break;
+    case 'pcPal':if(p)p.cover={...(p.cover||{style:'colagem'}),pal:k};break;
+    case 'ren':if(p)UI.x13Ren=p.id;render();setTimeout(()=>{const i=document.getElementById('x13Ren');if(i){i.focus();i.select()}},30);return;
+    case 'del':if(p)UI.x13Del=p.id;break;
+    case 'delNo':UI.x13Del=null;break;
+    case 'delYes':if(p){S.projects=S.projects.filter(x=>x.id!==p.id);S.noites=S.noites.map(n=>n&&n.k==='disco'&&n.tid===p.id?null:n);UI.x13Del=null;if(S.xDiscAdd===p.id)S.xDiscAdd=null}break;
+    case 'dlx':UI.x13Dlx={pid:b.dataset.pid,tids:[]};break;
+    case 'dlxNo':UI.x13Dlx=null;break;
+    case 'dlxT':{const D=UI.x13Dlx;if(!D)break;const id=b.dataset.tid;if(D.tids.includes(id))D.tids=D.tids.filter(x=>x!==id);else if(D.tids.length<2)D.tids.push(id);break}
+    case 'dlxGo':{const D=UI.x13Dlx;const dp=D&&xDiscs().find(x=>x.id===D.pid);if(dp&&D.tids.length){dp.dlx=D.tids.slice();dp.dlxWeek=S.week;UI.x13Dlx=null;qToast({icon:'disc',title:'Edição deluxe',text:'Sai nesta sexta.',ms:3000})}break}
+    case 'premDone':{const dp=xDiscs().find(x=>x.id===S.xDiscPrem);S.xPremDone=(S.xPremDone||[]).concat(dp?dp.tids:[]).slice(-40);S.xDiscPrem=null;Q.modalKey='';break}
+  }
+  save();render();
+},true);
+document.addEventListener('change',ev=>{
+  const id=ev.target.dataset&&ev.target.dataset.x13w;if(!id||!S)return;const p=xDiscs().find(x=>x.id===id);
+  if(p){const n=Number(ev.target.value);p.week=Number.isInteger(n)&&n>S.week&&n<=26?n:null;save();render()}
+});
+function xRenCommit(el){const p=xDiscs().find(x=>x.id===el.dataset.pid);const v=el.value.trim();if(p&&v)p.nome=v.slice(0,40);UI.x13Ren=null;save();render()}
+document.addEventListener('keydown',ev=>{if(ev.target.id==='x13Ren'&&ev.key==='Enter'){ev.preventDefault();xRenCommit(ev.target)}if(ev.target.id==='x13Name'&&ev.key==='Enter'){ev.preventDefault();const b=document.querySelector('[data-x13="newSave"]');if(b)b.click()}});
+document.addEventListener('focusout',ev=>{if(ev.target.id==='x13Ren'&&UI.x13Ren)xRenCommit(ev.target)});
+document.addEventListener('input',ev=>{if(ev.target.id==='x13Name'&&UI.x13N)UI.x13N.nome=ev.target.value});
 
 try{window.claude?.hot?.snapshot?.(()=>({S,UI}))}catch(e){}
 window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.hot?.data??{});
