@@ -1,0 +1,41 @@
+O CORRE: COMO COLOCAR NO AR
+
+O QUE TEM NESTA PASTA
+index.html ............ o jogo
+config.js ............. onde liga o ranking e o feedback (opcional)
+manifest.webmanifest .. faz o jogo virar app no celular
+sw.js ................. deixa o jogo abrir sem internet
+icon-*.png ............ ícones do app
+og.png ................ imagem que aparece quando você manda o link
+ranking.sql ........... usado só se você ligar o ranking
+
+1. SUBIR NO GITHUB
+- Entra em github.com, clica em New repository, dá um nome (ex: o-corre) e cria.
+- Na página do repositório, clica em "uploading an existing file".
+- Arrasta TODOS os arquivos desta pasta (não a pasta, os arquivos de dentro) e clica em Commit changes.
+
+2. PUBLICAR NA VERCEL
+- Em vercel.com, clica em Add New, depois Project.
+- Escolhe o repositório o-corre e clica em Deploy. Não precisa mudar nada.
+- Em um minuto aparece o link do site. Pronto, já dá pra mandar pros amigos.
+
+3. ATUALIZAR DEPOIS
+- Quando chegar uma versão nova, sobe o index.html novo no GitHub (Add file, Upload files) por cima do antigo.
+- A Vercel atualiza o site sozinha. Os saves de todo mundo continuam.
+
+4. LIGAR O RANKING E O FEEDBACK (opcional, grátis)
+- Cria uma conta em supabase.com e clica em New project. Escolhe um nome e uma senha qualquer pro banco (guarda ela).
+- Quando o projeto terminar de criar, abre SQL Editor no menu da esquerda, cola o conteúdo do arquivo ranking.sql e clica em Run.
+- Vai em Project Settings, depois API (ou API Keys). Copia a Project URL e a chave pública (Publishable key ou anon public).
+  Nunca use a chave secret ou service_role.
+- No GitHub, abre o config.js, clica no lápis pra editar, cola a URL e a chave entre as aspas e clica em Commit changes.
+- Pronto: o ranking aparece na aba Cidade e a caixinha de feedback aparece em Opções.
+- Pra ler os feedbacks: no Supabase, Table Editor, tabela feedback.
+
+5. PRÉVIA DO LINK NO ZAP (opcional)
+- Algumas redes só mostram a imagem de prévia com o endereço completo.
+- No index.html, procura og.png e troca pelo endereço inteiro, tipo https://o-corre.vercel.app/og.png
+
+LEMBRETES
+- Cada pessoa tem o próprio save, em cada aparelho. Backup fica em Opções.
+- Pra instalar como app: no Android aparece Instalar em Opções; no iPhone é Compartilhar e Adicionar à Tela de Início.
